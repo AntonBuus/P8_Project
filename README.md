@@ -1,5 +1,4 @@
 # P8_Project
-# MED701
 -----------Project Developers:-----------
 
 Anton Buus Hansen: antonbuushansen@gmail.com
