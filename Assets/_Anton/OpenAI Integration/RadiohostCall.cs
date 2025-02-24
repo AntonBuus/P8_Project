@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace OpenAI
 {
-    public class ChatGPT2 : MonoBehaviour
+    public class RadiohostCall : MonoBehaviour
     {
         [SerializeField] private InputField inputField;
         [SerializeField] private Button button;
@@ -18,7 +18,7 @@ namespace OpenAI
 
         private List<ChatMessage> messages = new List<ChatMessage>();
         [TextArea(3, 10)]
-        public string prompt = "You are the supervisor of an agent. Let them know how they performed once you recieve their report";
+        public string prompt = "Radiohost Instructions here";
 
         private void Start()
         {
@@ -59,7 +59,7 @@ namespace OpenAI
             // Complete the instruction
             var completionResponse = await openai.CreateChatCompletion(new CreateChatCompletionRequest()
             {
-                Model = "gpt-4o-mini",
+                Model = "gpt-3.5-turbo-0125",
                 Messages = messages
             });
 
