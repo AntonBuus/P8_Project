@@ -185,7 +185,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 309234dd4d3851748a07e0a7879e30bb, type: 2}
     - target: {fileID: 919132149155446097, guid: 9fb886971b6e07147b9e4c5bca69bade, type: 3}
       propertyPath: m_Name
-      value: Tent_01
+      value: Huntent
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -258,7 +258,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 309234dd4d3851748a07e0a7879e30bb, type: 2}
     - target: {fileID: 919132149155446097, guid: 9fb886971b6e07147b9e4c5bca69bade, type: 3}
       propertyPath: m_Name
-      value: Tent_03
+      value: Huntent (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -511,7 +511,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 309234dd4d3851748a07e0a7879e30bb, type: 2}
     - target: {fileID: 919132149155446097, guid: 9fb886971b6e07147b9e4c5bca69bade, type: 3}
       propertyPath: m_Name
-      value: Tent_02
+      value: Huntent (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -584,7 +584,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 7680a7adfe3c16b49bbb457471a74743, type: 2}
     - target: {fileID: 919132149155446097, guid: 45f2706c1cece4140bae14393e1d207c, type: 3}
       propertyPath: m_Name
-      value: HunWarrior
+      value: Unarmed Idle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -707,13 +707,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2009986618}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.019135753, y: 0.7589428, z: -0.02232605, w: -0.6504931}
+  m_LocalRotation: {x: -0.025816724, y: -0.47848493, z: 0.0140757365, w: -0.8776033}
   m_LocalPosition: {x: -1.1184648, y: 2.390078, z: -3.4903307}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 3.37, y: -458.8, z: 0}
+  m_LocalEulerAnglesHint: {x: 3.37, y: -302.8, z: 0}
 --- !u!114 &2009986622
 MonoBehaviour:
   m_ObjectHideFlags: 0
