@@ -14,10 +14,10 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
-  m_Fog: 1
+  m_Fog: 0
   m_FogColor: {r: 0.8490566, g: 0.7349584, b: 0.5110359, a: 1}
-  m_FogMode: 1
-  m_FogDensity: 0.01
+  m_FogMode: 2
+  m_FogDensity: 0
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.25882354, g: 0.24022691, b: 0.21176471, a: 1}
@@ -141,15 +141,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9fb886971b6e07147b9e4c5bca69bade, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -33.55
+      value: -28.53
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9fb886971b6e07147b9e4c5bca69bade, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.74
+      value: 2.9
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9fb886971b6e07147b9e4c5bca69bade, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.3
+      value: 0.18
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 9fb886971b6e07147b9e4c5bca69bade, type: 3}
       propertyPath: m_LocalRotation.w
@@ -186,6 +186,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9fb886971b6e07147b9e4c5bca69bade, type: 3}
       propertyPath: m_Name
       value: Tent_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9fb886971b6e07147b9e4c5bca69bade, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -440,6 +444,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tent_02
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 9fb886971b6e07147b9e4c5bca69bade, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -457,6 +465,7 @@ GameObject:
   - component: {fileID: 1719289470}
   - component: {fileID: 1719289469}
   - component: {fileID: 1719289468}
+  - component: {fileID: 1719289472}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -547,13 +556,30 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1719289467}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0.0009874371, y: 0.85698384, z: -0.001592487, w: -0.51534}
   m_LocalPosition: {x: -27.91, y: 0, z: -0.98}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.215, y: 242.04001, z: -0.003}
+--- !u!114 &1719289472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719289467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deb2a74fe347d4442b8e34fac4bf6940, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hillHeight: 1
+  hillSmoothness: 5
+  slopeDirection: 1
+  curveStrength: 2
+  slopeBias: 0.5
 --- !u!1 &2009986618
 GameObject:
   m_ObjectHideFlags: 0
@@ -703,6 +729,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tent_01
       objectReference: {fileID: 0}
+    - target: {fileID: 6089318027798937325, guid: 2fedb0cc736a9594f8986b6bf22a3e89, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6902411667416949847, guid: 2fedb0cc736a9594f8986b6bf22a3e89, type: 3}
       propertyPath: m_LocalPosition.x
       value: -23.331509
@@ -799,6 +829,10 @@ PrefabInstance:
     - target: {fileID: 9022365502533094503, guid: a18cead040eb2de46844b2970a271500, type: 3}
       propertyPath: m_Name
       value: HunWarrior
+      objectReference: {fileID: 0}
+    - target: {fileID: 9022365502533094503, guid: a18cead040eb2de46844b2970a271500, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
