@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class OpenClipboard : MonoBehaviour
+public class EnableComponent : MonoBehaviour
 {
-    public GameObject clipboard;
+    public GameObject _targetComponent;
 
-    public InputActionProperty showMenuButton;
+    public InputActionProperty _toggleButton;
 
     void Update()
     {
-        if (showMenuButton.action.WasPressedThisFrame())
+        if (_toggleButton.action.WasPressedThisFrame())
         {
             ActivateDeactivateClipboard();
             Debug.Log("Clipboard opened!");
@@ -20,6 +20,6 @@ public class OpenClipboard : MonoBehaviour
 
     public void ActivateDeactivateClipboard()
     {
-        clipboard.SetActive(!clipboard.activeSelf);
+        _targetComponent.SetActive(!_targetComponent.activeSelf);
     }
 }

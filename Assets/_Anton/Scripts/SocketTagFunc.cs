@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 // From Valem Tutorials: https://youtu.be/pMOHX1qD2bE?si=eKu7ToWeINVklKg3
 public class SocketTagFunc : UnityEngine.XR.Interaction.Toolkit.Interactors.XRSocketInteractor
 {
