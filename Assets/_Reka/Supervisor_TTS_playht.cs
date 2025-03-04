@@ -22,10 +22,13 @@ public class Supervisor_TTS_playht : MonoBehaviour
     // {
     //     StartCoroutine(GenerateSpeech("Today’s top story? A daring intervention in Ancient Egypt where our time agent successfully retrieved… an iPad. That’s right, folks, a piece of 21st-century tech somehow found its way into the land of pharaohs, pyramids, and hieroglyphs! But did this high-tech tablet disrupt the course of history, or did our agent manage to set things right? Let's dive in."));
     // }
-    // [SerializeField] private TextMeshProUGUI GeneratedInput;
+
+    // Public = Can be seen by everyone and it appeares in the inspector.
+    // SerializeField = Can be seen in the inspector but is not public.
+    [SerializeField] private TextMeshProUGUI GeneratedInput;
     public void StartVoice()
     { 
-        // StartCoroutine(GenerateSpeech(GeneratedInput.text));
+        StartCoroutine(GenerateSpeech(GeneratedInput.text));
     }
     IEnumerator GenerateSpeech(string text)
     {

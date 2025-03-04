@@ -49,6 +49,8 @@ namespace OpenAI
                 messages.Add(message); // Adding the message to the list of messages
                 //AppendMessage(message); // Appending the message to the scroll view
                 OutputText.text = message.Content; // Displaying the message content in the output text
+                
+
 
             }
             else
