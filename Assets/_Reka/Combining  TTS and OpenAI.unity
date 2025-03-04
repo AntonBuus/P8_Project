@@ -331,6 +331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputField: {fileID: 1139750382}
+  ttsSystem: {fileID: 11912841}
   _initialPrompt: {fileID: 1812640661}
   OutputText: {fileID: 1370458007}
 --- !u!1 &155154670

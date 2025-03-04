@@ -10,7 +10,6 @@ using TMPro;
 public class Supervisor_TTS_playht : MonoBehaviour
 {
     // Stores API credentials
-
     private string apiUrl = "https://api.play.ht/api/v2/tts/stream";  // Play.ht Streaming API URL.
 
     // Declares an AudioSource to play the generated speech.
@@ -25,10 +24,11 @@ public class Supervisor_TTS_playht : MonoBehaviour
 
     // Public = Can be seen by everyone and it appeares in the inspector.
     // SerializeField = Can be seen in the inspector but is not public.
-    [SerializeField] private TextMeshProUGUI GeneratedInput;
+    [SerializeField] private TextMeshProUGUI GeneratedInput; // AI-generated text field
+
     public void StartVoice()
     { 
-        StartCoroutine(GenerateSpeech(GeneratedInput.text));
+        StartCoroutine(GenerateSpeech(GeneratedInput.text)); // Convert AI-generated text to speech
     }
     IEnumerator GenerateSpeech(string text)
     {

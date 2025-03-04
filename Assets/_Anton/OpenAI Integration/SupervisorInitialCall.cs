@@ -9,6 +9,8 @@ namespace OpenAI
     {
         [SerializeField] private InputField inputField;
 
+        [SerializeField] private Supervisor_TTS_playht ttsSystem; // Reference to the TTS system
+
         private OpenAIApi openai = new OpenAIApi(); // Creating an instance of the OpenAIApi class
 
         private List<ChatMessage> messages = new List<ChatMessage>(); // Initializing a list to store chat messages
@@ -41,18 +43,25 @@ namespace OpenAI
                 Messages = messages // Passing the list of messages to the request
             });
 
-            if (completionResponse.Choices != null && completionResponse.Choices.Count > 0) // Checking if the response contains choices
-            {
-                var message = completionResponse.Choices[0].Message; // Getting the first message from the response
-                message.Content = message.Content.Trim(); // Trimming any whitespace from the message content
+                if (completionResponse.Choices != null && completionResponse.Choices.Count > 0) // Checking if AI generated text
+                {
+                    var message = completionResponse.Choices[0].Message; 
+                    message.Content = message.Content.Trim(); 
 
-                messages.Add(message); // Adding the message to the list of messages
-                //AppendMessage(message); // Appending the message to the scroll view
-                OutputText.text = message.Content; // Displaying the message content in the output text
-                
+                    messages.Add(message); 
+                    OutputText.text = message.Content; // Display the AI-generated text in the UI
+                    
+                    // Automatically trigger TTS after generating the text
+                    if (ttsSystem != null)
+                    {
+                        ttsSystem.StartVoice(); // Call TTS to convert text to speech
+                    }
+                    else
+                    {
+                        Debug.LogError("TTS System is not assigned!");
+                    }
+                }
 
-
-            }
             else
             {
                 Debug.LogWarning("No text was generated from this prompt."); // Logging a warning if no text was generated
