@@ -178,12 +178,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56f87055fdd52d445886c2590cd77d0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedTTSProvider: 1
+  selectedTTSProvider: 0
   GeneratedInput: {fileID: 1370458007}
   audioSource: {fileID: 788616728}
-  speed: 1
-  temperature: 1
-  emotion: neutral
+  speed: 3.05
+  temperature: 1.56
+  emotionOptions:
+  - female_happy
+  - female_sad
+  - female_angry
+  - female_fearful
+  - female_disgust
+  - female_surprised
+  - male_happy
+  - male_sad
+  - male_angry
+  - male_fearful
+  - male_disgust
+  - male_surprised
+  selectedEmotionIndex: 2
 --- !u!1 &41225169
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,7 +363,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputField: {fileID: 1139750382}
-  ttsSystem: {fileID: 0}
+  ttsSystem: {fileID: 11912843}
   _initialPrompt: {fileID: 1812640661}
   OutputText: {fileID: 1370458007}
 --- !u!1 &155154670
