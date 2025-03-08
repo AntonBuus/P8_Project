@@ -157,7 +157,11 @@ public class TTS_both_API : MonoBehaviour
     [Header("Play.ht Controls")]
     [Range(0.1f, 5f)] public float speed = 1.0f; // Speech speed
     [Range(0.1f, 2f)] public float temperature = 1.0f; // Randomness in speech
-    [SerializeField] private string emotion = "neutral"; // Emotion selection
+    // [SerializeField] private string emotion = "neutral"; // Emotion selection
+
+    [Tooltip("Select an emotion for the speech (Only for Play.ht)")]
+    public string[] emotionOptions = { "female_happy", "female_sad", "female_angry", "female_fearful", "female_disgust", "female_surprised", "male_happy", "male_sad", "male_angry", "male_fearful", "male_disgust", "male_surprised" };
+    public int selectedEmotionIndex = 0; // Index for dropdown
 
     private string playHTUrl = "https://api.play.ht/api/v2/tts/stream"; // Play.ht API URL
     private string openAITtsUrl = "https://api.openai.com/v1/audio/speech"; // OpenAI TTS API URL
@@ -168,7 +172,8 @@ public class TTS_both_API : MonoBehaviour
         
         if (selectedTTSProvider == TTSProvider.PlayHT)
         {
-            StartCoroutine(GeneratePlayHTSpeech(textToConvert));
+            // StartCoroutine(GeneratePlayHTSpeech(textToConvert));
+               StartCoroutine(GeneratePlayHTSpeech("Hello I am bob. I like to do programming and mess with my sanity."));
         }
         else if (selectedTTSProvider == TTSProvider.OpenAI)
         {
@@ -187,7 +192,8 @@ public class TTS_both_API : MonoBehaviour
             voice_engine = "Play3.0-mini",
             speed = speed, // Uses the adjustable Inspector value
             temperature = temperature, // Uses the adjustable Inspector value
-            emotion = emotion // Uses the selected emotion
+            // emotion = emotion // Uses the selected emotion
+            emotion = emotionOptions[selectedEmotionIndex] // Uses dropdown selection
         };
 
         string jsonPayload = JsonConvert.SerializeObject(requestBody);
