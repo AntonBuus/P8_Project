@@ -129,6 +129,7 @@ GameObject:
   m_Component:
   - component: {fileID: 11912842}
   - component: {fileID: 11912841}
+  - component: {fileID: 11912843}
   m_Layer: 0
   m_Name: TTS API
   m_TagString: Untagged
@@ -143,7 +144,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 11912840}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae8d7189f944a2043bec192a35e09799, type: 3}
   m_Name: 
@@ -165,6 +166,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &11912843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 11912840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56f87055fdd52d445886c2590cd77d0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedTTSProvider: 1
+  GeneratedInput: {fileID: 1370458007}
+  audioSource: {fileID: 788616728}
+  speed: 1
+  temperature: 1
+  emotion: neutral
 --- !u!1 &41225169
 GameObject:
   m_ObjectHideFlags: 0
@@ -331,7 +350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputField: {fileID: 1139750382}
-  ttsSystem: {fileID: 11912841}
+  ttsSystem: {fileID: 0}
   _initialPrompt: {fileID: 1812640661}
   OutputText: {fileID: 1370458007}
 --- !u!1 &155154670
