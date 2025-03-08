@@ -9,7 +9,7 @@ namespace OpenAI
     {
         [SerializeField] private InputField inputField;
 
-        [SerializeField] private Supervisor_TTS_playht ttsSystem; // Reference to the TTS system
+        [SerializeField] private TTS_both_API ttsSystem; // Reference to the TTS system
 
         private OpenAIApi openai = new OpenAIApi(); // Creating an instance of the OpenAIApi class
 
