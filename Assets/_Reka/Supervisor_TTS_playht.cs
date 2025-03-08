@@ -80,6 +80,7 @@ public class Supervisor_TTS_playht : MonoBehaviour
             {
                 Debug.LogError("Error: " + request.error);
                 Debug.LogError("Response: " + request.downloadHandler.text);
+                Debug.LogError("API key used" + SuperSecretStuff.PlayHT_ApiKey);
             }
         }
     }
