@@ -3,10 +3,11 @@ using UnityEngine;
 
 public class StartPromtps : MonoBehaviour
 {
-    private SupervisorInitialCall supervisorInitialCall;
+    [SerializeField] private CallSupervisor1 CallOpenAICompletion;
 
     void Start()
     {
-        supervisorInitialCall.SendReply();
+        // CallOpenAICompletion = GetComponent<CallSupervisor1>();
+        CallOpenAICompletion.SendReply();
     }
 }

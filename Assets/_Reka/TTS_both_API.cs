@@ -166,6 +166,7 @@ public class TTS_both_API : MonoBehaviour
     private string playHTUrl = "https://api.play.ht/api/v2/tts/stream"; // Play.ht API URL
     private string openAITtsUrl = "https://api.openai.com/v1/audio/speech"; // OpenAI TTS API URL
 
+    public string usableFilePath;
     public void StartVoice()
     {
         string textToConvert = GeneratedInput.text; // Get the generated text
@@ -213,7 +214,9 @@ public class TTS_both_API : MonoBehaviour
             {
                 byte[] audioData = request.downloadHandler.data;
                 string filePath = SaveAudioFile(audioData, "playht_audio.mp3");
-                StartCoroutine(PlayAudio(filePath));
+                // StartCoroutine(PlayAudio(filePath));
+                Debug.Log("Audio ready: " + filePath);
+                usableFilePath = filePath;
             }
             else
             {
@@ -249,7 +252,9 @@ public class TTS_both_API : MonoBehaviour
             {
                 byte[] audioData = request.downloadHandler.data;
                 string filePath = SaveAudioFile(audioData, "openai_audio.mp3");
-                StartCoroutine(PlayAudio(filePath));
+                // StartCoroutine(PlayAudio(filePath));
+                Debug.Log("Audio ready: " + filePath);
+                usableFilePath = filePath;
             }
             else
             {
@@ -269,6 +274,10 @@ public class TTS_both_API : MonoBehaviour
     }
 
     // Play the MP3 File
+    public void InitializePlayAudio(string filePath)
+    {
+        StartCoroutine(PlayAudio(filePath));
+    }
     IEnumerator PlayAudio(string filePath)
     {
         using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip("file://" + filePath, AudioType.MPEG))
