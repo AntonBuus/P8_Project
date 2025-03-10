@@ -147,7 +147,7 @@ using TMPro;
 
 public class TTS_both_API : MonoBehaviour
 {
-    public enum TTSProvider { PlayHT, OpenAI } // Enum to switch between Play.ht and OpenAI
+    public enum TTSProvider { PlayHT, OpenAI, No_Speech } // Enum to switch between Play.ht and OpenAI
     [SerializeField] private TTSProvider selectedTTSProvider = TTSProvider.OpenAI; // Dropdown in Inspector
 
     [Header("TTS Settings")]
@@ -180,6 +180,11 @@ public class TTS_both_API : MonoBehaviour
         {
             StartCoroutine(GenerateOpenAISpeech(textToConvert));
         }
+        else if (selectedTTSProvider == TTSProvider.No_Speech)
+        {
+            Debug.Log("No speech selected");
+        }
+
     }
 
     // Play.ht API Integration

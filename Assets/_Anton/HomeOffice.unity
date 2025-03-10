@@ -128,7 +128,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 11912842}
-  - component: {fileID: 11912841}
   - component: {fileID: 11912843}
   m_Layer: 0
   m_Name: TTS API
@@ -137,20 +136,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &11912841
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 11912840}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae8d7189f944a2043bec192a35e09799, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioSource: {fileID: 788616728}
-  GeneratedInput: {fileID: 1370458007}
 --- !u!4 &11912842
 Transform:
   m_ObjectHideFlags: 0
@@ -178,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56f87055fdd52d445886c2590cd77d0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedTTSProvider: 1
+  selectedTTSProvider: 2
   GeneratedInput: {fileID: 1370458007}
   audioSource: {fileID: 788616728}
   speed: 1
