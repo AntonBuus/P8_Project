@@ -14,7 +14,6 @@
 # They also could contain extremely sensitive data
 /[Mm]emoryCaptures/
 
-# Recordings can get excessive in size
 /[Rr]ecordings/
 
 # Uncomment this line if you wish to ignore the asset store tools plugin
@@ -73,3 +72,7 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 Assets/__Main/SuperSecretStuff.cs
 Assets/__Main/SuperSecretStuff.cs.meta
+
+# Additional specific files
+Assets/XRI/Settings/Resources/XRDeviceSimulatorSettings.asset
+.vscode/P8_Project.code-workspace
