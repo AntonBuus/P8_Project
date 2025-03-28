@@ -167,6 +167,7 @@ public class TTS_both_API : MonoBehaviour
     private string openAITtsUrl = "https://api.openai.com/v1/audio/speech"; // OpenAI TTS API URL
 
     public string usableFilePath;
+    SuperSecretStuff _key; // Reference to the SuperSecretStuff class
     public void StartVoice()
     {
         string textToConvert = GeneratedInput.text; // Get the generated text
@@ -210,8 +211,8 @@ public class TTS_both_API : MonoBehaviour
             request.uploadHandler = new UploadHandlerRaw(bodyRaw);
             request.downloadHandler = new DownloadHandlerBuffer();
             request.SetRequestHeader("Content-Type", "application/json");
-            request.SetRequestHeader("Authorization", "Bearer " + SuperSecretStuff.PlayHT_ApiKey);
-            request.SetRequestHeader("X-User-Id", SuperSecretStuff.PlayHT_UserId);
+            request.SetRequestHeader("Authorization", "Bearer " + _key.PlayHT_ApiKey);
+            request.SetRequestHeader("X-User-Id", _key.PlayHT_UserId);
 
             yield return request.SendWebRequest();
 
@@ -249,7 +250,7 @@ public class TTS_both_API : MonoBehaviour
             request.uploadHandler = new UploadHandlerRaw(bodyRaw);
             request.downloadHandler = new DownloadHandlerBuffer();
             request.SetRequestHeader("Content-Type", "application/json");
-            request.SetRequestHeader("Authorization", "Bearer " + SuperSecretStuff.OPENAI_NAHRS_ApiKey);
+            request.SetRequestHeader("Authorization", "Bearer " + _key.OPENAI_NAHRS_ApiKey);
 
             yield return request.SendWebRequest();
 

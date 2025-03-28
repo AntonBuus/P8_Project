@@ -10,6 +10,7 @@ using TMPro;
 public class Supervisor_TTS_playht : MonoBehaviour
 {
     // Stores API credentials
+    SuperSecretStuff _key; 
     private string apiUrl = "https://api.play.ht/api/v2/tts/stream";  // Play.ht Streaming API URL.
 
     // Declares an AudioSource to play the generated speech.
@@ -52,8 +53,8 @@ public class Supervisor_TTS_playht : MonoBehaviour
             request.uploadHandler = new UploadHandlerRaw(bodyRaw);
             request.downloadHandler = new DownloadHandlerBuffer();
             request.SetRequestHeader("Content-Type", "application/json");
-            request.SetRequestHeader("Authorization", "Bearer " + SuperSecretStuff.PlayHT_ApiKey);
-            request.SetRequestHeader("X-User-Id", SuperSecretStuff.PlayHT_UserId);
+            request.SetRequestHeader("Authorization", "Bearer " + _key.PlayHT_ApiKey);
+            request.SetRequestHeader("X-User-Id", _key.PlayHT_UserId);
 
             yield return request.SendWebRequest();
 
@@ -80,7 +81,7 @@ public class Supervisor_TTS_playht : MonoBehaviour
             {
                 Debug.LogError("Error: " + request.error);
                 Debug.LogError("Response: " + request.downloadHandler.text);
-                Debug.LogError("API key used" + SuperSecretStuff.PlayHT_ApiKey);
+                Debug.LogError("API key used" + _key.PlayHT_ApiKey);
             }
         }
     }
