@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
+using System.Collections.Generic;
 
 public class HandleInteraction : MonoBehaviour
 {
@@ -24,6 +25,19 @@ public class HandleInteraction : MonoBehaviour
 
     private AudioSource audioSource;
     public AudioClip yearChangeSound; // Assign this in the inspector
+
+    // References to the rotating number cylinders
+    public Transform numberRotate1; // Units
+    public Transform numberRotate2; // Tens
+    public Transform numberRotate3; // Hundreds
+    public Transform numberRotate4; // Thousands
+    public Transform numberRotate5; // BC/AC indicator
+
+    // Track previous rotations for smooth interpolation
+    private Quaternion[] previousRotations = new Quaternion[5];
+    public float rotationSmoothTime = 0.3f; // Time to smoothly rotate between numbers
+
+    private float exactYear = 0f; // Store the exact (non-rounded) year
 
     void Start()
     {
@@ -56,6 +70,14 @@ public class HandleInteraction : MonoBehaviour
                 Debug.LogWarning("No AudioSource found on Pull_Zero_Point");
             }
         }
+
+        // Initialize previous rotations
+        for (int i = 0; i < previousRotations.Length; i++) {
+            previousRotations[i] = Quaternion.identity;
+        }
+        
+        // Initialize number cylinders to starting position - use false for immediate positioning
+        UpdateNumberRotation(currentYear, false);
     }
 
     void Update()
@@ -138,15 +160,18 @@ public class HandleInteraction : MonoBehaviour
                     
                     transform.position = newHandlePosition;
                     
-                    UpdateYearValue();
+                    // Update year based on exact position (without rounding)
+                    UpdateExactYearValue();
+                    
                     UpdateHandleRotation();
                     UpdateWire();
                 }
                 
-                // For VR: Replace with controller grip/button release detection
+                // When releasing the handle, snap to nearest 100s
                 if (mouse.leftButton.wasReleasedThisFrame)
                 {
                     isDragging = false;
+                    SnapToNearestStep();
                     StartRetraction();
                 }
             }
@@ -232,47 +257,170 @@ public class HandleInteraction : MonoBehaviour
         wireRenderer.SetPosition(1, transform.position);
     }
 
-    void UpdateYearValue()
+    // Updates the year value based on handle position without rounding
+    void UpdateExactYearValue()
     {
         // Calculate how far the handle is from its rest position, normalized from 0 to 1
         float distanceFromRest = Vector3.Distance(transform.position, restPosition);
-        float maxExtensionDistance = 0.5f; // This should match the maxDistance in Update
+        float maxExtensionDistance = 0.5f; // This should match the maxDistance in HandleInput
         float normalizedDistance = Mathf.Clamp01(distanceFromRest / maxExtensionDistance);
         
-        // Map the normalized distance to our year range
+        // Map the normalized distance to our year range - no rounding
         float yearRange = maxYear - minYear;
-        float yearValue = minYear + (yearRange * normalizedDistance);
+        exactYear = minYear + (yearRange * normalizedDistance);
         
+        // Update cylinder display with exact year (continuous movement)
+        UpdateNumberRotation(0, exactYear, true);
+    }
+    
+    // Snap to nearest step when releasing the handle
+    void SnapToNearestStep()
+    {
         // Round to nearest step
-        int roundedYear = Mathf.RoundToInt(yearValue / yearStep) * (int)yearStep;
+        int roundedYear = Mathf.RoundToInt(exactYear / yearStep) * (int)yearStep;
         
-        // Only update and print if the year has changed
+        // Record the current exact year for smooth transition
+        float fromExactYear = exactYear;
+        
+        // Update current year for the system
         if (roundedYear != currentYear)
         {
             currentYear = roundedYear;
-            PrintYearValue();
+            
+            // Log the new year
+            string yearText;
+            if (currentYear < 0)
+            {
+                yearText = $"{Mathf.Abs(currentYear)} BC";
+            }
+            else
+            {
+                yearText = $"{currentYear} AC";
+            }
+            Debug.Log($"Year set to: {yearText}");
+            
+            // Play the audio feedback when the year changes
+            PlayYearChangeSound();
+        }
+        
+        // Start a coroutine for smooth transition to the snapped year
+        StartCoroutine(SmoothSnapToYear(fromExactYear, (float)currentYear));
+    }
+    
+    // Coroutine for smooth transition between exact and snapped year
+    IEnumerator SmoothSnapToYear(float fromYear, float toYear)
+    {
+        float snapDuration = 0.3f; // Duration of snapping animation
+        float elapsedTime = 0f;
+        
+        while (elapsedTime < snapDuration)
+        {
+            // Calculate interpolated year based on cubic ease-out
+            float t = elapsedTime / snapDuration;
+            t = 1 - Mathf.Pow(1 - t, 3); // Same easing as the handle retraction
+            
+            float interpolatedYear = Mathf.Lerp(fromYear, toYear, t);
+            
+            // Update the cylinder rotations with the interpolated year
+            UpdateNumberRotation(0, interpolatedYear, false);
+            
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        
+        // Ensure final state is exact
+        UpdateNumberRotation(0, toYear, false);
+    }
+
+    // Remove or modify the unused methods
+    void UpdateYearValue()
+    {
+        // This method is no longer needed but kept for compatibility
+        // It will be replaced by UpdateExactYearValue and SnapToNearestStep
+    }
+    
+    // Update the overloaded methods to handle the new workflow
+    void UpdateNumberRotation(int year, float exactYearValue, bool smoothTransition)
+    {
+        // Get absolute year value for digit extraction
+        float absExactYear = Mathf.Abs(exactYearValue);
+        
+        // Extract fractional parts for all digits for smoother rotation
+        float thousandsFloat = (absExactYear / 1000) % 10;
+        float hundredsFloat = (absExactYear / 100) % 10;
+        float tensFloat = (absExactYear / 10) % 10;
+        float unitsFloat = absExactYear % 10;
+        
+        // Calculate target rotations using floating point values for smoother transitions
+        Quaternion[] targetRotations = new Quaternion[5];
+        targetRotations[0] = Quaternion.Euler(thousandsFloat * 30f, 0, 0);
+        targetRotations[1] = Quaternion.Euler(hundredsFloat * 30f, 0, 0);
+        targetRotations[2] = Quaternion.Euler(tensFloat * 30f, 0, 0);
+        targetRotations[3] = Quaternion.Euler(unitsFloat * 30f, 0, 0);
+        
+        // Set BC/AC cylinder (BC at 0 degrees, AC at 180 degrees)
+        float bcacRotation = (exactYearValue < 0) ? 0f : 180f;
+        targetRotations[4] = Quaternion.Euler(bcacRotation, 0, 0);
+        
+        // Apply rotations to cylinders
+        Transform[] cylinders = { numberRotate1, numberRotate2, numberRotate3, numberRotate4, numberRotate5 };
+        
+        for (int i = 0; i < cylinders.Length; i++) {
+            if (cylinders[i] != null) {
+                if (smoothTransition) {
+                    // Start a coroutine for smooth rotation
+                    StopCoroutineForCylinder(i);
+                    StartCoroutine(SmoothRotate(cylinders[i], targetRotations[i], i));
+                } else {
+                    // Apply rotation immediately
+                    cylinders[i].localRotation = targetRotations[i];
+                    previousRotations[i] = targetRotations[i];
+                }
+            }
         }
     }
     
-    void PrintYearValue()
+    // Original method to maintain compatibility with other calls
+    void UpdateNumberRotation(int year, bool smoothTransition)
     {
-        string yearText;
-        if (currentYear < 0)
-        {
-            yearText = $"{Mathf.Abs(currentYear)} BC";
+        UpdateNumberRotation(year, (float)year, smoothTransition);
+    }
+    
+    // Dictionary to track active rotation coroutines
+    private Dictionary<int, Coroutine> activeCoroutines = new Dictionary<int, Coroutine>();
+    
+    // Stop any existing coroutine for a cylinder
+    void StopCoroutineForCylinder(int index) {
+        if (activeCoroutines.TryGetValue(index, out Coroutine routine)) {
+            if (routine != null) {
+                StopCoroutine(routine);
+            }
+            activeCoroutines.Remove(index);
         }
-        else
-        {
-            yearText = $"{currentYear} AC";
+    }
+    
+    // Coroutine for smooth rotation
+    IEnumerator SmoothRotate(Transform cylinder, Quaternion targetRotation, int index) {
+        float elapsedTime = 0;
+        Quaternion startRotation = cylinder.localRotation;
+        
+        while (elapsedTime < rotationSmoothTime) {
+            cylinder.localRotation = Quaternion.Slerp(
+                startRotation, 
+                targetRotation, 
+                elapsedTime / rotationSmoothTime
+            );
+            
+            elapsedTime += Time.deltaTime;
+            yield return null;
         }
         
-        Debug.Log($"Current Year: {yearText}");
+        // Ensure we land exactly on the target rotation
+        cylinder.localRotation = targetRotation;
+        previousRotations[index] = targetRotation;
         
-        // Play the audio feedback when the year changes
-        PlayYearChangeSound();
-        
-        // Here you can implement your UI update later
-        // For example: yearTextDisplay.text = yearText;
+        // Remove from active coroutines
+        activeCoroutines.Remove(index);
     }
     
     void PlayYearChangeSound()
