@@ -119,6 +119,88 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &136290441 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8922606237495439495, guid: 01d7cbaffe8da0f4c8a06c6abc989b97, type: 3}
+  m_PrefabInstance: {fileID: 669227601}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &136290445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136290441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa5bce230032ac2459597b722f78119a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactable: 1
+  audioSource: {fileID: 0}
+  interactionSound: {fileID: 0}
+  onRightClick:
+    m_PersistentCalls:
+      m_Calls: []
+  normalMaterial: {fileID: 2100000, guid: 5e36dccdc5b58f94eb09b2f3e71f65af, type: 2}
+  clickedMaterial: {fileID: 2100000, guid: c0763d3c0e0d2114995c4905aa29f5d8, type: 2}
+  materialFlashDuration: 0.2
+  pressDepth: 0.005
+  pressDuration: 0.05
+  animationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  pressAxis: 0
+  onButtonPress:
+    m_PersistentCalls:
+      m_Calls: []
+  onButtonRelease:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!136 &136290446
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136290441}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.02
+  m_Height: 0.015792694
+  m_Direction: 1
+  m_Center: {x: 0.000000045634806, y: -0.0013026765, z: -0.000000020489097}
 --- !u!4 &198109668 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7418147797983580220, guid: 01d7cbaffe8da0f4c8a06c6abc989b97, type: 3}
@@ -335,6 +417,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1723254555}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8922606237495439495, guid: 01d7cbaffe8da0f4c8a06c6abc989b97, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 136290445}
+    - targetCorrespondingSourceObject: {fileID: 8922606237495439495, guid: 01d7cbaffe8da0f4c8a06c6abc989b97, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 136290446}
     - targetCorrespondingSourceObject: {fileID: 5368286194314289144, guid: 01d7cbaffe8da0f4c8a06c6abc989b97, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1281323131}
@@ -696,8 +784,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1617834454}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.35331973, y: -0.3101131, z: 0.12541714, w: -0.8736507}
-  m_LocalPosition: {x: -0.08128643, y: 1.498559, z: 0.011372566}
+  m_LocalRotation: {x: -0.42168966, y: 0.0021863282, z: -0.0010147337, w: -0.9067371}
+  m_LocalPosition: {x: -0.014250972, y: 1.4922878, z: -0.027368782}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
