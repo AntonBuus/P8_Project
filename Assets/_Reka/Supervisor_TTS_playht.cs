@@ -52,8 +52,8 @@ public class Supervisor_TTS_playht : MonoBehaviour
             request.uploadHandler = new UploadHandlerRaw(bodyRaw);
             request.downloadHandler = new DownloadHandlerBuffer();
             request.SetRequestHeader("Content-Type", "application/json");
-            request.SetRequestHeader("Authorization", "Bearer " + SuperSecretStuff.PlayHT_ApiKey);
-            request.SetRequestHeader("X-User-Id", SuperSecretStuff.PlayHT_UserId);
+            //request.SetRequestHeader("Authorization", "Bearer " + SuperSecretStuff.PlayHT_ApiKey);
+            //request.SetRequestHeader("X-User-Id", SuperSecretStuff.PlayHT_UserId);
 
             yield return request.SendWebRequest();
 
