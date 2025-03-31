@@ -3,9 +3,9 @@ using UnityEngine;
 
 public class SuperSecretStuff : MonoBehaviour
 {
-    public string PlayHT_ApiKey; // PlayHT API Key
-    public string PlayHT_UserId; // PlayHT User ID
-    public string OPENAI_NAHRS_ApiKey; // OpenAI NAHRS API Key
+    public static string PlayHT_ApiKey; // PlayHT API Key
+    public static string PlayHT_UserId; // PlayHT User ID
+    public static string OPENAI_NAHRS_ApiKey; // OpenAI NAHRS API Key
 
     private void Start()
     {

@@ -8,8 +8,6 @@ using System.IO; // To save the received MP3 file.
 
 public class PlayHTTTS : MonoBehaviour
 {
-    
-    SuperSecretStuff _key; // Stores API credentials
 
     private string apiUrl = "https://api.play.ht/api/v2/tts/stream";  // Play.ht Streaming API URL.
 
@@ -46,8 +44,8 @@ public class PlayHTTTS : MonoBehaviour
             request.uploadHandler = new UploadHandlerRaw(bodyRaw);
             request.downloadHandler = new DownloadHandlerBuffer();
             request.SetRequestHeader("Content-Type", "application/json");
-            request.SetRequestHeader("Authorization", "Bearer " + _key.PlayHT_ApiKey);
-            request.SetRequestHeader("X-User-Id", _key.PlayHT_UserId);
+            request.SetRequestHeader("Authorization", "Bearer " + SuperSecretStuff.PlayHT_ApiKey);
+            request.SetRequestHeader("X-User-Id", SuperSecretStuff.PlayHT_UserId);
 
             yield return request.SendWebRequest();
 

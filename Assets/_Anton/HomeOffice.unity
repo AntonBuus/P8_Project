@@ -3697,7 +3697,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56ca899b23ba6be4e8c3cc89354aa0a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayGeneratedVoice: {fileID: 11912843}
+  _PlayGeneratedVoice: {fileID: 11912843}
 --- !u!65 &1149613799
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6854,9 +6854,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15e67ce79f2fb51478239ac28da036a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayHT_ApiKey: 
-  PlayHT_UserId: 
-  OPENAI_NAHRS_ApiKey: 
 --- !u!4 &1905399329
 Transform:
   m_ObjectHideFlags: 0

@@ -9,7 +9,6 @@ using System.Collections.Generic;
 
 public class TTS_OpenAI : MonoBehaviour
 {
-    SuperSecretStuff _key; // API Credentials & Setup: Stores OpenAI API Key and endpoint.
     
     private string ttsEndpoint = "https://api.openai.com/v1/audio/speech";
 
@@ -54,7 +53,7 @@ public class TTS_OpenAI : MonoBehaviour
             request.uploadHandler = new UploadHandlerRaw(postData);
             request.downloadHandler = new DownloadHandlerBuffer();
             request.SetRequestHeader("Content-Type", "application/json");
-            request.SetRequestHeader("Authorization", "Bearer " + _key.OPENAI_NAHRS_ApiKey);
+            request.SetRequestHeader("Authorization", "Bearer " + SuperSecretStuff.OPENAI_NAHRS_ApiKey);
 
             yield return request.SendWebRequest();
 
