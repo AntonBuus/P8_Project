@@ -25,13 +25,13 @@ public class SuperSecretStuff : MonoBehaviour
 
             switch (name)
             {
-                case "PlayHTAPI":
+                case "PlayHT_API_Key":
                     PlayHT_ApiKey = key;
                     break;
                 case "PLAYHT_User_ID":
                     PlayHT_UserId = key;
                     break;
-                case "NAHRS":
+                case "NAHRS_API_Key":
                     OPENAI_NAHRS_ApiKey = key;
                     break;
             }

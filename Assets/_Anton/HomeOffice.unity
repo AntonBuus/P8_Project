@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56f87055fdd52d445886c2590cd77d0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedTTSProvider: 1
+  selectedTTSProvider: 2
   GeneratedInput: {fileID: 1370458007}
   audioSource: {fileID: 788616728}
   speed: 1
@@ -6825,6 +6825,53 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -0.5}
   m_SizeDelta: {x: -20, y: -13}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1905399327
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1905399329}
+  - component: {fileID: 1905399328}
+  m_Layer: 0
+  m_Name: secrethandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1905399328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905399327}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15e67ce79f2fb51478239ac28da036a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayHT_ApiKey: 
+  PlayHT_UserId: 
+  OPENAI_NAHRS_ApiKey: 
+--- !u!4 &1905399329
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905399327}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -14.795797, y: 2.232303, z: -5.2777796}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1906905780 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2341184334248645082, guid: d8b5acaf18cd7254f94b467141cb29ee, type: 3}
@@ -8566,3 +8613,4 @@ SceneRoots:
   - {fileID: 788616729}
   - {fileID: 1743735251}
   - {fileID: 1149613800}
+  - {fileID: 1905399329}
