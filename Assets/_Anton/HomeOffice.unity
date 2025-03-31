@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56f87055fdd52d445886c2590cd77d0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedTTSProvider: 2
+  selectedTTSProvider: 1
   GeneratedInput: {fileID: 1370458007}
   audioSource: {fileID: 788616728}
   speed: 1
@@ -1922,10 +1922,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3416183574480181778}
   - {fileID: 461223175}
   - {fileID: 1769148334}
   - {fileID: 844563276}
+  - {fileID: 1605199272}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &844563272
@@ -3031,7 +3031,7 @@ Transform:
   m_LocalScale: {x: 0.22145359, y: 3, z: 1.4}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3416183574480181779}
+  m_Father: {fileID: 1605199272}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!65 &1231064902
 BoxCollider:
@@ -3793,6 +3793,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1583930940}
   m_CullTransparentMesh: 1
+--- !u!4 &1605199272 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4601848607689382159, guid: 0dee9c78b0be9f144aee7c58f200c9df, type: 3}
+  m_PrefabInstance: {fileID: 3416183574480181777}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1638884485
 GameObject:
   m_ObjectHideFlags: 0
@@ -5414,21 +5419,11 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 2101334532490387313, guid: 0dee9c78b0be9f144aee7c58f200c9df, type: 3}
     m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 377541950604608535, guid: 0dee9c78b0be9f144aee7c58f200c9df, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 4601848607689382159, guid: 0dee9c78b0be9f144aee7c58f200c9df, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1231064901}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0dee9c78b0be9f144aee7c58f200c9df, type: 3}
---- !u!4 &3416183574480181778 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7441725361392592354, guid: 0dee9c78b0be9f144aee7c58f200c9df, type: 3}
-  m_PrefabInstance: {fileID: 3416183574480181777}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &3416183574480181779 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 377541950604608535, guid: 0dee9c78b0be9f144aee7c58f200c9df, type: 3}
-  m_PrefabInstance: {fileID: 3416183574480181777}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
