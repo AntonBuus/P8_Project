@@ -9,7 +9,6 @@ using TMPro;
 
 public class Supervisor_TTS_playht : MonoBehaviour
 {
-    // Stores API credentials
     private string apiUrl = "https://api.play.ht/api/v2/tts/stream";  // Play.ht Streaming API URL.
 
     // Declares an AudioSource to play the generated speech.

@@ -148,7 +148,7 @@ using TMPro;
 public class TTS_both_API : MonoBehaviour
 {
     public enum TTSProvider { PlayHT, OpenAI, No_Speech } // Enum to switch between Play.ht and OpenAI
-    [SerializeField] private TTSProvider selectedTTSProvider = TTSProvider.OpenAI; // Dropdown in Inspector
+    [SerializeField] public TTSProvider selectedTTSProvider = TTSProvider.OpenAI; // Dropdown in Inspector
 
     [Header("TTS Settings")]
     [SerializeField] private TextMeshProUGUI GeneratedInput; // The AI-generated text field

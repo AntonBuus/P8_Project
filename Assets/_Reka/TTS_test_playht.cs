@@ -8,7 +8,6 @@ using System.IO; // To save the received MP3 file.
 
 public class PlayHTTTS : MonoBehaviour
 {
-    // Stores API credentials
 
     private string apiUrl = "https://api.play.ht/api/v2/tts/stream";  // Play.ht Streaming API URL.
 
@@ -17,6 +16,7 @@ public class PlayHTTTS : MonoBehaviour
 
     // Sending the Text-to-Speech Request. Automatically starts the TTS process when the Unity scene begins. 
     // Right now it is using a premade text.
+
     void Start()
     {
         StartCoroutine(GenerateSpeech("Today’s top story? A daring intervention in Ancient Egypt where our time agent successfully retrieved… an iPad. That’s right, folks, a piece of 21st-century tech somehow found its way into the land of pharaohs, pyramids, and hieroglyphs! But did this high-tech tablet disrupt the course of history, or did our agent manage to set things right? Let's dive in."));

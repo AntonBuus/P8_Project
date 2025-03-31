@@ -9,7 +9,6 @@ using System.Collections.Generic;
 
 public class TTS_OpenAI : MonoBehaviour
 {
-    // API Credentials & Setup: Stores OpenAI API Key and endpoint.
     
     private string ttsEndpoint = "https://api.openai.com/v1/audio/speech";
 
