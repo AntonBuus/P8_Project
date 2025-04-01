@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56f87055fdd52d445886c2590cd77d0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedTTSProvider: 1
+  selectedTTSProvider: 2
   GeneratedInput: {fileID: 1370458007}
   audioSource: {fileID: 788616728}
   speed: 1
@@ -1341,11 +1341,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 0
---- !u!4 &409191941 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4601848607689382159, guid: 0dee9c78b0be9f144aee7c58f200c9df, type: 3}
-  m_PrefabInstance: {fileID: 3416183574480181777}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &423201491
 GameObject:
   m_ObjectHideFlags: 0
@@ -2977,7 +2972,7 @@ Transform:
   - {fileID: 461223175}
   - {fileID: 1769148334}
   - {fileID: 844563276}
-  - {fileID: 409191941}
+  - {fileID: 1198756745}
   - {fileID: 1292803661821335037}
   - {fileID: 1231064901}
   - {fileID: 2061632556}
@@ -4235,6 +4230,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4507b03e1641774486fdb8f62952390, type: 3}
+--- !u!4 &1198756745 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4601848607689382159, guid: 0dee9c78b0be9f144aee7c58f200c9df, type: 3}
+  m_PrefabInstance: {fileID: 3416183574480181777}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1213347227 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1637003735250703772, guid: e1f17c5822f18b04cb7e9933938f66a6, type: 3}
@@ -8506,6 +8506,10 @@ PrefabInstance:
     - target: {fileID: 7441725361392592354, guid: 0dee9c78b0be9f144aee7c58f200c9df, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449059283541591561, guid: 0dee9c78b0be9f144aee7c58f200c9df, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -257
       objectReference: {fileID: 0}
     - target: {fileID: 7757222866517436099, guid: 0dee9c78b0be9f144aee7c58f200c9df, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
