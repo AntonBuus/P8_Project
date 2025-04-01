@@ -11,7 +11,7 @@ public class SetPromptParameters : MonoBehaviour
 
     private void Start()
     {
-        ReloadInitialprompt();
+        // ReloadInitialprompt();
     }
     public void ReloadInitialprompt()
     {
