@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: c5654459250b89d4bbb611d580d137cb
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 190045
+  packageName: Fantasy Hammer And Shield
+  packageVersion: 1.0
+  assetPath: Assets/FantasyHammerAndShield/AnimControl_FantasyShield.controller
+  uploadId: 419651
