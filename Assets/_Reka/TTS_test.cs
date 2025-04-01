@@ -7,7 +7,7 @@ using Newtonsoft.Json; // To convert C# objects into JSON format.
 
 public class TTS_test : MonoBehaviour
 {
-    // API Credentials & Setup: Stores OpenAI API Key and endpoint.
+
     
     private string ttsEndpoint = "https://api.openai.com/v1/audio/speech";
 

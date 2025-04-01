@@ -45,6 +45,7 @@ ExportedObj/
 *.mdb
 *.opendb
 *.VC.db
+*.xml
 
 # Unity3D generated meta files
 *.pidb.meta
@@ -70,9 +71,12 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
-Assets/__Main/SuperSecretStuff.cs
-Assets/__Main/SuperSecretStuff.cs.meta
+
 
 # Additional specific files
 Assets/XRI/Settings/Resources/XRDeviceSimulatorSettings.asset
 .vscode/P8_Project.code-workspace
+
+#Thing we don't want to share with the world
+Assets/__Main/Secretstuff.xml
+
