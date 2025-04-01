@@ -21,6 +21,7 @@ namespace OpenAI
         public TMP_Text _initialPrompt;
 
         [SerializeField] private TextMeshProUGUI OutputText;
+ 
 
 
         public async void SendReply() // Async method to send a reply
@@ -39,7 +40,7 @@ namespace OpenAI
 
             var completionResponse = await openai.CreateChatCompletion(new CreateChatCompletionRequest() // Sending a request to the OpenAI API to create a chat completion
             {
-                Model = "gpt-3.5-turbo-0125", // Setting the model to use for the completion
+                Model = "gpt-4o-mini", // Setting the model to use for the completion
                 Messages = messages // Passing the list of messages to the request
             });
 
