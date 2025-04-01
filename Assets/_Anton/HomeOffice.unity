@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56f87055fdd52d445886c2590cd77d0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedTTSProvider: 2
+  selectedTTSProvider: 1
   GeneratedInput: {fileID: 1370458007}
   audioSource: {fileID: 788616728}
   speed: 1
@@ -1341,6 +1341,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 0
+--- !u!4 &409191941 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4601848607689382159, guid: 0dee9c78b0be9f144aee7c58f200c9df, type: 3}
+  m_PrefabInstance: {fileID: 3416183574480181777}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &423201491
 GameObject:
   m_ObjectHideFlags: 0
@@ -2972,7 +2977,7 @@ Transform:
   - {fileID: 461223175}
   - {fileID: 1769148334}
   - {fileID: 844563276}
-  - {fileID: 1262701503}
+  - {fileID: 409191941}
   - {fileID: 1292803661821335037}
   - {fileID: 1231064901}
   - {fileID: 2061632556}
@@ -4566,11 +4571,6 @@ MeshFilter:
 Transform:
   m_CorrespondingSourceObject: {fileID: 1063665540433394777, guid: 6cc286f7017ada34da5e293574248931, type: 3}
   m_PrefabInstance: {fileID: 1549561378}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1262701503 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7441725361392592354, guid: 0dee9c78b0be9f144aee7c58f200c9df, type: 3}
-  m_PrefabInstance: {fileID: 3416183574480181777}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1269639404
 GameObject:
