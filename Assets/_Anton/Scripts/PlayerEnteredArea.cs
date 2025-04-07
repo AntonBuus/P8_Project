@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerEnteredArea : MonoBehaviour
@@ -5,6 +6,8 @@ public class PlayerEnteredArea : MonoBehaviour
     [SerializeField] private TTS_both_API _PlayGeneratedVoice;
     // [SerializeField] private string fetchedFilePath;
     private bool hasplayed = false;
+
+    public UnityEngine.Events.UnityEvent onInvoke;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -18,6 +21,14 @@ public class PlayerEnteredArea : MonoBehaviour
             // TTS_both_API _playGeneratedVoice = new TTS_both_API();
             _PlayGeneratedVoice.InitializePlayAudio(_PlayGeneratedVoice.usableFilePath);
             hasplayed = true;
+            NextPrompt();
+        }
+    }
+    private void NextPrompt()
+    {
+        if (onInvoke != null)
+        {
+            onInvoke.Invoke();
         }
     }
 }

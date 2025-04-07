@@ -2,14 +2,21 @@ using JetBrains.Annotations;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UIElements;
+using TMPro;
+using UnityEngine.UI;
+using OpenAI;
+using UnityEditor.EditorTools;
 
 public class AdjustablePrompts : MonoBehaviour
 {
+    [SerializeField] private InputField _inputField;
+    [SerializeField] private CallSupervisor1 SupervisorAPICall; // Reference to the output text field
 
     [Header("Main variables for prompts")]
     public string _era = "The Hun Era"; // Default era
     public string _anomalyObject = "A Walkman from the 80s"; // Default object
     public string _wasObjectRetrieved = "The agent brings back the object"; // Default retrieval status
+    [Tooltip("Flag to check if the object is retrieved")] public bool _objectIsRetrieved = false;
     public string _spottedStatus = "He was not spotted, so no disruptions were caused to the timeline, very good performance"; // Default spotted status
 
     [Header("Prompt variables")]
@@ -18,21 +25,66 @@ public class AdjustablePrompts : MonoBehaviour
 
     void Start()
     {
-        CollectArrivalPrompt(); 
-        CollectMissionReportPrompt();
+        // CollectArrivalPrompt(); 
+        // CollectMissionReportPrompt();
     }
     public void CollectArrivalPrompt()
     {
         _prompt2ArrivalInEra = "The agent travels to " + _era +". You have received new information about the object: It is" + _anomalyObject + ". "
         + "Inform the agent and make a comment about how this particular object could influence the time period."
         + "Tell him to blend in while searching for the item.";
+        _inputField.text = _prompt2ArrivalInEra; // Set the input field text to the prompt
+        Debug.Log("Called collect arrival"); // Log the prompt to the console for debugging
     }
     public void CollectMissionReportPrompt()
     {
         _prompt3MissionReport = _wasObjectRetrieved + ". " + _spottedStatus
         + " Address the situation and call him back to the office.";
+        _inputField.text = _prompt3MissionReport; // Set the input field text to the prompt
+        Debug.Log("Called collect mission report"); // Log the prompt to the console for debugging
+    }
+    public void SetAnomalyObject()
+    {
+        string[] anomalyObjects = { "A Walkman from the 80s", "A futuristic smartphone", "A medieval sword", "An ancient scroll", "A golden compass" };
+        _anomalyObject = anomalyObjects[UnityEngine.Random.Range(0, anomalyObjects.Length)];
+        Debug.Log("Anomaly object set to: " + _anomalyObject);
     }
 
+    
+    public void SetObjectRetrieved()
+    {
+        if (_objectIsRetrieved)
+        {
+            _wasObjectRetrieved = "The agent brings back the object";
+        }
+        else
+        {
+            _wasObjectRetrieved = "The agent is back but failed to retrieve the object";
+        }
+        Debug.Log("Object retrieved status set to: " + _objectIsRetrieved);
+    }
+
+    public void SetSpottedStatus(int _spottedLevel)
+    {
+
+        if (_spottedLevel == 0)
+        {
+            _spottedStatus = "He was not spotted, so no disruptions were caused to the timeline, very good performance";
+        }
+        else if (_spottedLevel == 1)
+        {
+            _spottedStatus = "He was spotted so it might cause some disruptions, but overall a good performance.";
+        }
+        else if (_spottedLevel == 2)
+        {
+            _spottedStatus = "He was spotted too many times, this could cause some rather large disruptions.";
+        }
+        else
+        {
+            _spottedStatus = "You are not sure whether he was spotted or not, so you can check up on it later";
+        }
+        Debug.Log("Spotted level set to: " + _spottedLevel);
+    }
 }
 
 

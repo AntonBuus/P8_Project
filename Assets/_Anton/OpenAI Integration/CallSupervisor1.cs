@@ -7,6 +7,19 @@ namespace OpenAI
 {
     public class CallSupervisor1 : MonoBehaviour
     {
+        public static CallSupervisor1 Instance { get; private set; }
+
+        private void Awake()
+        {
+            if (Instance != null && Instance != this)
+            {
+            Destroy(gameObject); // Ensure only one instance exists
+            return;
+            }
+
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // Optional: Keep the instance across scenes
+        }
         [SerializeField] private InputField inputField;
 
         [SerializeField] private TTS_both_API ttsSystem; // Reference to the TTS system
