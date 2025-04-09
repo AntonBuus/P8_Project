@@ -8,6 +8,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Samples/XR Interaction Toolkit/3.0.7/Starter Assets/DemoScene.unity
     guid: 319dafa5c80f29f428dc1e0d03f04177
+  - enabled: 1
+    path: Assets/_Anton/HomeOffice.unity
+    guid: e144a405ad5fc5d4d929f9d6bb0e546b
+  - enabled: 1
+    path: Assets/_Anton/Anton_HunScene.unity
+    guid: c6868bd1c5297d44fa4d8eddee0b760e
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: b51ac2b3ada7b8c45b9dc9f5a76fb02f, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

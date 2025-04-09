@@ -15,6 +15,7 @@ public class AdjustablePrompts : MonoBehaviour
     [Header("Main variables for prompts")]
     public string _era = "The Hun Era"; // Default era
     public string _anomalyObject = "A Walkman from the 80s"; // Default object
+    public bool _setObjectRandomly = false; // Flag to set object randomly
     public string _wasObjectRetrieved = "The agent brings back the object"; // Default retrieval status
     [Tooltip("Flag to check if the object is retrieved")] public bool _objectIsRetrieved = false;
     public string _spottedStatus = "He was not spotted, so no disruptions were caused to the timeline, very good performance"; // Default spotted status
@@ -27,6 +28,10 @@ public class AdjustablePrompts : MonoBehaviour
     {
         // CollectArrivalPrompt(); 
         // CollectMissionReportPrompt();
+        if(_setObjectRandomly)
+        {
+            SetAnomalyObject(); // Set a random anomaly object
+        }
     }
     public void CollectArrivalPrompt()
     {
