@@ -1,37 +1,36 @@
+using System.Collections;
 using UnityEngine;
-using UnitySceneManager = UnityEngine.SceneManagement.SceneManager;
 using UnityEngine.SceneManagement;
+using UnitySceneManager = UnityEngine.SceneManagement.SceneManager;
 
 public class SceneManager : MonoBehaviour
 {
     [Header("=== Scene Trigger Settings ===")]
-    [Tooltip("Enable if you want this object to trigger a scene change on player collision.")]
     public bool useBoxTrigger = true;
-
-    [Tooltip("Name of the scene to load when the player enters the collider.")]
     public string sceneToLoad;
-
-    [Tooltip("Spawn point tag used when entering the new scene.")]
     public string spawnPointTag;
 
     [Header("=== Lever-Based Time Travel Settings ===")]
-    [Tooltip("Enable if this object listens for a lever to control time travel.")]
     public bool useLever = false;
-
-    [Tooltip("Lever input value, controlled by an external script.")]
     public float leverValue;
-
-    [Tooltip("Scene mappings based on lever value ranges.")]
-    public SceneMapping[] timeTravelScenes;
+    public float leverTolerance = 5f;
 
     [System.Serializable]
-    public class SceneMapping
+    public class TimeTravelScene
     {
-        public float minLeverValue;
-        public float maxLeverValue;
+        public float targetYear;
         public string sceneName;
         public string spawnPointTag;
     }
+
+    public TimeTravelScene[] timeTravelScenes;
+
+    [Header("=== Time Travel Effect (For Lever Only) ===")]
+    public float delayBeforeSceneLoad = 2f;
+    public AudioSource timeTravelAudio;
+    public ParticleSystem timeTravelEffect;
+
+    private bool hasTriggered = false;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -43,18 +42,46 @@ public class SceneManager : MonoBehaviour
 
     private void Update()
     {
-        if (!useLever) return;
+        if (!useLever || hasTriggered) return;
 
-        foreach (var mapping in timeTravelScenes)
+        foreach (var travelScene in timeTravelScenes)
         {
-            if (leverValue >= mapping.minLeverValue && leverValue < mapping.maxLeverValue)
+            if (Mathf.Abs(leverValue - travelScene.targetYear) <= leverTolerance)
             {
-                SaveSceneAndSpawn(mapping.spawnPointTag);
-                UnitySceneManager.LoadScene(mapping.sceneName);
-                enabled = false; // Prevent reloading repeatedly
+                hasTriggered = true;
+                StartCoroutine(TriggerTimeTravelSequence(travelScene));
                 break;
             }
         }
+    }
+
+    public void ForceSceneCheck()
+    {
+        // DEPRECATED – not used anymore
+    }
+
+    public void SwitchToScene() // ✅ NEW direct switch
+    {
+        if (hasTriggered) return;
+        hasTriggered = true;
+
+        StartCoroutine(TriggerTimeTravelSequence(new TimeTravelScene
+        {
+            sceneName = sceneToLoad,
+            spawnPointTag = spawnPointTag
+        }));
+    }
+
+    private IEnumerator TriggerTimeTravelSequence(TimeTravelScene scene)
+    {
+        SaveSceneAndSpawn(scene.spawnPointTag);
+
+        if (timeTravelAudio != null) timeTravelAudio.Play();
+        if (timeTravelEffect != null) timeTravelEffect.Play();
+
+        yield return new WaitForSeconds(delayBeforeSceneLoad);
+
+        UnitySceneManager.LoadScene(scene.sceneName);
     }
 
     private void SaveSceneAndSpawn(string spawn)
@@ -66,5 +93,6 @@ public class SceneManager : MonoBehaviour
             PlayerPrefs.SetString("SpawnPoint", spawn);
         }
     }
-}
 
+    public bool HasTriggered() => hasTriggered;
+}
