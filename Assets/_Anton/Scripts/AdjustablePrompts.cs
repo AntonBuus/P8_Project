@@ -40,6 +40,7 @@ public class AdjustablePrompts : MonoBehaviour
         + "Tell him to blend in while searching for the item.";
         _inputField.text = _prompt2ArrivalInEra; // Set the input field text to the prompt
         Debug.Log("Called collect arrival"); // Log the prompt to the console for debugging
+        SupervisorAPICall.SendReply();
     }
     public void CollectMissionReportPrompt()
     {
