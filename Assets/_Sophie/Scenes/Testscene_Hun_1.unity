@@ -430,6 +430,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f8da2e6f53622b428bd38da6d9deadf, type: 3}
+--- !u!4 &276535180 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3185182092174464296, guid: 41db1b0a3bdf3e44eb2bfa0def58fe32, type: 3}
+  m_PrefabInstance: {fileID: 1966610918}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &343105620
 GameObject:
   m_ObjectHideFlags: 0
@@ -973,103 +978,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!82 &654049575
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 654049571}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: fc023300f184f1d4abbbd12d53d89010, type: 3}
-  m_Resource: {fileID: 8300000, guid: fc023300f184f1d4abbbd12d53d89010, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!114 &654049576
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1082,18 +990,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8ad0561143555045bf0f58ffbc5b6d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pipboiTransform: {fileID: 1025204462}
-  minDistance: 0
-  maxDistance: 0.2
-  countdownText: {fileID: 343105622}
-  countdownTime: 120
-  countdownLerpSpeed: 3
-  sceneManager: {fileID: 813644744}
-  timeTravelSound: {fileID: 1917993533}
-  defaultPosition: {fileID: 1521191834}
-  returnSpeed: 10
-  connectionLine: {fileID: 0}
-  basePoint: {fileID: 0}
+  sceneToLoad: BossOffice_1
+  sceneChangeDelay: 10
+  bootupEffectPrefab: {fileID: 198666082906608312, guid: f980f35b2665e65409a449e52e961c09, type: 3}
+  pullSound: {fileID: 1048018339}
+  grabInteractable: {fileID: 654049573}
+  pipboiTransform: {fileID: 276535180}
+  attachPoint: {fileID: 1521191834}
 --- !u!65 &654049579
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1250,17 +1153,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 83e4e6cca11330d4088d729ab4fc9d9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &813644744 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5680445395169681308, guid: 691d20a531e12284aafb1dc014d6590b, type: 3}
-  m_PrefabInstance: {fileID: 870385407}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c2f8c1bc3de6d445bc30c09d1a55fd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &818002967
@@ -1574,8 +1466,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 7b9580ee28fcf7f488890c32d1fe7a71, type: 3}
-  m_Resource: {fileID: 8300000, guid: 7b9580ee28fcf7f488890c32d1fe7a71, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a36cf2efc39ea294a9277227ebbd5669, type: 3}
+  m_Resource: {fileID: 8300000, guid: a36cf2efc39ea294a9277227ebbd5669, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -1801,13 +1693,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1521191833}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.15259987, y: -0.016500397, z: 0.055199772}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1320498060}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &1678165895 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 1971574015653681557, guid: 41db1b0a3bdf3e44eb2bfa0def58fe32, type: 3}
@@ -2083,9 +1975,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8716517754409151195, guid: 41db1b0a3bdf3e44eb2bfa0def58fe32, type: 3}
       insertIndex: -1
       addedObject: {fileID: 654049574}
-    - targetCorrespondingSourceObject: {fileID: 8716517754409151195, guid: 41db1b0a3bdf3e44eb2bfa0def58fe32, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 654049575}
     - targetCorrespondingSourceObject: {fileID: 8716517754409151195, guid: 41db1b0a3bdf3e44eb2bfa0def58fe32, type: 3}
       insertIndex: -1
       addedObject: {fileID: 654049573}
