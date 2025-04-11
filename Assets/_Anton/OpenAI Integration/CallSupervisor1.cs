@@ -7,6 +7,19 @@ namespace OpenAI
 {
     public class CallSupervisor1 : MonoBehaviour
     {
+        public static CallSupervisor1 Instance { get; private set; }
+
+        private void Awake()
+        {
+            if (Instance != null && Instance != this)
+            {
+            Destroy(gameObject); // Ensure only one instance exists
+            return;
+            }
+
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // Optional: Keep the instance across scenes
+        }
         [SerializeField] private InputField inputField;
 
         [SerializeField] private TTS_both_API ttsSystem; // Reference to the TTS system
@@ -21,6 +34,7 @@ namespace OpenAI
         public TMP_Text _initialPrompt;
 
         [SerializeField] private TextMeshProUGUI OutputText;
+ 
 
 
         public async void SendReply() // Async method to send a reply
@@ -39,7 +53,7 @@ namespace OpenAI
 
             var completionResponse = await openai.CreateChatCompletion(new CreateChatCompletionRequest() // Sending a request to the OpenAI API to create a chat completion
             {
-                Model = "gpt-3.5-turbo-0125", // Setting the model to use for the completion
+                Model = "gpt-4o-mini", // Setting the model to use for the completion
                 Messages = messages // Passing the list of messages to the request
             });
 
