@@ -6,24 +6,12 @@ using UnitySceneManager = UnityEngine.SceneManagement.SceneManager;
 public class SceneManager : MonoBehaviour
 {
     [Header("=== Scene Trigger Settings ===")]
-    public bool useBoxTrigger = true;
+    public bool useBoxTrigger = false;
     public string sceneToLoad;
     public string spawnPointTag;
 
     [Header("=== Lever-Based Time Travel Settings ===")]
     public bool useLever = false;
-    public float leverValue;
-    public float leverTolerance = 5f;
-
-    [System.Serializable]
-    public class TimeTravelScene
-    {
-        public float targetYear;
-        public string sceneName;
-        public string spawnPointTag;
-    }
-
-    public TimeTravelScene[] timeTravelScenes;
 
     [Header("=== Time Travel Effect (For Lever Only) ===")]
     public float delayBeforeSceneLoad = 2f;
@@ -34,65 +22,52 @@ public class SceneManager : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!useBoxTrigger || !other.CompareTag("Player")) return;
+        if (!useBoxTrigger || hasTriggered) return;
+        if (!other.CompareTag("Player")) return;
 
+        hasTriggered = true;
+
+        Debug.Log("[SceneManager] OnTriggerEnter detected. Preparing to save scene and load: " + sceneToLoad);
         SaveSceneAndSpawn(spawnPointTag);
+
         UnitySceneManager.LoadScene(sceneToLoad);
     }
 
-    private void Update()
-    {
-        if (!useLever || hasTriggered) return;
-
-        foreach (var travelScene in timeTravelScenes)
-        {
-            if (Mathf.Abs(leverValue - travelScene.targetYear) <= leverTolerance)
-            {
-                hasTriggered = true;
-                StartCoroutine(TriggerTimeTravelSequence(travelScene));
-                break;
-            }
-        }
-    }
-
-    public void ForceSceneCheck()
-    {
-        // DEPRECATED – not used anymore
-    }
-
-    public void SwitchToScene() // ✅ NEW direct switch
+    public void ForceSceneShiftFromLever()
     {
         if (hasTriggered) return;
-        hasTriggered = true;
 
-        StartCoroutine(TriggerTimeTravelSequence(new TimeTravelScene
-        {
-            sceneName = sceneToLoad,
-            spawnPointTag = spawnPointTag
-        }));
+        hasTriggered = true;
+        StartCoroutine(TriggerTimeTravelSequence());
     }
 
-    private IEnumerator TriggerTimeTravelSequence(TimeTravelScene scene)
+    private IEnumerator TriggerTimeTravelSequence()
     {
-        SaveSceneAndSpawn(scene.spawnPointTag);
+        SaveSceneAndSpawn(spawnPointTag);
 
-        if (timeTravelAudio != null) timeTravelAudio.Play();
-        if (timeTravelEffect != null) timeTravelEffect.Play();
+        if (timeTravelAudio != null)
+            timeTravelAudio.Play();
+
+        if (timeTravelEffect != null)
+            timeTravelEffect.Play();
 
         yield return new WaitForSeconds(delayBeforeSceneLoad);
 
-        UnitySceneManager.LoadScene(scene.sceneName);
+        UnitySceneManager.LoadScene(sceneToLoad);
     }
 
     private void SaveSceneAndSpawn(string spawn)
     {
-        PlayerPrefs.SetString("LastScene", UnitySceneManager.GetActiveScene().name);
+        string currentScene = UnitySceneManager.GetActiveScene().name;
+        PlayerPrefs.SetString("LastScene", currentScene);
+        Debug.Log("[SceneManager] Saved LastScene as: " + currentScene);
 
         if (!string.IsNullOrEmpty(spawn))
         {
             PlayerPrefs.SetString("SpawnPoint", spawn);
+            Debug.Log("[SceneManager] Saved SpawnPoint as: " + spawn);
         }
-    }
 
-    public bool HasTriggered() => hasTriggered;
+        PlayerPrefs.Save();
+    }
 }
