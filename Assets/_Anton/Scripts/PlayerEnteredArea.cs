@@ -6,6 +6,13 @@ public class PlayerEnteredArea : MonoBehaviour
     [SerializeField] private TTS_both_API _PlayGeneratedVoice;
     // [SerializeField] private string fetchedFilePath;
     private bool hasplayed = false;
+    void Start()
+    {
+        if (_PlayGeneratedVoice == null)
+        {
+            _PlayGeneratedVoice = GameObject.Find("TTS API").GetComponent<TTS_both_API>();
+        }
+    }
 
     public UnityEngine.Events.UnityEvent onInvoke;
 
@@ -14,6 +21,7 @@ public class PlayerEnteredArea : MonoBehaviour
         if (_PlayGeneratedVoice.selectedTTSProvider == TTS_both_API.TTSProvider.No_Speech)
         {
             Debug.Log("No Speech TTS Provider is selected.");
+            NextPrompt();
         }
         else if (other.CompareTag("Player") && !hasplayed)
         {
