@@ -5091,8 +5091,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf8a1749bf5b2f148977f15b5e4b51dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StoneHitSound: {fileID: 8300000, guid: 19e4c416170e47d409e5594a1b664f72, type: 3}
+  StoneHitSound: {fileID: 8300000, guid: fc023300f184f1d4abbbd12d53d89010, type: 3}
   SceneObjectToEnable: {fileID: 802529904}
+  _distractableGuard: {fileID: 1614415423}
+  _newGuardPosition: {fileID: 717590377}
 --- !u!82 &717590373
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5103,10 +5105,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 16fba6d30ed741d4a9fdd6e79ee2f3ac, type: 3}
-  m_Resource: {fileID: 8300000, guid: 16fba6d30ed741d4a9fdd6e79ee2f3ac, type: 3}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.215
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -11180,6 +11182,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 1356381714199472493, guid: a5344b98eb8749b48bd7eff8a8c3adae, type: 3}
   m_PrefabInstance: {fileID: 1605854784}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1614415423 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9022365502533094503, guid: a18cead040eb2de46844b2970a271500, type: 3}
+  m_PrefabInstance: {fileID: 1985152569}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1615249968
 GameObject:

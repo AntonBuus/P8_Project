@@ -7,6 +7,9 @@ public class DistractGuard : MonoBehaviour
     public AudioClip StoneHitSound; // Assign your audio clip in the inspector
     AudioSource audioSource; // Assign your AudioSource in the inspector
     public GameObject SceneObjectToEnable;
+    
+    public GameObject _distractableGuard; // Assign your stone prefab in the inspector
+    public Transform _newGuardPosition; // Assign your stone prefab in the inspector
 
     void Start()
     {
@@ -25,6 +28,8 @@ public class DistractGuard : MonoBehaviour
             {
                 SceneObjectToEnable.SetActive(true);
             }
+            _distractableGuard.transform.position = new Vector3(_newGuardPosition.position.x, 
+            _distractableGuard.transform.position.y,_newGuardPosition.position.z); // Set the new position for the guard
         }
     }
 
