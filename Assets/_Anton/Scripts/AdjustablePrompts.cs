@@ -47,7 +47,8 @@ public class AdjustablePrompts : MonoBehaviour
         _prompt3MissionReport = _wasObjectRetrieved + ". " + _timeStatus
         + " Address the situation and call him back to the office.";
         _inputField.text = _prompt3MissionReport; // Set the input field text to the prompt
-        Debug.Log("Called collect mission report"); // Log the prompt to the console for debugging
+        Debug.Log("Called collect mission report"); // Log the prompt to the console for debugging'
+        SupervisorAPICall.SendReply();
     }
     public void SetAnomalyObject()
     {

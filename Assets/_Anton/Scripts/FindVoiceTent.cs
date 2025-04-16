@@ -1,12 +1,13 @@
 using OpenAI;
 using UnityEngine;
 
-public class FindGameObject : MonoBehaviour
+public class FindVoiceTent : MonoBehaviour
 {
     //This is to be inserted to any script that needs to influence or activate prompts
     [SerializeField] private AdjustablePrompts adjustablePrompts;
     [SerializeField] private CallSupervisor1 supervisor1;
     [SerializeField] private TTS_both_API ttsBothAPI;
+    bool _playedLastPrompt = false;
     void Start()
     {
         if (adjustablePrompts == null)
@@ -21,10 +22,16 @@ public class FindGameObject : MonoBehaviour
         {
             ttsBothAPI = GameObject.Find("TTS API").GetComponent<TTS_both_API>();
         }
-        ttsBothAPI.InitializePlayAudio(ttsBothAPI.usableFilePath);
-        adjustablePrompts.CollectMissionReportPrompt();
+
 
     }
-
+    public void playRelevantVoice()
+    {
+        if (_playedLastPrompt == false)
+        {
+            ttsBothAPI.InitializePlayAudio(ttsBothAPI.usableFilePath);
+            _playedLastPrompt = true;
+        }
+    }
 
 }

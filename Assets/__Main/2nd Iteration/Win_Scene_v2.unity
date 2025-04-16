@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56f87055fdd52d445886c2590cd77d0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedTTSProvider: 2
+  selectedTTSProvider: 1
   GeneratedInput: {fileID: 1370458007}
   audioSource: {fileID: 788616728}
   speed: 1
@@ -186,6 +186,7 @@ MonoBehaviour:
   selectedEmotionIndex: 0
   usableFilePath: 
   isAudioReady: 0
+  _openaiSelectedVoice: fable
 --- !u!1 &45929771
 GameObject:
   m_ObjectHideFlags: 0
@@ -2796,6 +2797,77 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 816b07c0715b59f44b170ec309d2fb73, type: 3}
+--- !u!1 &846396789
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 846396791}
+  - component: {fileID: 846396790}
+  m_Layer: 0
+  m_Name: 'Event: Backhome'
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &846396790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846396789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86463847e86824443910401a076901b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onActivate:
+    m_PersistentCalls:
+      m_Calls: []
+  onStart:
+    m_PersistentCalls:
+      m_Calls: []
+  onEnable:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11912843}
+        m_TargetAssemblyTypeName: TTS_both_API, Assembly-CSharp
+        m_MethodName: InitializePlayAudio
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: C:/Users/anton/AppData/LocalLow/DefaultCompany/P8_Project_Unity\openai_audio.mp3
+          m_BoolArgument: 0
+        m_CallState: 2
+  onUpdate:
+    m_PersistentCalls:
+      m_Calls: []
+  onDestroy:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!4 &846396791
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846396789}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.06687997, y: -1.4951198, z: 0.74133825}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &881364157
 GameObject:
   m_ObjectHideFlags: 0
@@ -3705,7 +3777,7 @@ MonoBehaviour:
   m_CustomCaretColor: 0
   m_SelectionColor: {r: 0.65882355, g: 0.80784315, b: 1, a: 0.7529412}
   m_Text: 'The agent returned from his trip to The Hun Era with the anomaly object:
-    A Walkman from the 80s. He was quick and efficient and no disruptions were caused
+    A old school computer. He was quick and efficient and no disruptions were caused
     to the timeline. The world is grateful and has rewarded him nicely for his efforts!'
   m_CaretBlinkRate: 0.85
   m_CaretWidth: 1
@@ -8198,3 +8270,4 @@ SceneRoots:
   - {fileID: 202554651}
   - {fileID: 839979705}
   - {fileID: 45929772}
+  - {fileID: 846396791}

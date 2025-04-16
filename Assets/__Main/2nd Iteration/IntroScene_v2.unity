@@ -268,6 +268,7 @@ MonoBehaviour:
   selectedEmotionIndex: 0
   usableFilePath: 
   isAudioReady: 0
+  _openaiSelectedVoice: onyx
 --- !u!1 &45929771
 GameObject:
   m_ObjectHideFlags: 0
@@ -3785,6 +3786,10 @@ PrefabInstance:
       value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 5684554573809816020, guid: 0dee9c78b0be9f144aee7c58f200c9df, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5684554573809816020, guid: 0dee9c78b0be9f144aee7c58f200c9df, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -6930,7 +6935,7 @@ PrefabInstance:
       objectReference: {fileID: 2014973939}
     - target: {fileID: 3792358223275822031, guid: 1011ffd79fa75cd48bf5ec132af8e291, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.2644186
+      value: 7.196
       objectReference: {fileID: 0}
     - target: {fileID: 3792358223275822031, guid: 1011ffd79fa75cd48bf5ec132af8e291, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6942,19 +6947,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3792358223275822031, guid: 1011ffd79fa75cd48bf5ec132af8e291, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071071
       objectReference: {fileID: 0}
     - target: {fileID: 3792358223275822031, guid: 1011ffd79fa75cd48bf5ec132af8e291, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3792358223275822031, guid: 1011ffd79fa75cd48bf5ec132af8e291, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.7071065
       objectReference: {fileID: 0}
     - target: {fileID: 3792358223275822031, guid: 1011ffd79fa75cd48bf5ec132af8e291, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3792358223275822031, guid: 1011ffd79fa75cd48bf5ec132af8e291, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6962,7 +6967,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3792358223275822031, guid: 1011ffd79fa75cd48bf5ec132af8e291, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 3792358223275822031, guid: 1011ffd79fa75cd48bf5ec132af8e291, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -9018,7 +9023,7 @@ MonoBehaviour:
   _inputField: {fileID: 1139750382}
   SupervisorAPICall: {fileID: 45929775}
   _era: The Hun Era
-  _anomalyObject: A Walkman from the 80s
+  _anomalyObject: An old school comptur
   _setObjectRandomly: 0
   _wasObjectRetrieved: The agent brings back the object
   _objectIsRetrieved: 0
@@ -10513,7 +10518,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1946636183
 Transform:
   m_ObjectHideFlags: 0

@@ -168,6 +168,7 @@ public class TTS_both_API : MonoBehaviour
 
     public string usableFilePath;
     public bool isAudioReady = false; // Flag to check if audio is ready
+    public string _openaiSelectedVoice = "onyx"; // Default voice for OpenAI
     public void StartVoice()
     {
         string textToConvert = GeneratedInput.text; // Get the generated text
@@ -240,7 +241,7 @@ public class TTS_both_API : MonoBehaviour
         var requestBody = new
         {
             model = "tts-1",
-            voice = "onyx",
+            voice = _openaiSelectedVoice, // you can also choose alloy, ballad, coral, echo, fable, onyx, nova, sage, shimmer
             input = text
         };
 
