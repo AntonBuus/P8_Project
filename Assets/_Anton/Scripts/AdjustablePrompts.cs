@@ -37,7 +37,7 @@ public class AdjustablePrompts : MonoBehaviour
     {
         _prompt2ArrivalInEra = "The agent travels to " + _era +". You have received new information about the object: It is" + _anomalyObject + ". "
         + "Inform the agent and make a comment about how this particular object could influence the time period."
-        + "Tell him to blend in while searching for the item.";
+        + "Tell him to find some high ground and get an overview of the area while searching for the item.";
         _inputField.text = _prompt2ArrivalInEra; // Set the input field text to the prompt
         Debug.Log("Called collect arrival"); // Log the prompt to the console for debugging
         SupervisorAPICall.SendReply();

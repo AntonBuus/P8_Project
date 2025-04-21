@@ -7,6 +7,19 @@ namespace OpenAI
 {
     public class CallRadiohost : MonoBehaviour
     {
+        public static CallRadiohost Instance { get; private set; }
+
+        private void Awake()
+        {
+            if (Instance != null && Instance != this)
+            {
+            Destroy(gameObject); // Ensure only one instance exists
+            return;
+            }
+
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // Optional: Keep the instance across scenes
+        }
         [SerializeField] private InputField inputField;
 
         [SerializeField] private TTS_both_API ttsSystem; // Reference to the TTS system
@@ -23,7 +36,7 @@ namespace OpenAI
         [SerializeField] private TextMeshProUGUI OutputText;
         void Start()
         {
-            SendReply(); // Call SendReply on start to initialize the conversation
+            // SendReply(); // Call SendReply on start to initialize the conversation
         }
 
 
