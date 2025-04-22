@@ -1,0 +1,29 @@
+fileFormatVersion: 2
+guid: a630419ad4344b54aa1cbfa8c01051f7
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Blacksword
+  fontNames:
+  - Blacksword
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 175450
+  packageName: Vamporium Language
+  packageVersion: 1.0
+  assetPath: Assets/Vamporium Language/Fonts/Blacksword/Blacksword.otf
+  uploadId: 382383
