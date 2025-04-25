@@ -18,7 +18,7 @@ public class AdjustablePrompts : MonoBehaviour
     public bool _setObjectRandomly = false; // Flag to set object randomly
     public string _wasObjectRetrieved = "The agent brings back the object"; // Default retrieval status
     [Tooltip("Flag to check if the object is retrieved")] public bool _objectIsRetrieved = false;
-    public string _spottedStatus = "He was not spotted, so no disruptions were caused to the timeline, very good performance"; // Default spotted status
+    public string _timeStatus = "They brought back the object in due time"; // Default time status
 
     [Header("Prompt variables")]
     [TextArea(3, 10)] public string _prompt2ArrivalInEra;
@@ -44,10 +44,11 @@ public class AdjustablePrompts : MonoBehaviour
     }
     public void CollectMissionReportPrompt()
     {
-        _prompt3MissionReport = _wasObjectRetrieved + ". " + _spottedStatus
+        _prompt3MissionReport = _wasObjectRetrieved + ". " + _timeStatus
         + " Address the situation and call him back to the office.";
         _inputField.text = _prompt3MissionReport; // Set the input field text to the prompt
-        Debug.Log("Called collect mission report"); // Log the prompt to the console for debugging
+        Debug.Log("Called collect mission report"); // Log the prompt to the console for debugging'
+        SupervisorAPICall.SendReply();
     }
     public void SetAnomalyObject()
     {
@@ -70,27 +71,53 @@ public class AdjustablePrompts : MonoBehaviour
         Debug.Log("Object retrieved status set to: " + _objectIsRetrieved);
     }
 
-    public void SetSpottedStatus(int _spottedLevel)
+    public void SetTimeStatus(int _timeStatusLevel)
     {
-
-        if (_spottedLevel == 0)
+        // Set the time status based on the level of lateness
+        if (_timeStatusLevel == 0)
         {
-            _spottedStatus = "He was not spotted, so no disruptions were caused to the timeline, very good performance";
+            _timeStatus = "They brought back the object in due time";
         }
-        else if (_spottedLevel == 1)
+        else if (_timeStatusLevel == 1)
         {
-            _spottedStatus = "He was spotted so it might cause some disruptions, but overall a good performance.";
+            _timeStatus = "They were late bringing back the object, this could cause some disruptions to the timeline, otherwise a good performance.";
         }
-        else if (_spottedLevel == 2)
+        else if (_timeStatusLevel == 2)
         {
-            _spottedStatus = "He was spotted too many times, this could cause some rather large disruptions.";
+            _timeStatus = "They were very late bringing back the object, this could cause some rather large disruptions.";
         }
         else
         {
-            _spottedStatus = "You are not sure whether he was spotted or not, so you can check up on it later";
+            _timeStatus = "You are not sure whether they were late or not, so you can check up on it later";
         }
-        Debug.Log("Spotted level set to: " + _spottedLevel);
     }
+    
+
+
+    // We are holding off on spotted status for now, but it is here for future use
+    // public string _spottedStatus = "He was not spotted, so no disruptions were caused to the timeline, very good performance"; // Default spotted status
+
+    // public void SetSpottedStatus(int _spottedLevel)
+    // {
+
+    //     if (_spottedLevel == 0)
+    //     {
+    //         _spottedStatus = "He was not spotted, so no disruptions were caused to the timeline, very good performance";
+    //     }
+    //     else if (_spottedLevel == 1)
+    //     {
+    //         _spottedStatus = "He was spotted so it might cause some disruptions, but overall a good performance.";
+    //     }
+    //     else if (_spottedLevel == 2)
+    //     {
+    //         _spottedStatus = "He was spotted too many times, this could cause some rather large disruptions.";
+    //     }
+    //     else
+    //     {
+    //         _spottedStatus = "You are not sure whether he was spotted or not, so you can check up on it later";
+    //     }
+    //     Debug.Log("Spotted level set to: " + _spottedLevel);
+    // }
 }
 
 
