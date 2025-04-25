@@ -168,6 +168,7 @@ public class TTS_both_API : MonoBehaviour
 
     public string usableFilePath;
     public bool isAudioReady = false; // Flag to check if audio is ready
+    public bool isSecondAudioReady = false; // Flag to check if second audio is ready
     public string _openaiSelectedVoice = "onyx"; // Default voice for OpenAI
     public void StartVoice()
     {
@@ -264,6 +265,12 @@ public class TTS_both_API : MonoBehaviour
                 // StartCoroutine(PlayAudio(filePath));
                 Debug.Log("Audio ready: " + filePath);
                 usableFilePath = filePath;
+                if (isAudioReady)
+                {
+                    isSecondAudioReady = true; // Set the bool true so door can open
+                    Debug.Log("Second audio is ready: ");
+                }
+
                 isAudioReady = true; // Set the bool true so door can open
 
             }
@@ -282,6 +289,7 @@ public class TTS_both_API : MonoBehaviour
         File.WriteAllBytes(filePath, audioData);
         Debug.Log("Audio saved to: " + filePath);
         return filePath;
+        
     }
 
     // Play the MP3 File

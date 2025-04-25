@@ -52,23 +52,15 @@ public class AdjustablePrompts : MonoBehaviour
     }
     public void SetAnomalyObject()
     {
-        string[] anomalyObjects = { "A Walkman from the 80s", "A futuristic smartphone", "A medieval sword", "An ancient scroll", "A golden compass" };
+        string[] anomalyObjects = { "A Walkman from the 80s", "A futuristic smartphone", 
+        "A medieval sword", "An ancient scroll", "A golden compass" };
         _anomalyObject = anomalyObjects[UnityEngine.Random.Range(0, anomalyObjects.Length)];
         Debug.Log("Anomaly object set to: " + _anomalyObject);
     }
 
-    
-    public void SetObjectRetrieved()
+    public void ObjectWasNotRetrieved() //subbed for SetObjectRetrieved()
     {
-        if (_objectIsRetrieved)
-        {
-            _wasObjectRetrieved = "The agent brings back the object";
-        }
-        else
-        {
-            _wasObjectRetrieved = "The agent is back but failed to retrieve the object";
-        }
-        Debug.Log("Object retrieved status set to: " + _objectIsRetrieved);
+        _wasObjectRetrieved = "The agent failed to retrieve the object";
     }
 
     public void SetTimeStatus(int _timeStatusLevel)
@@ -76,15 +68,15 @@ public class AdjustablePrompts : MonoBehaviour
         // Set the time status based on the level of lateness
         if (_timeStatusLevel == 0)
         {
-            _timeStatus = "They brought back the object in due time";
+            _timeStatus = "They made it in due time";
         }
         else if (_timeStatusLevel == 1)
         {
-            _timeStatus = "They were late bringing back the object, this could cause some disruptions to the timeline, otherwise a good performance.";
+            _timeStatus = "They were late reaching the object, this could cause some disruptions to the timeline, otherwise a good performance.";
         }
         else if (_timeStatusLevel == 2)
         {
-            _timeStatus = "They were very late bringing back the object, this could cause some rather large disruptions.";
+            _timeStatus = " "; // blank because if they are too late they did not bring back the object so there is no point in saying anything about it
         }
         else
         {
@@ -92,7 +84,20 @@ public class AdjustablePrompts : MonoBehaviour
         }
     }
     
+    // Preserving the object retrieval status for future use
 
+    // public void SetObjectRetrieved() 
+    // {
+    //     if (_objectIsRetrieved)
+    //     {
+    //         _wasObjectRetrieved = "The agent reached the object";
+    //     }
+    //     else
+    //     {
+    //         _wasObjectRetrieved = "The agent failed to retrieve the object";
+    //     }
+    //     Debug.Log("Object retrieved status set to: " + _objectIsRetrieved);
+    // }
 
     // We are holding off on spotted status for now, but it is here for future use
     // public string _spottedStatus = "He was not spotted, so no disruptions were caused to the timeline, very good performance"; // Default spotted status
