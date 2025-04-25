@@ -4383,6 +4383,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 945655291652894462, guid: 4460ec116f3e50c43a8d117b3a8b4dc4, type: 3}
+      propertyPath: sceneToLoad
+      value: Hun_Era
+      objectReference: {fileID: 0}
     - target: {fileID: 1006074177099248437, guid: 4460ec116f3e50c43a8d117b3a8b4dc4, type: 3}
       propertyPath: m_Name
       value: SceneTriggerBox_Exit
