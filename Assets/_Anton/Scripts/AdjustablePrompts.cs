@@ -68,7 +68,7 @@ public class AdjustablePrompts : MonoBehaviour
         // Set the time status based on the level of lateness
         if (_timeStatusLevel == 0)
         {
-            _timeStatus = "They made it in due time";
+            _timeStatus = "They made it in due time, so no disruptions were caused to the timeline, very good performance"; // Default time status
         }
         else if (_timeStatusLevel == 1)
         {
@@ -76,7 +76,7 @@ public class AdjustablePrompts : MonoBehaviour
         }
         else if (_timeStatusLevel == 2)
         {
-            _timeStatus = " "; // blank because if they are too late they did not bring back the object so there is no point in saying anything about it
+            _timeStatus = "This will cause catastrophic changes to the timeline"; // blank because if they are too late they did not bring back the object so there is no point in saying anything about it
         }
         else
         {

@@ -876,6 +876,60 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8113710308529730921, guid: b06ab2e5803f09645b4e13481851c8f6, type: 3}
   m_PrefabInstance: {fileID: 2094362492}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &151761570
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 151761572}
+  - component: {fileID: 151761571}
+  m_Layer: 0
+  m_Name: AdjustablePrompts
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &151761571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 151761570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af32313c22ac43d4db70849908fa0f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputField: {fileID: 0}
+  SupervisorAPICall: {fileID: 0}
+  _era: The Hun Era
+  _anomalyObject: A Walkman from the 80s
+  _setObjectRandomly: 0
+  _wasObjectRetrieved: The agent brings back the object
+  _objectIsRetrieved: 0
+  _timeStatus: They brought back the object in due time
+  _prompt2ArrivalInEra: 
+  _prompt3MissionReport: 
+--- !u!4 &151761572
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 151761570}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.81287193, y: 2.0822163, z: -0.68133783}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &154459704
 GameObject:
   m_ObjectHideFlags: 0
@@ -4323,6 +4377,7 @@ MonoBehaviour:
   selectedEmotionIndex: 0
   usableFilePath: 
   isAudioReady: 0
+  isSecondAudioReady: 0
   _openaiSelectedVoice: fable
 --- !u!4 &992115875
 Transform:
@@ -5390,7 +5445,7 @@ GameObject:
   - component: {fileID: 1271972877}
   - component: {fileID: 1271972878}
   m_Layer: 0
-  m_Name: AdjustablePrompts
+  m_Name: Radiohost PromptCollection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5420,19 +5475,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1271972876}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af32313c22ac43d4db70849908fa0f16, type: 3}
+  m_Script: {fileID: 11500000, guid: 79ea498792377f64cb11b8e851e2a588, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _inputField: {fileID: 518574292}
-  SupervisorAPICall: {fileID: 0}
-  _era: The Hun Era
-  _anomalyObject: A Walkman from the 80s
-  _setObjectRandomly: 1
-  _wasObjectRetrieved: The agent brings back the object
-  _objectIsRetrieved: 0
-  _timeStatus: They brought back the object in due time
-  _prompt2ArrivalInEra: 
-  _prompt3MissionReport: 
+  _callRadiohost: {fileID: 141983487}
+  _adjustablePromptsSupervisor: {fileID: 0}
+  _prompt1RadiohostReport: 
 --- !u!1 &1272017740
 GameObject:
   m_ObjectHideFlags: 0
@@ -10709,5 +10758,6 @@ SceneRoots:
   - {fileID: 467448527}
   - {fileID: 1279423619}
   - {fileID: 1075343908}
+  - {fileID: 151761572}
   - {fileID: 1973365209}
   - {fileID: 141983488}
