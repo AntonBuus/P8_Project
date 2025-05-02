@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: d4737aa6ae09e274b8f04164d8267019
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 175450
+  packageName: Vamporium Language
+  packageVersion: 1.0
+  assetPath: Assets/Vamporium Language/Scripts/Runtime/LanguageData.cs
+  uploadId: 382383
