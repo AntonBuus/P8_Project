@@ -28,7 +28,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _FlickerTexture:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: d82656f599d716145bbd427cd5327bfb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Lines:
