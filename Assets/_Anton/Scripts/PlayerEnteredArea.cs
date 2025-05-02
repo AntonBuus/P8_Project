@@ -18,7 +18,7 @@ public class PlayerEnteredArea : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (_PlayGeneratedVoice.selectedTTSProvider == TTS_both_API.TTSProvider.No_Speech)
+        if (_PlayGeneratedVoice.selectedTTSProvider == TTS_both_API.TTSProvider.No_Speech && other.CompareTag("Player") && !hasplayed)
         {
             Debug.Log("No Speech TTS Provider is selected.");
             NextPrompt();
