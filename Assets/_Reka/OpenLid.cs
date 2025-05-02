@@ -1,80 +1,52 @@
-// using UnityEngine;
-
-// public class OpenLid : MonoBehaviour
-// {
-//     public bool isOpen = false;
-//     public float openAngle = -90f;  // Adjust this if your lid opens differently
-//     public float speed = 2f;
-//     private Quaternion closedRotation;
-//     private Quaternion openRotation;
-
-//     void Start()
-//     {
-//         closedRotation = transform.localRotation;
-//         openRotation = Quaternion.Euler(openAngle, 0, 0);  // May need tweaking based on pivot
-//     }
-
-//     void Update()
-//     {
-//         Quaternion targetRotation = isOpen ? openRotation : closedRotation;
-//         transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation, Time.deltaTime * speed);
-//     }
-
-//     public void ToggleLid()
-//     {
-//         isOpen = !isOpen;
-//     }
-// }
-
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class OpenLid : MonoBehaviour
 {
     [Header("Lid Settings")]
-    public bool isOpen = false;
-    public float openAngle = -90f;
-    public float speed = 2f;
+    public bool IsOpen = false;
+    public float OpenAngle = -90f;
+    public float Speed = 2f;
 
     [Header("Optional: Trigger by Grabbing")]
-    public UnityEngine.XR.Interaction.Toolkit.Interactables.XRGrabInteractable grabObject; // Drag the paper here
-    public float delayBeforeOpen = 1f;
+    public XRGrabInteractable grabObject;
+    public float DelayBeforeOpen = 1f;
 
-    private Quaternion closedRotation;
-    private Quaternion openRotation;
+    private Quaternion initialRotation;
+    private Quaternion targetRotation;
+    private bool isTriggered = false;
 
-    private void Awake()
+    void Start()
     {
-        closedRotation = transform.localRotation;
-        openRotation = Quaternion.Euler(openAngle, 0f, 0f) * closedRotation;
+        initialRotation = transform.localRotation;
+    }
 
-        if (grabObject != null)
+    void Update()
+    {
+        if (IsOpen && !isTriggered)
         {
-            grabObject.selectEntered.AddListener(OnGrabbed);
+            targetRotation = Quaternion.Euler(OpenAngle, 0, 0);
+            transform.localRotation = Quaternion.Lerp(transform.localRotation, targetRotation, Time.deltaTime * Speed);
         }
     }
 
-    private void OnDestroy()
+    public void TriggerOpenWithDelay()
     {
-        if (grabObject != null)
-        {
-            grabObject.selectEntered.RemoveListener(OnGrabbed);
-        }
+        if (!isTriggered)
+            StartCoroutine(OpenAfterDelay());
     }
 
-    private void Update()
+    private System.Collections.IEnumerator OpenAfterDelay()
     {
-        Quaternion targetRotation = isOpen ? openRotation : closedRotation;
-        transform.localRotation = Quaternion.Slerp(transform.localRotation, targetRotation, Time.deltaTime * speed);
+        isTriggered = true;
+        yield return new WaitForSeconds(DelayBeforeOpen);
+        IsOpen = true;
     }
 
-    private void OnGrabbed(SelectEnterEventArgs args)
+    public void OpenLidNow() // Call this from puzzle logic
     {
-        Invoke(nameof(UnlockLid), delayBeforeOpen);
-    }
-
-    public void UnlockLid()
-    {
-        isOpen = true;
+        IsOpen = true;
+        isTriggered = false;
     }
 }
