@@ -54,7 +54,7 @@ public class AudioManager : MonoBehaviour
 
         if (s == null)
         {
-            Debug.LogWarning(name + " kinda cringe, check spelling you dylexic ass");
+            Debug.LogWarning(name + " check spelling");
             return;
         }
         s.source.Play();
