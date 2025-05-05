@@ -3,14 +3,14 @@ using UnityEngine;
 public class AllowSceneChange : MonoBehaviour
 {
     public TTS_both_API ttsSystem; // Reference to the TTS system
-    public LeverTimeDial leverTimeDial;
+    public BoxCollider handleCollider;
     
 
 
     void Start()
     {
         ttsSystem = GameObject.Find("TTS API").GetComponent<TTS_both_API>();
-        leverTimeDial = GetComponent<LeverTimeDial>();
+        handleCollider = GetComponent<BoxCollider>();
 
     }
 
@@ -19,11 +19,11 @@ public class AllowSceneChange : MonoBehaviour
     {
         if (ttsSystem.isSecondAudioReady)
         {
-            leverTimeDial.enabled = true;
+            handleCollider.enabled = true;
         }
         else
         {
-            leverTimeDial.enabled = false;
+            handleCollider.enabled = false;
         }
     }
 }

@@ -38,9 +38,9 @@ public class AdjustablePromptsRadioHost : MonoBehaviour
         + _adjustablePromptsSupervisor._anomalyObject + ". " + _adjustablePromptsSupervisor._timeStatus;
         _inputField.text = _prompt1RadiohostReport; // Set the input field text to the prompt
         Debug.Log("Called collect arrival"); // Log the prompt to the console for debugging
-        _callRadiohost.SendReply();
+        // _callRadiohost.SendReply();
     }
-
+    
 }
 
 
