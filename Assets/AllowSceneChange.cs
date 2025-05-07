@@ -1,9 +1,11 @@
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class AllowSceneChange : MonoBehaviour
 {
     public TTS_both_API ttsSystem; // Reference to the TTS system
     public BoxCollider handleCollider;
+    public XRGrabInteractable XRGrabInteractable;
     
 
 
@@ -11,6 +13,7 @@ public class AllowSceneChange : MonoBehaviour
     {
         ttsSystem = GameObject.Find("TTS API").GetComponent<TTS_both_API>();
         handleCollider = GetComponent<BoxCollider>();
+        XRGrabInteractable = GetComponent<XRGrabInteractable>();
 
     }
 
@@ -20,10 +23,13 @@ public class AllowSceneChange : MonoBehaviour
         if (ttsSystem.isSecondAudioReady)
         {
             handleCollider.enabled = true;
+            XRGrabInteractable.enabled = true;
+
         }
         else
         {
             handleCollider.enabled = false;
+            XRGrabInteractable.enabled = false;
         }
     }
 }

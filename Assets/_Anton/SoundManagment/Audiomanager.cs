@@ -9,21 +9,21 @@ public class AudioManager : MonoBehaviour
 
 
     //Singleton pattern
-    public static AudioManager instance;
+    // public static AudioManager instance;
 
     void Awake()
     {
         //Singleton pattern
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
+        // if (instance == null)
+        // {
+        //     instance = this;
+        //     DontDestroyOnLoad(gameObject);
+        // }
+        // else
+        // {
+        //     Destroy(gameObject);
+        //     return;
+        // }
 
         foreach (Sound s in soundsArray)
         {
