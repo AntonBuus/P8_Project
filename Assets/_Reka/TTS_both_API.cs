@@ -167,6 +167,9 @@ public class TTS_both_API : MonoBehaviour
     private string openAITtsUrl = "https://api.openai.com/v1/audio/speech"; // OpenAI TTS API URL
 
     public string usableFilePath;
+    public bool isAudioReady = false; // Flag to check if audio is ready
+    public bool isSecondAudioReady = false; // Flag to check if second audio is ready
+    public string _openaiSelectedVoice = "onyx"; // Default voice for OpenAI
     public void StartVoice()
     {
         string textToConvert = GeneratedInput.text; // Get the generated text
@@ -183,6 +186,7 @@ public class TTS_both_API : MonoBehaviour
         else if (selectedTTSProvider == TTSProvider.No_Speech)
         {
             Debug.Log("No speech selected");
+            isAudioReady = true; // Set the bool true so door can open
         }
 
     }
@@ -222,6 +226,7 @@ public class TTS_both_API : MonoBehaviour
                 // StartCoroutine(PlayAudio(filePath));
                 Debug.Log("Audio ready: " + filePath);
                 usableFilePath = filePath;
+                isAudioReady = true; // Set the bool true so door can open
             }
             else
             {
@@ -237,7 +242,7 @@ public class TTS_both_API : MonoBehaviour
         var requestBody = new
         {
             model = "tts-1",
-            voice = "onyx",
+            voice = _openaiSelectedVoice, // you can also choose alloy, ballad, coral, echo, fable, onyx, nova, sage, shimmer
             input = text
         };
 
@@ -260,6 +265,14 @@ public class TTS_both_API : MonoBehaviour
                 // StartCoroutine(PlayAudio(filePath));
                 Debug.Log("Audio ready: " + filePath);
                 usableFilePath = filePath;
+                if (isAudioReady)
+                {
+                    isSecondAudioReady = true; // Set the bool true so door can open
+                    Debug.Log("Second audio is ready: ");
+                }
+
+                isAudioReady = true; // Set the bool true so door can open
+
             }
             else
             {
@@ -276,6 +289,7 @@ public class TTS_both_API : MonoBehaviour
         File.WriteAllBytes(filePath, audioData);
         Debug.Log("Audio saved to: " + filePath);
         return filePath;
+        
     }
 
     // Play the MP3 File
