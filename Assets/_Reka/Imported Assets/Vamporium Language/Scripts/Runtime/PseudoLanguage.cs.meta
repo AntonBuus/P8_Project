@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 7ad71541d836de54b8c9a718ea5073a9
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 175450
+  packageName: Vamporium Language
+  packageVersion: 1.0
+  assetPath: Assets/Vamporium Language/Scripts/Runtime/PseudoLanguage.cs
+  uploadId: 382383
