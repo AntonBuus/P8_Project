@@ -60,14 +60,14 @@ Material:
     - _QueueOffset: 0
     - _SrcBlend: 5
     - _Surface: 1
-    - _VertexOffset: 0.05
+    - _VertexOffset: 0.01
     - _ZTest: 4
     - _ZWrite: 0
     - _ZWriteControl: 0
     m_Colors:
     - _FresnelColor: {r: 0.48640162, g: 9.50928, b: 0, a: 1}
     - _LinesSpeed: {r: 0, g: 0.5, b: 0, a: 0}
-    - _LinesTiling: {r: 1, g: 1, b: 0, a: 0}
+    - _LinesTiling: {r: 4, g: 4, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &653396409513374781
