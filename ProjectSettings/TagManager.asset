@@ -5,10 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Stone
-  - O
-  - P
-  - E
-  - N
+  - RuneCard
   layers:
   - Default
   - TransparentFX
