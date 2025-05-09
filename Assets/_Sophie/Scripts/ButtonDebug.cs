@@ -4,34 +4,74 @@ using System.Collections;
 
 public class ButtonDebug : MonoBehaviour
 {
-    public TextMeshPro countdownText; // Assign this in the Inspector
+    public TextMeshPro countdownText;
     private Coroutine countdownCoroutine;
 
-    public void LogPress()
+    private static float remainingTime = -1f;
+    private static bool timerStarted = false;
+
+    void Awake()
     {
-        Debug.Log("Push button was pressed!");
+        DontDestroyOnLoad(gameObject);
+        StartCoroutine(UpdateCountdownTextContinuously());
 
-        if (countdownCoroutine != null)
-            StopCoroutine(countdownCoroutine);
-
-        countdownCoroutine = StartCoroutine(StartCountdown(300)); // 5 minutes = 300 seconds
+        if (timerStarted && countdownCoroutine == null)
+        {
+            countdownCoroutine = StartCoroutine(StartCountdown());
+        }
     }
 
-    private IEnumerator StartCountdown(int totalSeconds)
+    public void OnHover()
     {
-        int timeLeft = totalSeconds;
+        TriggerTimer();
+    }
 
-        while (timeLeft >= 0)
+    public void TriggerTimer()
+    {
+        if (!timerStarted)
         {
-            int minutes = timeLeft / 60;
-            int seconds = timeLeft % 60;
+            remainingTime = 300f;
+            timerStarted = true;
+            countdownCoroutine = StartCoroutine(StartCountdown());
+        }
+    }
 
-            countdownText.text = $"{minutes:D2}:{seconds:D2}";
+    private IEnumerator StartCountdown()
+    {
+        while (remainingTime > 0f)
+        {
+            int minutes = Mathf.FloorToInt(remainingTime / 60);
+            int seconds = Mathf.FloorToInt(remainingTime % 60);
+
+            if (countdownText != null)
+                countdownText.text = $"{minutes:D2}:{seconds:D2}";
 
             yield return new WaitForSeconds(1f);
-            timeLeft--;
+            remainingTime -= 1f;
         }
 
-        countdownText.text = "Time's up!";
+        if (countdownText != null)
+            countdownText.text = "Time's up!";
+    }
+
+    private IEnumerator UpdateCountdownTextContinuously()
+    {
+        while (true)
+        {
+            if (countdownText == null)
+            {
+                GameObject tmpObj = GameObject.Find("CountdownDisplay");
+                if (tmpObj != null)
+                {
+                    countdownText = tmpObj.GetComponent<TextMeshPro>();
+                }
+                else
+                {
+                    countdownText = FindObjectOfType<TextMeshPro>();
+                }
+            }
+
+            yield return new WaitForSeconds(1f);
+        }
     }
 }
