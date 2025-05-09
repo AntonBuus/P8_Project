@@ -2283,6 +2283,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: XR setup_counter_working_plusbutton Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 4381220991482787503, guid: 972775febf6f5ff48bf0c75e9db3a1fc, type: 3}
+      propertyPath: m_HoverEntered.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1222915875}
+    - target: {fileID: 4381220991482787503, guid: 972775febf6f5ff48bf0c75e9db3a1fc, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1222915875}
+    - target: {fileID: 4381220991482787503, guid: 972775febf6f5ff48bf0c75e9db3a1fc, type: 3}
+      propertyPath: m_HoverEntered.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Play
+      objectReference: {fileID: 0}
+    - target: {fileID: 4381220991482787503, guid: 972775febf6f5ff48bf0c75e9db3a1fc, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: Play
+      objectReference: {fileID: 0}
     - target: {fileID: 7088542907894608687, guid: 972775febf6f5ff48bf0c75e9db3a1fc, type: 3}
       propertyPath: m_LocalPosition.x
       value: -28.206
@@ -2337,6 +2353,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a8ad0561143555045bf0f58ffbc5b6d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &446432064 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3231536897266451429, guid: 972775febf6f5ff48bf0c75e9db3a1fc, type: 3}
+  m_PrefabInstance: {fileID: 446432062}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d5efc4a4cce69d4b8587405f03dbfd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &476473966
@@ -5113,9 +5140,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _adjustablePrompts: {fileID: 0}
   _leverTimeDial: {fileID: 446432063}
-  _currentTime: 200
   _middleTime: 180
-  currentTimeFromSource: 0
+  _missionTime: {fileID: 446432064}
   _winSceneName: Win_Scene_v3
   _failSceneName: Fail_Scene_v3
 --- !u!1 &1075343907

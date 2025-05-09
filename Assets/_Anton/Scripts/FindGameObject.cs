@@ -22,7 +22,7 @@ public class FindGameObject : MonoBehaviour
             ttsBothAPI = GameObject.Find("TTS API").GetComponent<TTS_both_API>();
         }
         ttsBothAPI.InitializePlayAudio(ttsBothAPI.usableFilePath);
-        adjustablePrompts.CollectMissionReportPrompt();
+        // adjustablePrompts.CollectMissionReportPrompt();//not calling this as it is too early
 
     }
 

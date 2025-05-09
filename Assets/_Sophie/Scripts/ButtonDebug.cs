@@ -15,6 +15,12 @@ public class ButtonDebug : MonoBehaviour
     private bool showingMission = false;
     private string currentScene = "";
 
+    public float SyncedRemainingTime
+    {
+        get { return remainingTime; }
+        set { remainingTime = value; }
+    }
+
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
@@ -29,14 +35,14 @@ public class ButtonDebug : MonoBehaviour
     void Start()
     {
         currentScene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
-        bool isMissionScene = currentScene == "SOPH_Hun_Era_1" || currentScene == "SOPH_Hun_Era_Tent_1";
+        bool isMissionScene = currentScene == "Hun_Era_v3" || currentScene == "Hun_Era_Tent_v3";
 
         if (isMissionScene)
         {
-            // ✅ Only start timer in SOPH_Hun_Era_1
-            if (!timerStarted && currentScene == "SOPH_Hun_Era_1")
+            // ✅ Only start timer in Hun_Era_v3
+            if (!timerStarted && currentScene == "Hun_Era_v3")
             {
-                Debug.Log("✅ Timer auto-started in SOPH_Hun_Era_1");
+                Debug.Log("✅ Timer auto-started in Hun_Era_v3");
                 remainingTime = 300f;
                 timerStarted = true;
                 countdownCoroutine = StartCoroutine(StartCountdown());
@@ -57,7 +63,7 @@ public class ButtonDebug : MonoBehaviour
     public void ToggleDisplay()
     {
         string scene = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
-        bool isMissionScene = scene == "SOPH_Hun_Era_1" || scene == "SOPH_Hun_Era_Tent_1";
+        bool isMissionScene = scene == "Hun_Era_v3" || scene == "Hun_Era_Tent_v3";
 
         if (!isMissionScene)
         {

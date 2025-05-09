@@ -4,9 +4,9 @@ public class MissionTimeChecker : MonoBehaviour
 {
     [SerializeField] AdjustablePrompts _adjustablePrompts; // Reference to the TTS system
     [SerializeField] LeverTimeDial _leverTimeDial; // Reference to the lever time dial
-    public float _currentTime; // Current time in seconds
+    float _currentTime; // Current time in seconds
     public float _middleTime = 180; // Time in seconds to warn the player
-    public float currentTimeFromSource; // This should be set from the external source
+    [SerializeField] ButtonDebug _missionTime; // Reference to the ButtonDebug script
     public string _winSceneName = "Win_Scene_v3" ; // Name of the win scene
     public string _failSceneName = "Fail_Scene_v3"; // Name of the lose scene
 
@@ -30,7 +30,7 @@ public class MissionTimeChecker : MonoBehaviour
 
     public void CheckMissionTime()
     {
-        _currentTime = currentTimeFromSource; // Update _currentTime with the value from the external source
+        _currentTime = _missionTime.SyncedRemainingTime; // Update _currentTime with the value from the external source
         Debug.Log("called check missiontime"); // Log the current time for debugging
         if (_currentTime <= 0)
         {
