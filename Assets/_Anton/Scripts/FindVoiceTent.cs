@@ -7,6 +7,7 @@ public class FindVoiceTent : MonoBehaviour
     [SerializeField] private AdjustablePrompts adjustablePrompts;
     [SerializeField] private CallSupervisor1 supervisor1;
     [SerializeField] private TTS_both_API ttsBothAPI;
+    [SerializeField] private AdjustablePromptsRadioHost _APRH; // Reference to the output text field
     bool _playedLastPrompt = false;
     void Start()
     {
@@ -22,16 +23,19 @@ public class FindVoiceTent : MonoBehaviour
         {
             ttsBothAPI = GameObject.Find("TTS API").GetComponent<TTS_both_API>();
         }
-
+        if (_APRH == null)
+        {
+            _APRH = GameObject.Find("Radiohost PromptCollection").GetComponent<AdjustablePromptsRadioHost>();
+        }
 
     }
-    public void playRelevantVoice()
+    public void PlayRelevantVoice()
     {
         if (_playedLastPrompt == false)
         {
             ttsBothAPI.InitializePlayAudio(ttsBothAPI.usableFilePath);
             _playedLastPrompt = true;
+            _APRH.CollectRadioContent();
         }
     }
-
 }

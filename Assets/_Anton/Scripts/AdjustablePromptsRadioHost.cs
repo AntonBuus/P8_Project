@@ -30,7 +30,7 @@ public class AdjustablePromptsRadioHost : MonoBehaviour
         {
             _adjustablePromptsSupervisor = GameObject.Find("AdjustablePrompts").GetComponent<AdjustablePrompts>();
         }
-        CollectRadioContent();
+        
     }
     public void CollectRadioContent()
     {

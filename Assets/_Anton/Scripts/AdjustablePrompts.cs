@@ -16,7 +16,7 @@ public class AdjustablePrompts : MonoBehaviour
     public string _era = "The Hun Era"; // Default era
     public string _anomalyObject = "A Walkman from the 80s"; // Default object
     public bool _setObjectRandomly = false; // Flag to set object randomly
-    public string _wasObjectRetrieved = "The agent brings back the object"; // Default retrieval status
+    public string _wasObjectRetrieved = "The agent reached the object"; // Default retrieval status
     [Tooltip("Flag to check if the object is retrieved")] public bool _objectIsRetrieved = false;
     public string _timeStatus = "They brought back the object in due time"; // Default time status
 
@@ -60,7 +60,7 @@ public class AdjustablePrompts : MonoBehaviour
 
     public void ObjectWasNotRetrieved() //subbed for SetObjectRetrieved()
     {
-        _wasObjectRetrieved = "The agent failed to retrieve the object";
+        _wasObjectRetrieved = "The agent failed to retrieve the object in time";
     }
 
     public void SetTimeStatus(int _timeStatusLevel)
