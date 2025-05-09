@@ -2739,7 +2739,7 @@ GameObject:
   - component: {fileID: 7088542907894608687}
   m_Layer: 0
   m_Name: XR setup_counter_working_plusbutton Variant
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4458,7 +4458,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 3
   m_Height: 1.72
-  m_Radius: 0.34
+  m_Radius: 0.075
   m_SlopeLimit: 45
   m_StepOffset: 0.5
   m_SkinWidth: 0.08
@@ -10571,6 +10571,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: buttonpress_vintage
+          m_BoolArgument: 0
+        m_CallState: 2
   m_HoverExited:
     m_PersistentCalls:
       m_Calls: []
@@ -10593,6 +10605,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: buttonpress_vintage
           m_BoolArgument: 0
         m_CallState: 2
   m_SelectExited:
@@ -11462,7 +11486,7 @@ MonoBehaviour:
   m_InteractionManager: {fileID: 5324024370944797032}
   m_Colliders: []
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 2
   m_DistanceCalculationMode: 1
   m_SelectMode: 0
   m_FocusMode: 1
@@ -11581,8 +11605,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8ad0561143555045bf0f58ffbc5b6d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: SOPH_Hun_Era_1
-  sceneChangeDelay: 10
+  sceneToLoad: 
+  sceneChangeDelay: 5
   bootupEffectPrefab: {fileID: 198666082906608312, guid: f980f35b2665e65409a449e52e961c09, type: 3}
   pullSound: {fileID: 5520098634892184393}
   grabInteractable: {fileID: 2871442223080343775}
@@ -13157,7 +13181,7 @@ MonoBehaviour:
   m_NearInteractionCaster: {fileID: 1139590225545287867}
   m_NearCasterSortingStrategy: 1
   m_SortNearTargetsAfterTargetFilter: 0
-  m_EnableFarCasting: 1
+  m_EnableFarCasting: 0
   m_FarInteractionCaster: {fileID: 3639984859912874505}
   m_FarAttachMode: 1
   m_EnableUIInteraction: 1
@@ -13536,7 +13560,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
   m_InteractionLayers:
-    m_Bits: 1
+    m_Bits: 3
   m_Handedness: 2
   m_AttachTransform: {fileID: 0}
   m_KeepSelectedTargetValid: 1
@@ -13659,7 +13683,7 @@ MonoBehaviour:
   m_NearInteractionCaster: {fileID: 5715427063028724441}
   m_NearCasterSortingStrategy: 1
   m_SortNearTargetsAfterTargetFilter: 0
-  m_EnableFarCasting: 1
+  m_EnableFarCasting: 0
   m_FarInteractionCaster: {fileID: 9011678705717367895}
   m_FarAttachMode: 1
   m_EnableUIInteraction: 1
