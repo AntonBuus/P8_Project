@@ -12541,6 +12541,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2773486945566571097, guid: 972775febf6f5ff48bf0c75e9db3a1fc, type: 3}
+      propertyPath: sceneChangeDelay
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3259948375798249316, guid: 972775febf6f5ff48bf0c75e9db3a1fc, type: 3}
       propertyPath: m_Name
       value: XR setup_counter_working_plusbutton Variant
