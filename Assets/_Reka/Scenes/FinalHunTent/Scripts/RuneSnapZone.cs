@@ -1,17 +1,18 @@
 using UnityEngine;
-
 using UnityEngine.XR.Interaction.Toolkit.Interactors;
+// Purpose: Lets a specific card “snap” into the correct slot.
 
 public class RuneSnapZone : MonoBehaviour
 {
-    public string acceptedTag = "RuneCard";
-    public bool isOccupied = false;
-    public ChestLidOpener lidOpener;
+    public string acceptedTag = "RuneCard"; // Only accept objects with this tag
+    public bool isOccupied = false; // Has the slot already been filled?
+    public ChestLidOpener lidOpener; // Reference to the chest controller
 
-    public string RuneID = "I";
+    public string RuneID = "I"; // Expected rune ID for this slot
 
     private void OnTriggerEnter(Collider other)
     {
+        // Get the RuneID script from the object
         RuneID runeIDComponent = other.GetComponent<RuneID>();
         if (!isOccupied && other.CompareTag(acceptedTag)&& runeIDComponent != null && runeIDComponent.runeID == RuneID)
         {
@@ -25,6 +26,8 @@ public class RuneSnapZone : MonoBehaviour
 
             isOccupied = true;
             lidOpener.CheckAllSnapZones();
+
+             // Stop physics on the object
             Rigidbody rb = other.GetComponent<Rigidbody>();
             if (rb != null)
             {
