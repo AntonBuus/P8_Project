@@ -169,6 +169,7 @@ public class TTS_both_API : MonoBehaviour
     public string usableFilePath;
     public bool isAudioReady = false; // Flag to check if audio is ready
     public bool isSecondAudioReady = false; // Flag to check if second audio is ready
+    public bool isThirdAudioReady = false; // Flag to check if third audio is ready
     public string _openaiSelectedVoice = "onyx"; // Default voice for OpenAI
     public void StartVoice()
     {
@@ -226,7 +227,21 @@ public class TTS_both_API : MonoBehaviour
                 // StartCoroutine(PlayAudio(filePath));
                 Debug.Log("Audio ready: " + filePath);
                 usableFilePath = filePath;
+
+                if (isAudioReady)
+                {
+                    if (isSecondAudioReady)
+                    {
+                        isThirdAudioReady = true; // Set the bool true so door can open
+                        Debug.Log("Both audios are ready");
+                        // You can add any additional logic here if needed
+                    }
+                    isSecondAudioReady = true; // Set the bool true so door can open
+                    Debug.Log("Second audio is ready: ");
+                    
+                }
                 isAudioReady = true; // Set the bool true so door can open
+                
             }
             else
             {
@@ -267,8 +282,15 @@ public class TTS_both_API : MonoBehaviour
                 usableFilePath = filePath;
                 if (isAudioReady)
                 {
+                    if (isSecondAudioReady)
+                    {
+                        isThirdAudioReady = true; // Set the bool true so door can open
+                        Debug.Log("Third audio is ready");
+                        // You can add any additional logic here if needed
+                    }
                     isSecondAudioReady = true; // Set the bool true so door can open
                     Debug.Log("Second audio is ready: ");
+                    
                 }
 
                 isAudioReady = true; // Set the bool true so door can open

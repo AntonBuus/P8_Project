@@ -20,33 +20,33 @@ public class MissionTimeChecker : MonoBehaviour
         {
             _leverTimeDial = GameObject.Find("Pull").GetComponent<LeverTimeDial>();
         }
+        
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        // CheckMissionTime(); // Call the method to check the mission time
-    }
 
     public void CheckMissionTime()
     {
         _currentTime = _missionTime.SyncedRemainingTime; // Update _currentTime with the value from the external source
-        Debug.Log("called check missiontime"); // Log the current time for debugging
+        
         if (_currentTime <= 0)
         {
             _adjustablePrompts.SetTimeStatus(2); 
             _adjustablePrompts.ObjectWasNotRetrieved(); 
             _leverTimeDial.sceneToLoad = _failSceneName; // Set the scene to load to the lose scene
+            Debug.Log("called failed missiontime"); // Log the current time for debugging
         }
-        if (_currentTime <= _middleTime) // Check if the time is below x amount
+        if (_currentTime <= _middleTime && _currentTime >0) // Check if the time is below x amount
         {
             _adjustablePrompts.SetTimeStatus(1); 
             _leverTimeDial.sceneToLoad = _winSceneName; // Set the scene to load to the win scene
+            Debug.Log("called middle missiontime");
         }
         if (_currentTime > _middleTime) // Check if the time is above x amount
         {
             _adjustablePrompts.SetTimeStatus(0); 
             _leverTimeDial.sceneToLoad = _winSceneName; // Set the scene to load to the win scene
+            Debug.Log("called normal missiontime");
         }
+        _adjustablePrompts.CollectMissionReportPrompt(); // Collect the mission report prompt
     }
 }

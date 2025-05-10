@@ -82,14 +82,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: objective_complete
     clip: {fileID: 8300000, guid: f8d5061925cd9ef46b8ba0f49f62ad2e, type: 3}
-    volume: 5
-    pitch: 1
-    spatialBlend: 0
-    loop: 0
-    source: {fileID: 0}
-  - name: buttonpress_vintage
-    clip: {fileID: 8300000, guid: 203b34f6081455b4a9e33e9b5ba58c0d, type: 3}
-    volume: 5
+    volume: 0.5
     pitch: 1
     spatialBlend: 0
     loop: 0

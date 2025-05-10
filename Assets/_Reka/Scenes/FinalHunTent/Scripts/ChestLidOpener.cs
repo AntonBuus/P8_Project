@@ -4,11 +4,25 @@ using UnityEngine;
 public class ChestLidOpener : MonoBehaviour
 {
     public GameObject lid; // Assign lid GameObject
-    public RuneSnapZone[] snapZones; // List of all snap slots on the chest
-
+    // public RuneSnapZone[] snapZones; // List of all snap slots on the chest
+    [SerializeField] MissionTimeChecker _missionTimeChecker; // Reference to the mission time checker
+    [SerializeField] CompletedObjective _completedObjective; // Reference to the completed objective
     private bool lidOpened = false; // Track if the lid has already opened
 
     int occupiedCount = 0; // How many slots are filled
+
+    private float _rotationSpeed = 200f;
+    private float _targetAngle = 80f;
+    private float _closedAngle = 0f;
+    public bool _openlid = false; // Used to trigger the animation once
+    public GameObject _objectToEnable; // Object to enable when the lid opens
+
+    void Update()
+    {
+        float targetAngle = _openlid ? _targetAngle : _closedAngle;
+        Quaternion targetRotation = Quaternion.Euler(targetAngle, transform.localEulerAngles.y, transform.localEulerAngles.z);
+        transform.localRotation = Quaternion.RotateTowards(transform.localRotation, targetRotation, _rotationSpeed * Time.deltaTime);
+    }
     public void CheckAllSnapZones()
     {
         // Count a newly occupied slot
@@ -25,8 +39,12 @@ public class ChestLidOpener : MonoBehaviour
     private void OpenLid()
     {
         // Simply remove the lid
-        lid.SetActive(false);
-    
+        // lid.SetActive(false);
+        _openlid = true; // Trigger the lid opening animation    
+        _objectToEnable.SetActive(true); // Hide the object to retrieve
+        _completedObjective.InvokeOnceInThisScene(); // Invoke the completed objective
+        _missionTimeChecker.CheckMissionTime(); // Check the mission time
+        
     }
 }
 
