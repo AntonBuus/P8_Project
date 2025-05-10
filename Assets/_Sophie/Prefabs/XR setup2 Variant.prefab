@@ -1552,7 +1552,7 @@ MonoBehaviour:
   m_NearInteractionCaster: {fileID: 5120376083791824947}
   m_NearCasterSortingStrategy: 1
   m_SortNearTargetsAfterTargetFilter: 0
-  m_EnableFarCasting: 1
+  m_EnableFarCasting: 0
   m_FarInteractionCaster: {fileID: 3610592583777368044}
   m_FarAttachMode: 1
   m_EnableUIInteraction: 1
@@ -12606,7 +12606,7 @@ MonoBehaviour:
   m_NearInteractionCaster: {fileID: 3687833707614018575}
   m_NearCasterSortingStrategy: 1
   m_SortNearTargetsAfterTargetFilter: 0
-  m_EnableFarCasting: 1
+  m_EnableFarCasting: 0
   m_FarInteractionCaster: {fileID: 6502149627999042887}
   m_FarAttachMode: 1
   m_EnableUIInteraction: 1
@@ -13048,14 +13048,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8731474182057156262}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.1577534, y: -0.016275892, z: 0.053154897}
+  m_LocalRotation: {x: -0.392183, y: -0, z: -0.000000029802322, w: 0.9198873}
+  m_LocalPosition: {x: 0.1578, y: 0.0143, z: 0.0853}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1719477857560596533}
   m_Father: {fileID: 4682288150737874240}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -46.181, y: 0, z: 0}
 --- !u!33 &6527838787629586640
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -13318,7 +13318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToLoad: BossOffice_1
-  sceneChangeDelay: 10
+  sceneChangeDelay: 5
   bootupEffectPrefab: {fileID: 198666082906608312, guid: f980f35b2665e65409a449e52e961c09, type: 3}
   pullSound: {fileID: 2541229876914294314}
   grabInteractable: {fileID: 6917360138155699340}

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 2a1058c8a22e0c94f9bb0d459aac1a01
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 175450
+  packageName: Vamporium Language
+  packageVersion: 1.0
+  assetPath: Assets/Vamporium Language/Languages/Elyar.asset
+  uploadId: 382383
