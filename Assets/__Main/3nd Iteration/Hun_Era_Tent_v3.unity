@@ -2049,7 +2049,7 @@ Transform:
   m_GameObject: {fileID: 318616954}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.3884563, y: -1.4031839, z: 0.9848385}
+  m_LocalPosition: {x: -1.3884563, y: -1.381, z: 0.9848385}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2986,9 +2986,13 @@ PrefabInstance:
       propertyPath: 'm_Colliders.Array.data[0]'
       value: 
       objectReference: {fileID: 676285549}
-    - target: {fileID: 2287744392107705630, guid: 972775febf6f5ff48bf0c75e9db3a1fc, type: 3}
+    - target: {fileID: 2087616513699202507, guid: 972775febf6f5ff48bf0c75e9db3a1fc, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2287744392107705630, guid: 972775febf6f5ff48bf0c75e9db3a1fc, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3259948375798249316, guid: 972775febf6f5ff48bf0c75e9db3a1fc, type: 3}
       propertyPath: m_Name
@@ -3217,7 +3221,7 @@ GameObject:
   - component: {fileID: 475150325}
   - component: {fileID: 475150326}
   m_Layer: 0
-  m_Name: PlayIfFailed
+  m_Name: PlayIfThirdAudioready(not failed)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4835,7 +4839,7 @@ Transform:
   m_GameObject: {fileID: 676285548}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -28.391512, y: -9.05, z: -7.05}
+  m_LocalPosition: {x: -28.391512, y: -9.008, z: -7.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7965,7 +7969,7 @@ Transform:
   m_GameObject: {fileID: 1075343907}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -27.003056, y: -7.6468163, z: -7.7797}
+  m_LocalPosition: {x: -27.003056, y: -7.9, z: -7.7797}
   m_LocalScale: {x: 1, y: 1, z: 0.74477}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -13258,31 +13262,7 @@ MonoBehaviour:
       m_Calls: []
   m_FirstSelectEntered:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1279423620}
-        m_TargetAssemblyTypeName: FindVoiceTent, Assembly-CSharp
-        m_MethodName: PlayRelevantVoice
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1486418519}
-        m_TargetAssemblyTypeName: CallOnceRadioHost, Assembly-CSharp
-        m_MethodName: SendOneReply
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_LastSelectExited:
     m_PersistentCalls:
       m_Calls: []

@@ -5,6 +5,7 @@ public class PlayIfFailed : MonoBehaviour
     FindVoiceTent _playFailedVoice;
     TTS_both_API _supervisorVoice;
     CallOnceRadioHost _callOnceRadioHost;
+    ChestLidOpener _chestLidOpener;
     bool audioHasPlayed = false;
     void Start()
     {
@@ -20,11 +21,15 @@ public class PlayIfFailed : MonoBehaviour
         {
             _callOnceRadioHost = GameObject.Find("CallOnceRadiohost").GetComponent<CallOnceRadioHost>();
         }
+        if (_chestLidOpener == null)
+        {
+            _chestLidOpener = GameObject.Find("Rotation Lid").GetComponent<ChestLidOpener>();
+        }
     }
     
     void Update()
     {
-        if (!audioHasPlayed && _supervisorVoice.isThirdAudioReady)
+        if (!audioHasPlayed && _supervisorVoice.isThirdAudioReady && !_chestLidOpener._openlid)
         {
             _playFailedVoice.PlayRelevantVoice();
             _callOnceRadioHost.SendOneReply();
