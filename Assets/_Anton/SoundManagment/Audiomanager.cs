@@ -39,11 +39,11 @@ public class AudioManager : MonoBehaviour
 
     }
 
-    void Start()
-    {
-        Play("Theme");
-        //Debug.Log("Start is working");
-    }
+    // void Start()
+    // {
+    //     Play("Theme");
+    //     //Debug.Log("Start is working");
+    // }
 
     //To call:
     //FindObjectOfType<AudioManager>().Play("clip_name");

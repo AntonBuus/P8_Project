@@ -94,3 +94,10 @@ MonoBehaviour:
     spatialBlend: 0
     loop: 0
     source: {fileID: 0}
+  - name: mission_begin
+    clip: {fileID: 8300000, guid: 23cf40b89513c504ab508d190a57a32a, type: 3}
+    volume: 5
+    pitch: 1
+    spatialBlend: 0
+    loop: 0
+    source: {fileID: 0}

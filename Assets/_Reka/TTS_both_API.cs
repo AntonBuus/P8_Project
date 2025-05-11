@@ -171,6 +171,7 @@ public class TTS_both_API : MonoBehaviour
     public bool isSecondAudioReady = false; // Flag to check if second audio is ready
     public bool isThirdAudioReady = false; // Flag to check if third audio is ready
     public string _openaiSelectedVoice = "onyx"; // Default voice for OpenAI
+    public string _playHTSelectedVoice = "s3://voice-cloning-zero-shot/d99d35e6-e625-4fa4-925a-d65172d358e1/adriansaad/manifest.json"; // Default voice for Play.ht
     public void StartVoice()
     {
         string textToConvert = GeneratedInput.text; // Get the generated text
@@ -198,7 +199,7 @@ public class TTS_both_API : MonoBehaviour
         var requestBody = new
         {
             text = text,
-            voice = "s3://peregrine-voices/oliver_narrative2_parrot_saad/manifest.json",
+            voice = _playHTSelectedVoice, // Uses the selected voice
             output_format = "mp3",
             voice_engine = "Play3.0-mini",
             speed = speed, // Uses the adjustable Inspector value
@@ -223,7 +224,8 @@ public class TTS_both_API : MonoBehaviour
             if (request.result == UnityWebRequest.Result.Success)
             {
                 byte[] audioData = request.downloadHandler.data;
-                string filePath = SaveAudioFile(audioData, "playht_audio.mp3");
+                // string filePath = SaveAudioFile(audioData, "playht_audio.mp3");
+                string filePath = SaveAudioFile(audioData, "playht_audio_" + System.DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".mp3");
                 // StartCoroutine(PlayAudio(filePath));
                 Debug.Log("Audio ready: " + filePath);
                 usableFilePath = filePath;
@@ -233,7 +235,7 @@ public class TTS_both_API : MonoBehaviour
                     if (isSecondAudioReady)
                     {
                         isThirdAudioReady = true; // Set the bool true so door can open
-                        Debug.Log("Both audios are ready");
+                        Debug.Log("Third audio is ready");
                         // You can add any additional logic here if needed
                     }
                     isSecondAudioReady = true; // Set the bool true so door can open
@@ -276,7 +278,7 @@ public class TTS_both_API : MonoBehaviour
             if (request.result == UnityWebRequest.Result.Success)
             {
                 byte[] audioData = request.downloadHandler.data;
-                string filePath = SaveAudioFile(audioData, "openai_audio.mp3");
+                string filePath = SaveAudioFile(audioData, "openai_audio_" + System.DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".mp3");
                 // StartCoroutine(PlayAudio(filePath));
                 Debug.Log("Audio ready: " + filePath);
                 usableFilePath = filePath;
@@ -309,7 +311,7 @@ public class TTS_both_API : MonoBehaviour
     {
         string filePath = Path.Combine(Application.persistentDataPath, fileName);
         File.WriteAllBytes(filePath, audioData);
-        Debug.Log("Audio saved to: " + filePath);
+        // Debug.Log("Audio saved to: " + filePath);
         return filePath;
         
     }

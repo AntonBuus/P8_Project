@@ -102,6 +102,7 @@ public class ButtonDebug : MonoBehaviour
 
         if (countdownText != null)
             countdownText.text = "Time's up!";
+            
     }
 
     private IEnumerator UpdateCountdownTextContinuously()
