@@ -289,6 +289,7 @@ public class TTS_both_API : MonoBehaviour
                         isThirdAudioReady = true; // Set the bool true so door can open
                         Debug.Log("Third audio is ready");
                         // You can add any additional logic here if needed
+                        InitializePlayAudio(usableFilePath);
                     }
                     isSecondAudioReady = true; // Set the bool true so door can open
                     Debug.Log("Second audio is ready: ");

@@ -3206,6 +3206,50 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &475150324
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 475150325}
+  - component: {fileID: 475150326}
+  m_Layer: 0
+  m_Name: PlayIfFailed
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &475150325
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 475150324}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -26.270174, y: -7.819827, z: -7.450745}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &475150326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 475150324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9519046964669c6438cfb1f764525fe7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &476473966
 GameObject:
   m_ObjectHideFlags: 0
@@ -7836,6 +7880,7 @@ MonoBehaviour:
   _missionTime: {fileID: 446432064}
   _winSceneName: Win_Scene_v3
   _failSceneName: Fail_Scene_v3
+  _failedOficially: 0
 --- !u!1 &1071970938
 GameObject:
   m_ObjectHideFlags: 0
@@ -13214,7 +13259,7 @@ MonoBehaviour:
   m_FirstSelectEntered:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1876689367}
+      - m_Target: {fileID: 1279423620}
         m_TargetAssemblyTypeName: FindVoiceTent, Assembly-CSharp
         m_MethodName: PlayRelevantVoice
         m_Mode: 1
@@ -15002,74 +15047,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2098160206}
   m_LocalEulerAnglesHint: {x: 0, y: -59.162, z: 0}
---- !u!1 &1876689366
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1876689369}
-  - component: {fileID: 1876689368}
-  - component: {fileID: 1876689367}
-  m_Layer: 0
-  m_Name: FindVoiceTent
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1876689367
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1876689366}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 722e4a2955d2df948be9c3a1f7d71bff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  adjustablePrompts: {fileID: 0}
-  supervisor1: {fileID: 0}
-  ttsBothAPI: {fileID: 0}
-  _APRH: {fileID: 0}
-  audioSource: {fileID: 0}
-  firstClip: {fileID: 0}
---- !u!114 &1876689368
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1876689366}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a89a185ff04cf94fb48ff47d298f184, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  adjustablePrompts: {fileID: 0}
-  supervisor1: {fileID: 0}
-  ttsBothAPI: {fileID: 0}
-  audioSource: {fileID: 0}
-  firstClip: {fileID: 0}
---- !u!4 &1876689369
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1876689366}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.68087006, y: -2.284827, z: 71.552536}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1898239107
 GameObject:
   m_ObjectHideFlags: 0
@@ -18692,7 +18669,6 @@ SceneRoots:
   - {fileID: 676285552}
   - {fileID: 1191880008}
   - {fileID: 92313554}
-  - {fileID: 1876689369}
   - {fileID: 1658024066}
   - {fileID: 1279423619}
   - {fileID: 1075343908}
@@ -18709,3 +18685,4 @@ SceneRoots:
   - {fileID: 758773473}
   - {fileID: 1340513899}
   - {fileID: 1383028666}
+  - {fileID: 475150325}

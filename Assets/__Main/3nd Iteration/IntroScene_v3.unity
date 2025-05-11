@@ -1508,6 +1508,18 @@ PrefabInstance:
       propertyPath: 'm_Colliders.Array.data[1]'
       value: 
       objectReference: {fileID: 1573034155}
+    - target: {fileID: 2310658485135333042, guid: 972775febf6f5ff48bf0c75e9db3a1fc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.1498
+      objectReference: {fileID: 0}
+    - target: {fileID: 2310658485135333042, guid: 972775febf6f5ff48bf0c75e9db3a1fc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.0163
+      objectReference: {fileID: 0}
+    - target: {fileID: 2310658485135333042, guid: 972775febf6f5ff48bf0c75e9db3a1fc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.0532
+      objectReference: {fileID: 0}
     - target: {fileID: 2773486945566571097, guid: 972775febf6f5ff48bf0c75e9db3a1fc, type: 3}
       propertyPath: sceneToLoad
       value: Hun_Era_v3

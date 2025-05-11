@@ -15,6 +15,7 @@ public class ButtonDebug : MonoBehaviour
     private bool showingMission = false;
     private string currentScene = "";
 
+    MissionTimeChecker _missionTimeChecker;
     public float SyncedRemainingTime
     {
         get { return remainingTime; }
@@ -43,7 +44,7 @@ public class ButtonDebug : MonoBehaviour
             if (!timerStarted && currentScene == "Hun_Era_v3")
             {
                 Debug.Log("✅ Timer auto-started in Hun_Era_v3");
-                remainingTime = 300f;
+                remainingTime = 30f;
                 timerStarted = true;
                 countdownCoroutine = StartCoroutine(StartCountdown());
             }
@@ -99,10 +100,14 @@ public class ButtonDebug : MonoBehaviour
 
             yield return new WaitForSeconds(1f);
         }
-
+        
+        if (currentScene == "Hun_Era_Tent_v3")
+        {
+           _missionTimeChecker = GameObject.Find("MissionTimeChecker").GetComponent<MissionTimeChecker>();
+            _missionTimeChecker.CheckMissionTime(); // Call the mission time checker
+        }
         if (countdownText != null)
             countdownText.text = "Time's up!";
-            
     }
 
     private IEnumerator UpdateCountdownTextContinuously()
