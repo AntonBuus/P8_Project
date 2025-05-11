@@ -5,8 +5,8 @@ using System.Collections;
 public class ButtonDebug : MonoBehaviour
 {
     public TextMeshPro countdownText;         // Text component for countdown
-    public GameObject countdownDisplay;       // UI: countdown screen
-    public GameObject missionDisplay;         // UI: mission screen
+    public GameObject countdownDisplay;       // UI: countdown screen (e.g. TMP text)
+    public GameObject missionDisplay;         // UI: mission screen (now an Image or any GameObject)
 
     private Coroutine countdownCoroutine;
     private static float remainingTime = -1f;
@@ -42,7 +42,7 @@ public class ButtonDebug : MonoBehaviour
                 countdownCoroutine = StartCoroutine(StartCountdown());
             }
 
-            // Show countdown UI by default in mission scenes
+            // Show countdown UI by default
             if (countdownDisplay != null) countdownDisplay.SetActive(true);
             if (missionDisplay != null) missionDisplay.SetActive(false);
         }
