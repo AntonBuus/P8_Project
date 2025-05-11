@@ -4133,6 +4133,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 3580059428008474552, guid: 0dee9c78b0be9f144aee7c58f200c9df, type: 3}
+      propertyPath: m_Volume
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 3609428918004178302, guid: 0dee9c78b0be9f144aee7c58f200c9df, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -4689,6 +4693,14 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 8840192709005257396, guid: 0dee9c78b0be9f144aee7c58f200c9df, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 439.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8840192709005257396, guid: 0dee9c78b0be9f144aee7c58f200c9df, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -563.9
+      objectReference: {fileID: 0}
     - target: {fileID: 8858497257140478734, guid: 0dee9c78b0be9f144aee7c58f200c9df, type: 3}
       propertyPath: m_LocalPosition.z
       value: -362.9
@@ -4730,6 +4742,9 @@ PrefabInstance:
     - {fileID: 7552167823887730731, guid: 0dee9c78b0be9f144aee7c58f200c9df, type: 3}
     - {fileID: 4480707132470345456, guid: 0dee9c78b0be9f144aee7c58f200c9df, type: 3}
     - {fileID: 6196932867520929364, guid: 0dee9c78b0be9f144aee7c58f200c9df, type: 3}
+    - {fileID: 6622108312409053460, guid: 0dee9c78b0be9f144aee7c58f200c9df, type: 3}
+    - {fileID: 8139251670085049646, guid: 0dee9c78b0be9f144aee7c58f200c9df, type: 3}
+    - {fileID: 4452079381031007750, guid: 0dee9c78b0be9f144aee7c58f200c9df, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4601848607689382159, guid: 0dee9c78b0be9f144aee7c58f200c9df, type: 3}
       insertIndex: 0
@@ -5624,7 +5639,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: 7669d9e6a1347a74baaa04fb3ac48e8e, type: 3}
   m_Resource: {fileID: 8300000, guid: 7669d9e6a1347a74baaa04fb3ac48e8e, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -10978,7 +10993,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7248694025618603326, guid: 0cd55e6d4b98c464fbe256f0832a0b47, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4897732323685117858, guid: 0cd55e6d4b98c464fbe256f0832a0b47, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -10986,7 +11001,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 9d4d2b73415b17646b38e5f4861adb83, type: 2}
     - target: {fileID: -3111565609762313623, guid: 0cd55e6d4b98c464fbe256f0832a0b47, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -73943032628767270, guid: 0cd55e6d4b98c464fbe256f0832a0b47, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -11002,7 +11017,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 0cd55e6d4b98c464fbe256f0832a0b47, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 983263193216314658, guid: 0cd55e6d4b98c464fbe256f0832a0b47, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'

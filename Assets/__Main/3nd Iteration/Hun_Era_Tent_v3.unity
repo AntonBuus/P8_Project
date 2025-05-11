@@ -11956,15 +11956,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "*\"Pretend you are a radio host from the 50's and you've received the
-    breaking news to transmit to the country. \r\nIt revolves around a timetraveling
-    company that fetches anomaly objects from certain timeperiods and brings them
-    back to the present.\r\nReport the ways the world has or has not changed. The
-    mood of the monolouge should adapt depending on the success of the agent who
-    was on the mission. Keep it short, a maximum of 2 paragraphs, your listeners
-    have a short attentionspan. \n\r\nWhen prompted: Generate a natural, monolouge
-    adressing the state of the world and the situation with no character labels,
-    no descriptions, and no narration.   \r\n\r\nOnly write dialogue, flowing naturally
-    as a spoken conversation.\"*"
+    breaking news to transmit to the country. \n\r\nIt revolves around a timetraveling
+    that has to fetch anomaly objects from certain timeperiods and brings them back
+    to the present.\n\r\nReport the ways the world has or has not changed. The mood
+    of the monolouge should adapt depending on the performance of the agent who was
+    on the mission. Keep it short, a maximum of 1,5 paragraphs, your listeners have
+    a short attentionspan.\n \nWhen prompted: Generate a natural, monolouge adressing
+    the state of the world and the situation with no character labels, no descriptions,
+    and no narration.   \n \nOnly write dialogue, flowing naturally as a spoken conversation.\"*"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -13076,7 +13075,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5048005735245520167, guid: 5c0161ca8d072ce4a86ad73d65787ba9, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5048005735245520167, guid: 5c0161ca8d072ce4a86ad73d65787ba9, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -13380,8 +13379,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ttsSystem: {fileID: 0}
-  _objectCollider: {fileID: 0}
-  XRGrabInteractable: {fileID: 0}
+  _objectCollider: {fileID: 1658024070}
+  XRGrabInteractable: {fileID: 1658024068}
 --- !u!1 &1658519997
 GameObject:
   m_ObjectHideFlags: 0
