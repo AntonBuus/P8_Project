@@ -10,6 +10,8 @@ public class MissionTimeChecker : MonoBehaviour
     public string _winSceneName = "Win_Scene_v3" ; // Name of the win scene
     public string _failSceneName = "Fail_Scene_v3"; // Name of the lose scene
 
+    public bool _failedOficially = false; // Flag to check if the mission failed officially
+
     void Start()
     {
         if (_adjustablePrompts == null)
@@ -34,6 +36,7 @@ public class MissionTimeChecker : MonoBehaviour
             _adjustablePrompts.ObjectWasNotRetrieved(); 
             _leverTimeDial.sceneToLoad = _failSceneName; // Set the scene to load to the lose scene
             Debug.Log("called failed missiontime"); // Log the current time for debugging
+            _failedOficially = true; // Set the mission failed flag to true
         }
         if (_currentTime <= _middleTime && _currentTime >0) // Check if the time is below x amount
         {

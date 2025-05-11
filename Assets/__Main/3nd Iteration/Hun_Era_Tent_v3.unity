@@ -3206,6 +3206,50 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &475150324
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 475150325}
+  - component: {fileID: 475150326}
+  m_Layer: 0
+  m_Name: PlayIfFailed
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &475150325
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 475150324}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -26.270174, y: -7.819827, z: -7.450745}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &475150326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 475150324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9519046964669c6438cfb1f764525fe7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &476473966
 GameObject:
   m_ObjectHideFlags: 0
@@ -7836,6 +7880,7 @@ MonoBehaviour:
   _missionTime: {fileID: 446432064}
   _winSceneName: Win_Scene_v3
   _failSceneName: Fail_Scene_v3
+  _failedOficially: 0
 --- !u!1 &1071970938
 GameObject:
   m_ObjectHideFlags: 0
@@ -11956,15 +12001,14 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "*\"Pretend you are a radio host from the 50's and you've received the
-    breaking news to transmit to the country. \r\nIt revolves around a timetraveling
-    company that fetches anomaly objects from certain timeperiods and brings them
-    back to the present.\r\nReport the ways the world has or has not changed. The
-    mood of the monolouge should adapt depending on the success of the agent who
-    was on the mission. Keep it short, a maximum of 2 paragraphs, your listeners
-    have a short attentionspan. \n\r\nWhen prompted: Generate a natural, monolouge
-    adressing the state of the world and the situation with no character labels,
-    no descriptions, and no narration.   \r\n\r\nOnly write dialogue, flowing naturally
-    as a spoken conversation.\"*"
+    breaking news to transmit to the country. \n\r\nIt revolves around a timetraveling
+    that has to fetch anomaly objects from certain timeperiods and brings them back
+    to the present.\n\r\nReport the ways the world has or has not changed. The mood
+    of the monolouge should adapt depending on the performance of the agent who was
+    on the mission. Keep it short, a maximum of 1,5 paragraphs, your listeners have
+    a short attentionspan.\n \nWhen prompted: Generate a natural, monolouge adressing
+    the state of the world and the situation with no character labels, no descriptions,
+    and no narration.   \n \nOnly write dialogue, flowing naturally as a spoken conversation.\"*"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -13076,7 +13120,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5048005735245520167, guid: 5c0161ca8d072ce4a86ad73d65787ba9, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5048005735245520167, guid: 5c0161ca8d072ce4a86ad73d65787ba9, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -13215,7 +13259,7 @@ MonoBehaviour:
   m_FirstSelectEntered:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1876689367}
+      - m_Target: {fileID: 1279423620}
         m_TargetAssemblyTypeName: FindVoiceTent, Assembly-CSharp
         m_MethodName: PlayRelevantVoice
         m_Mode: 1
@@ -13380,8 +13424,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ttsSystem: {fileID: 0}
-  _objectCollider: {fileID: 0}
-  XRGrabInteractable: {fileID: 0}
+  _objectCollider: {fileID: 1658024070}
+  XRGrabInteractable: {fileID: 1658024068}
 --- !u!1 &1658519997
 GameObject:
   m_ObjectHideFlags: 0
@@ -15003,74 +15047,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2098160206}
   m_LocalEulerAnglesHint: {x: 0, y: -59.162, z: 0}
---- !u!1 &1876689366
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1876689369}
-  - component: {fileID: 1876689368}
-  - component: {fileID: 1876689367}
-  m_Layer: 0
-  m_Name: FindVoiceTent
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1876689367
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1876689366}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 722e4a2955d2df948be9c3a1f7d71bff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  adjustablePrompts: {fileID: 0}
-  supervisor1: {fileID: 0}
-  ttsBothAPI: {fileID: 0}
-  _APRH: {fileID: 0}
-  audioSource: {fileID: 0}
-  firstClip: {fileID: 0}
---- !u!114 &1876689368
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1876689366}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a89a185ff04cf94fb48ff47d298f184, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  adjustablePrompts: {fileID: 0}
-  supervisor1: {fileID: 0}
-  ttsBothAPI: {fileID: 0}
-  audioSource: {fileID: 0}
-  firstClip: {fileID: 0}
---- !u!4 &1876689369
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1876689366}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.68087006, y: -2.284827, z: 71.552536}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1898239107
 GameObject:
   m_ObjectHideFlags: 0
@@ -18693,7 +18669,6 @@ SceneRoots:
   - {fileID: 676285552}
   - {fileID: 1191880008}
   - {fileID: 92313554}
-  - {fileID: 1876689369}
   - {fileID: 1658024066}
   - {fileID: 1279423619}
   - {fileID: 1075343908}
@@ -18710,3 +18685,4 @@ SceneRoots:
   - {fileID: 758773473}
   - {fileID: 1340513899}
   - {fileID: 1383028666}
+  - {fileID: 475150325}
