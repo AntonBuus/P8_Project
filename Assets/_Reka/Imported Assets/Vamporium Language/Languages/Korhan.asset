@@ -1,0 +1,214 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4737aa6ae09e274b8f04164d8267019, type: 3}
+  m_Name: Korhan
+  m_EditorClassIdentifier: 
+  Name: Elyar
+  Description: Just a demo language
+  Difficulty: 5
+  _formattingPrefix: 
+  _formattingSuffix: 
+  _simplifyFormatting: 0
+  _cacheDatabase: 0
+  words:
+  - key: all
+    value: ar
+    caseSensitive: 0
+  - key: and
+    value: eth
+    caseSensitive: 0
+  - key: be
+    value: "\xFB"
+    caseSensitive: 0
+  - key: Bellyburry
+    value: Garth Mar
+    caseSensitive: 1
+  - key: day
+    value: uv
+    caseSensitive: 0
+  - key: dead
+    value: "m\xF4"
+    caseSensitive: 0
+  - key: each
+    value: raum
+    caseSensitive: 0
+  - key: for
+    value: om
+    caseSensitive: 0
+  - key: I
+    value: gyr
+    caseSensitive: 1
+  - key: I'm
+    value: gyr
+    caseSensitive: 0
+  - key: need
+    value: mauth
+    caseSensitive: 0
+  - key: needs
+    value: elut
+    caseSensitive: 0
+  - key: night
+    value: dormor
+    caseSensitive: 0
+  - key: no
+    value: qa
+    caseSensitive: 0
+  - key: of
+    value: v
+    caseSensitive: 0
+  - key: the
+    value: ogh
+    caseSensitive: 0
+  - key: town
+    value: thed
+    caseSensitive: 0
+  - key: undead
+    value: "am\xF4"
+    caseSensitive: 0
+  - key: we
+    value: gar
+    caseSensitive: 0
+  - key: with
+    value: uw
+    caseSensitive: 0
+  - key: yes
+    value: qwu
+    caseSensitive: 0
+  clusters:
+  - key: any
+    value: urth
+    caseSensitive: 0
+  - key: big
+    value: garga
+    caseSensitive: 0
+  - key: ee
+    value: "\xE1"
+    caseSensitive: 0
+  - key: er
+    value: "\xE1r"
+    caseSensitive: 0
+  - key: est
+    value: ath
+    caseSensitive: 0
+  - key: igh
+    value: uth
+    caseSensitive: 0
+  - key: ing
+    value: "\xE1rg"
+    caseSensitive: 0
+  - key: ist
+    value: mor
+    caseSensitive: 0
+  - key: no
+    value: ut
+    caseSensitive: 0
+  - key: oo
+    value: u
+    caseSensitive: 0
+  - key: ou
+    value: y
+    caseSensitive: 0
+  - key: st
+    value: rth
+    caseSensitive: 0
+  - key: tt
+    value: w
+    caseSensitive: 0
+  letters:
+  - key: a
+    value: "\xF4"
+    caseSensitive: 0
+  - key: b
+    value: v
+    caseSensitive: 0
+  - key: c
+    value: w
+    caseSensitive: 0
+  - key: d
+    value: m
+    caseSensitive: 0
+  - key: e
+    value: o
+    caseSensitive: 0
+  - key: f
+    value: th
+    caseSensitive: 0
+  - key: g
+    value: r
+    caseSensitive: 0
+  - key: h
+    value: rr
+    caseSensitive: 0
+  - key: i
+    value: o
+    caseSensitive: 0
+  - key: j
+    value: y
+    caseSensitive: 0
+  - key: j
+    value: h
+    caseSensitive: 0
+  - key: m
+    value: k
+    caseSensitive: 0
+  - key: n
+    value: r
+    caseSensitive: 0
+  - key: o
+    value: "\xE1"
+    caseSensitive: 0
+  - key: p
+    value: t
+    caseSensitive: 0
+  - key: q
+    value: awa
+    caseSensitive: 0
+  - key: r
+    value: t
+    caseSensitive: 0
+  - key: s
+    value: k
+    caseSensitive: 0
+  - key: t
+    value: th
+    caseSensitive: 0
+  - key: u
+    value: ha
+    caseSensitive: 0
+  - key: v
+    value: kr
+    caseSensitive: 0
+  - key: w
+    value: ot
+    caseSensitive: 0
+  - key: x
+    value: k
+    caseSensitive: 0
+  - key: y
+    value: at
+    caseSensitive: 0
+  - key: z
+    value: a
+    caseSensitive: 0
+  - key: ''''
+    value: 
+    caseSensitive: 0
+  ShowWords: 0
+  ShowClusters: 0
+  ShowLetters: 1
+  DebugMode: 0
+  AutoTranslate: 1
+  ShowFormated: 1
+  TestText: I'm contacting you with the highest urgency, the matter at hand cannot
+    be postponed anymore! The undead horde keeps coming in bigger and bigger numbers
+    each night. We really need to ask for help from the town of Bellyburry.
+  Learnt: 0

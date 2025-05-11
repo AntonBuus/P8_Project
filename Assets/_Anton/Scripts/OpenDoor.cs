@@ -15,7 +15,7 @@ public class OpenDoor : MonoBehaviour
     }
 
     private float _rotationSpeed = 150f;
-    private float _targetAngle = 170f;
+    public float _openAngle = 110f;
     public float _closedAngle = 0f;
 
     void Update()
@@ -23,7 +23,7 @@ public class OpenDoor : MonoBehaviour
         float targetAngle;
         if (_registerAudio.isAudioReady)
         {
-            targetAngle = _targetAngle;
+            targetAngle = _openAngle;
         }
         else
         {

@@ -6,23 +6,20 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/__Main/1st Iteration/IntroScene_v1.unity
-    guid: 1a8728ea24777844aa80ef37cb741e25
+    path: Assets/__Main/3nd Iteration/IntroScene_v3.unity
+    guid: c91fb6bb77ab6d6498544507159c834f
   - enabled: 1
-    path: Assets/__Main/1st Iteration/Hun_Era_v1.unity
-    guid: 1b6eae330d09e7446989550bc0dfccd0
+    path: Assets/__Main/3nd Iteration/Hun_Era_v3.unity
+    guid: 3a81fc3bfaacb324f821ee948d8ffbf6
   - enabled: 1
-    path: Assets/__Main/1st Iteration/Hun_Era_Tent_v1.unity
-    guid: e0f90867ac9084547ba7191c4c621351
+    path: Assets/__Main/3nd Iteration/Hun_Era_Tent_v3.unity
+    guid: ff4336595964b9748a05cff244e1afbb
   - enabled: 1
-    path: Assets/_Sophie/Scenes/SOPH_Hun_Era_1.unity
-    guid: 2de2fbe1953793242b302b18b01f9198
+    path: Assets/__Main/3nd Iteration/Win_Scene_v3.unity
+    guid: ea7c959f3ffa4f245b3671cf659daa6e
   - enabled: 1
-    path: Assets/_Sophie/Scenes/SOPH_Hun_Era_Tent_1.unity
-    guid: a5f65121b8448564f81e1a1c9947edab
-  - enabled: 1
-    path: Assets/_Sophie/Scenes/SOPH_IntroScene_1.unity
-    guid: 5e74b34c981515947bf4399bb96f6326
+    path: Assets/__Main/3nd Iteration/Fail_Scene_v3.unity
+    guid: 8b97afd016d88c44586a45475a06d178
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: b51ac2b3ada7b8c45b9dc9f5a76fb02f, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
