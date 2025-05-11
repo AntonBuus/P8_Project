@@ -8347,7 +8347,11 @@ MonoBehaviour:
   StoneHitSound: {fileID: 8300000, guid: 16fba6d30ed741d4a9fdd6e79ee2f3ac, type: 3}
   SceneObjectToEnable: {fileID: 802529904}
   _distractableGuard: {fileID: 1614415423}
+  _transformBetweenPoints: {fileID: 0}
   _newGuardPosition: {fileID: 717590377}
+  onInvoke:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!82 &717590373
 AudioSource:
   m_ObjectHideFlags: 0
@@ -11872,6 +11876,8 @@ MonoBehaviour:
   adjustablePrompts: {fileID: 0}
   supervisor1: {fileID: 0}
   ttsBothAPI: {fileID: 0}
+  audioSource: {fileID: 0}
+  firstClip: {fileID: 0}
 --- !u!4 &970722510
 Transform:
   m_ObjectHideFlags: 0
@@ -25435,42 +25441,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1753374980}
     m_Modifications:
-    - target: {fileID: 2127096030847814783, guid: af7b1b4588148eb4f9c6f2b70854bead, type: 3}
-      propertyPath: m_IsKinematic
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5803400091944393940, guid: af7b1b4588148eb4f9c6f2b70854bead, type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5803400091944393940, guid: af7b1b4588148eb4f9c6f2b70854bead, type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 5803400091944393940, guid: af7b1b4588148eb4f9c6f2b70854bead, type: 3}
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 297627322}
-    - target: {fileID: 5803400091944393940, guid: af7b1b4588148eb4f9c6f2b70854bead, type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5803400091944393940, guid: af7b1b4588148eb4f9c6f2b70854bead, type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Play
-      objectReference: {fileID: 0}
-    - target: {fileID: 5803400091944393940, guid: af7b1b4588148eb4f9c6f2b70854bead, type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: AudioManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 5803400091944393940, guid: af7b1b4588148eb4f9c6f2b70854bead, type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: pickup_paper
-      objectReference: {fileID: 0}
-    - target: {fileID: 5803400091944393940, guid: af7b1b4588148eb4f9c6f2b70854bead, type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 6434312810589904192, guid: af7b1b4588148eb4f9c6f2b70854bead, type: 3}
       propertyPath: m_Name
       value: HunMap
@@ -25514,14 +25488,6 @@ PrefabInstance:
     - target: {fileID: 7103218745810873542, guid: af7b1b4588148eb4f9c6f2b70854bead, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 124.66
-      objectReference: {fileID: 0}
-    - target: {fileID: 7418912835050514094, guid: af7b1b4588148eb4f9c6f2b70854bead, type: 3}
-      propertyPath: m_text
-      value: Guardplan
-      objectReference: {fileID: 0}
-    - target: {fileID: 7418912835050514094, guid: af7b1b4588148eb4f9c6f2b70854bead, type: 3}
-      propertyPath: m_isRightToLeft
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -25806,14 +25772,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1753374980}
     m_Modifications:
-    - target: {fileID: 61964602309621012, guid: caea171640845084d84a41c02fac299c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4364728677518412462, guid: caea171640845084d84a41c02fac299c, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.10000001
-      objectReference: {fileID: 0}
     - target: {fileID: 4364728677518412462, guid: caea171640845084d84a41c02fac299c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.303246
@@ -25858,30 +25816,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Diary Interactable
       objectReference: {fileID: 0}
-    - target: {fileID: 6408731006546463364, guid: caea171640845084d84a41c02fac299c, type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6988234850007992562, guid: caea171640845084d84a41c02fac299c, type: 3}
-      propertyPath: m_text
-      value: "Day 17\n\nNothing of note to spot today. Would be a nice change of
-        pace if we would spent time hunting rather than pillaging.\n\nAttila is guarding
-        that new weapon we found today. He's alright at fighting but his focus is
-        lacking. Even a thrown rock could distract him from his post. The commander
-        should really appoint someone more capeable.\n\n- \xC1lmos"
-      objectReference: {fileID: 0}
-    - target: {fileID: 7759843646392733000, guid: caea171640845084d84a41c02fac299c, type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7759843646392733000, guid: caea171640845084d84a41c02fac299c, type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7759843646392733000, guid: caea171640845084d84a41c02fac299c, type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7759843646392733000, guid: caea171640845084d84a41c02fac299c, type: 3}
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -25890,54 +25824,6 @@ PrefabInstance:
       propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 572622436}
-    - target: {fileID: 7759843646392733000, guid: caea171640845084d84a41c02fac299c, type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7759843646392733000, guid: caea171640845084d84a41c02fac299c, type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7759843646392733000, guid: caea171640845084d84a41c02fac299c, type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: Play
-      objectReference: {fileID: 0}
-    - target: {fileID: 7759843646392733000, guid: caea171640845084d84a41c02fac299c, type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: InvokeOnceInThisScene
-      objectReference: {fileID: 0}
-    - target: {fileID: 7759843646392733000, guid: caea171640845084d84a41c02fac299c, type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: AudioManager, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 7759843646392733000, guid: caea171640845084d84a41c02fac299c, type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
-      value: CompletedObjective, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 7759843646392733000, guid: caea171640845084d84a41c02fac299c, type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_BoolArgument
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7759843646392733000, guid: caea171640845084d84a41c02fac299c, type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_BoolArgument
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7759843646392733000, guid: caea171640845084d84a41c02fac299c, type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
-      value: pickup_book
-      objectReference: {fileID: 0}
-    - target: {fileID: 7759843646392733000, guid: caea171640845084d84a41c02fac299c, type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 7759843646392733000, guid: caea171640845084d84a41c02fac299c, type: 3}
-      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 9163337476633388243, guid: caea171640845084d84a41c02fac299c, type: 3}
-      propertyPath: m_IsKinematic
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
