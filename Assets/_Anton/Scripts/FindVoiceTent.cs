@@ -1,5 +1,6 @@
 using OpenAI;
 using UnityEngine;
+using System.Collections;
 
 public class FindVoiceTent : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class FindVoiceTent : MonoBehaviour
     [SerializeField] private TTS_both_API ttsBothAPI;
     [SerializeField] private AdjustablePromptsRadioHost _APRH; // Reference to the output text field
     bool _playedLastPrompt = false;
+
+    public AudioSource audioSource;
+    public AudioClip firstClip;
     void Start()
     {
         if (adjustablePrompts == null)
@@ -33,9 +37,18 @@ public class FindVoiceTent : MonoBehaviour
     {
         if (_playedLastPrompt == false)
         {
-            ttsBothAPI.InitializePlayAudio(ttsBothAPI.usableFilePath);
+            // ttsBothAPI.InitializePlayAudio(ttsBothAPI.usableFilePath);
+            StartCoroutine(PlayClipsInSequence());
             _playedLastPrompt = true;
             _APRH.CollectRadioContent();
         }
+    }
+    private IEnumerator PlayClipsInSequence()
+    {
+        audioSource.clip = firstClip;
+        audioSource.Play();
+        yield return new WaitForSeconds(firstClip.length);
+
+        ttsBothAPI.InitializePlayAudio(ttsBothAPI.usableFilePath);
     }
 }
