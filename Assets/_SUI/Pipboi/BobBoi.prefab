@@ -412,7 +412,7 @@ Transform:
   m_GameObject: {fileID: 4095059459807600227}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.00692, z: -0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -440,7 +440,7 @@ CapsuleCollider:
   m_Radius: 0.007
   m_Height: 0.007
   m_Direction: 1
-  m_Center: {x: 0, y: 0.007, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5204232286031869586
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,7 +467,7 @@ Transform:
   m_GameObject: {fileID: 5204232286031869586}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.1255, y: -0.016481617, z: 0.053826768}
+  m_LocalPosition: {x: 0.1534, y: -0.016481617, z: 0.053826768}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1070,15 +1070,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e1615bb8f11e95b4bbf965aaa08fe5b2, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -9.18
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e1615bb8f11e95b4bbf965aaa08fe5b2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.343
+      value: 1.34
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e1615bb8f11e95b4bbf965aaa08fe5b2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.099
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e1615bb8f11e95b4bbf965aaa08fe5b2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1123,7 +1123,7 @@ PrefabInstance:
     - target: {fileID: -1551327944140305390, guid: e1615bb8f11e95b4bbf965aaa08fe5b2, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 7ea651b1499edf0489e53369f0f45776, type: 2}
+      objectReference: {fileID: 2100000, guid: 5eafa6db1174af542a0531dc4bc18e99, type: 2}
     - target: {fileID: -807599675864898512, guid: e1615bb8f11e95b4bbf965aaa08fe5b2, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -1221,18 +1221,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 61892707544966445, guid: e1615bb8f11e95b4bbf965aaa08fe5b2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6816879835992132650}
-    - targetCorrespondingSourceObject: {fileID: 61892707544966445, guid: e1615bb8f11e95b4bbf965aaa08fe5b2, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2723814965049897581}
-    - targetCorrespondingSourceObject: {fileID: 61892707544966445, guid: e1615bb8f11e95b4bbf965aaa08fe5b2, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4448799444965436681}
-    - targetCorrespondingSourceObject: {fileID: 61892707544966445, guid: e1615bb8f11e95b4bbf965aaa08fe5b2, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6228306511500937641}
-    - targetCorrespondingSourceObject: {fileID: 61892707544966445, guid: e1615bb8f11e95b4bbf965aaa08fe5b2, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3310089141032326640}
     - targetCorrespondingSourceObject: {fileID: 1300318724393843533, guid: e1615bb8f11e95b4bbf965aaa08fe5b2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7130481384916995407}
@@ -1596,161 +1584,9 @@ MonoBehaviour:
   onButtonRelease:
     m_PersistentCalls:
       m_Calls: []
+  buttonAnimator: {fileID: 0}
+  pressParameterName: IsPressed
 --- !u!136 &6816879835992132650
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8922606237495439495}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.02
-  m_Height: 0.015792694
-  m_Direction: 1
-  m_Center: {x: 0.000000045634806, y: -0.0013026765, z: -0.000000020489097}
---- !u!114 &2723814965049897581
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8922606237495439495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa5bce230032ac2459597b722f78119a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactable: 1
-  audioSource: {fileID: 0}
-  interactionSound: {fileID: 0}
-  onRightClick:
-    m_PersistentCalls:
-      m_Calls: []
-  normalMaterial: {fileID: 2100000, guid: 5e36dccdc5b58f94eb09b2f3e71f65af, type: 2}
-  clickedMaterial: {fileID: 2100000, guid: c0763d3c0e0d2114995c4905aa29f5d8, type: 2}
-  materialFlashDuration: 0.2
-  pressDepth: 0.005
-  pressDuration: 0.05
-  animationCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  pressAxis: 0
-  onButtonPress:
-    m_PersistentCalls:
-      m_Calls: []
-  onButtonRelease:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!136 &4448799444965436681
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8922606237495439495}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.02
-  m_Height: 0.015792694
-  m_Direction: 1
-  m_Center: {x: 0.000000045634806, y: -0.0013026765, z: -0.000000020489097}
---- !u!114 &6228306511500937641
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8922606237495439495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa5bce230032ac2459597b722f78119a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactable: 1
-  audioSource: {fileID: 0}
-  interactionSound: {fileID: 0}
-  onRightClick:
-    m_PersistentCalls:
-      m_Calls: []
-  normalMaterial: {fileID: 2100000, guid: 5e36dccdc5b58f94eb09b2f3e71f65af, type: 2}
-  clickedMaterial: {fileID: 2100000, guid: c0763d3c0e0d2114995c4905aa29f5d8, type: 2}
-  materialFlashDuration: 0.2
-  pressDepth: 0.005
-  pressDuration: 0.05
-  animationCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  pressAxis: 0
-  onButtonPress:
-    m_PersistentCalls:
-      m_Calls: []
-  onButtonRelease:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!136 &3310089141032326640
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
