@@ -7,14 +7,33 @@ public class ThumbButtonInteractor : ButtonInteractorBase
 {
     [Header("Thumb Button Settings")]
     public float rotationSpeed = 2.0f;
-    public int numberOfPositions = 3;
+    [Range(0f, 1f)]
+    public float minOpacity = 0f;
+    [Range(0f, 1f)]
+    public float maxOpacity = 1f;    [HideInInspector]
+    public string opacityPropertyName = "_Opacity";
+    [HideInInspector]
+    public string emissionPropertyName = "_EmissionColor";
+    [HideInInspector]
+    private int materialIndex = 0; // Keep private for internal use
+      // Min and max values for hologram emitter emission intensity
+    [HideInInspector]
+    public float minEmissionIntensity = 0f;  // No emission when hologram is fully visible
+    [HideInInspector]
+    public float maxEmissionIntensity = 1f;  // Maximum green emission when hologram is invisible
+    
+    // Min and max values for hologram light intensity
+    [HideInInspector]
+    public float minLightIntensity = 0f;
+    [HideInInspector]
+    public float maxLightIntensity = 0.02f;
     
     [Header("References")]
     public Transform rotationPoint; // The point around which the cylinder rotates
-    
-    [Header("Menu Items")]
-    [Tooltip("The text names for each menu position")]
-    public string[] menuItemNames = new string[] { "Item 1", "Item 2", "Item 3" };
+    [Tooltip("The GameObject whose opacity will be controlled")]
+    public GameObject hologram;
+    public GameObject hologramEmitter;
+    public GameObject hologramLight;
     
     [Header("UI References")]
     [Tooltip("TextMeshPro component to display the current selection")]
@@ -25,9 +44,7 @@ public class ThumbButtonInteractor : ButtonInteractorBase
     // Rotation settings
     private float minRotation = 0f;
     private float maxRotation = 180f;
-    private float[] snapPositions;
-    private int currentPosition = 0;
-    private int previousPosition = 0;
+    private float currentOpacity = 1f;
     
     // Interaction state
     private bool isDragging = false;
@@ -35,8 +52,7 @@ public class ThumbButtonInteractor : ButtonInteractorBase
     private float startRotationX;
     private float targetRotation;
     private float currentRotationX;
-    
-    protected override void Start()
+      protected override void Start()
     {
         base.Start();
         
@@ -47,9 +63,19 @@ public class ThumbButtonInteractor : ButtonInteractorBase
             Debug.LogWarning("No rotation point assigned, using this transform instead.");
         }
         
+        // Initialize the objects if not assigned
+        if (hologram == null)
+        {
+            hologram = gameObject;
+            Debug.LogWarning("No hologram object assigned, using this gameObject instead.");
+        }
+        
+        // No need to warn for optional emitter and light
+        
         // Set initial rotation
         currentRotationX = transform.localRotation.eulerAngles.x;
-        SnapToPosition(0, false);
+        // Set initial opacity (use max at start)
+        SetOpacity(maxOpacity, false);
         
         // Update text display
         UpdateDisplayText();
@@ -57,43 +83,36 @@ public class ThumbButtonInteractor : ButtonInteractorBase
     
     protected override void InitializeButton()
     {
-        // Calculate snap positions based on the number of positions
-        InitializeSnapPositions();
-        
-        // If menu items array doesn't match the number of positions, resize it
-        if (menuItemNames.Length != numberOfPositions)
+        // Validate opacity range
+        if (minOpacity > maxOpacity)
         {
-            string[] oldNames = menuItemNames;
-            menuItemNames = new string[numberOfPositions];
-            
-            // Copy existing names
-            for (int i = 0; i < numberOfPositions; i++)
+            float temp = minOpacity;
+            minOpacity = maxOpacity;
+            maxOpacity = temp;
+            Debug.LogWarning("Min opacity was greater than max opacity. Values have been swapped.");
+        }
+        
+        // Check if the renderer and material are valid
+        if (hologram != null)
+        {
+            Renderer objectRenderer = hologram.GetComponent<Renderer>();
+            if (objectRenderer != null)
             {
-                if (i < oldNames.Length)
+                // Ensure material index is valid
+                if (materialIndex >= objectRenderer.materials.Length)
                 {
-                    menuItemNames[i] = oldNames[i];
-                }
-                else
-                {
-                    menuItemNames[i] = $"Item {i+1}";
+                    materialIndex = 0;
+                    Debug.LogWarning($"Material index out of range for target object. Set to 0. Max index: {objectRenderer.materials.Length - 1}");
                 }
             }
-            
-            Debug.LogWarning($"Menu item names array adjusted to match numberOfPositions ({numberOfPositions})");
+            else
+            {
+                Debug.LogWarning("Target object does not have a Renderer component. Opacity control won't work.");
+            }
         }
-    }
-    
-    void InitializeSnapPositions()
-    {
-        snapPositions = new float[numberOfPositions];
-        float step = (maxRotation - minRotation) / (numberOfPositions - 1);
         
-        // Reverse the order of snap positions so higher rotations correspond to lower positions
-        for (int i = 0; i < numberOfPositions; i++)
-        {
-            // This reverses the mapping - higher rotation value = lower menu position
-            snapPositions[i] = maxRotation - (step * i);
-        }
+        // Initialize with max opacity
+        SetOpacity(maxOpacity, false);
     }
     
     protected override bool CheckRaycastHit(RaycastHit hit)
@@ -128,25 +147,23 @@ public class ThumbButtonInteractor : ButtonInteractorBase
             // Apply rotation
             currentRotationX = newRotation;
             transform.localRotation = Quaternion.Euler(currentRotationX, 0, 0);
+              // Calculate opacity based on rotation 
+            // Map rotation (minRotation to maxRotation) to opacity (minOpacity to maxOpacity)
+            // Note: Higher rotation = higher opacity
+            float normalizedRotation = Mathf.InverseLerp(minRotation, maxRotation, currentRotationX);
+            float newOpacity = Mathf.Lerp(minOpacity, maxOpacity, normalizedRotation);
             
-            // Find the nearest position during dragging for dynamic updates
-            int nearestPos = FindNearestPosition(currentRotationX);
-            
-            // Check if the nearest position has changed while dragging
-            if (nearestPos != currentPosition)
+            // If opacity changed significantly
+            if (Mathf.Abs(newOpacity - currentOpacity) > 0.01f)
             {
-                // Record previous position
-                previousPosition = currentPosition;
-                // Update current position
-                currentPosition = nearestPos;
+                // Set the new opacity
+                SetOpacity(newOpacity, false);
                 
-                // Play sound when changing positions
+                // Play sound for feedback
                 PlayInteractionSound();
                 
-                // Update text display immediately
+                // Update display
                 UpdateDisplayText();
-                
-                Debug.Log($"Dragging to position: {currentPosition} - {GetCurrentItemName()}");
             }
         }
     }
@@ -155,48 +172,34 @@ public class ThumbButtonInteractor : ButtonInteractorBase
     {
         if (isDragging)
         {
-            isDragging = false;
-            int nearestPosition = FindNearestPosition(currentRotationX);
-            SnapToPosition(nearestPosition, true);
+            isDragging = false;            // Calculate final opacity
+            float normalizedRotation = Mathf.InverseLerp(minRotation, maxRotation, currentRotationX);
+            float finalOpacity = Mathf.Lerp(minOpacity, maxOpacity, normalizedRotation);
+            
+            // Animate to final value
+            SetOpacity(finalOpacity, true);
         }
     }
     
     protected override void OnRightClickPressed(Vector2 mousePosition)
     {
-        Debug.Log($"Right-clicked on position: {currentPosition} - {GetCurrentItemName()}");
+        Debug.Log($"Right-clicked - Current opacity: {currentOpacity:F2} ({Mathf.RoundToInt(currentOpacity * 100)}%)");
     }
     
     // We don't need to override HandleInput anymore since the base class handles it
     
-    int FindNearestPosition(float currentRotation)
+    void SetOpacity(float opacity, bool animate)
     {
-        int nearest = 0;
-        float minDistance = float.MaxValue;
+        // Clamp opacity to valid range
+        opacity = Mathf.Clamp(opacity, minOpacity, maxOpacity);
         
-        for (int i = 0; i < snapPositions.Length; i++)
-        {
-            float distance = Mathf.Abs(currentRotation - snapPositions[i]);
-            if (distance < minDistance)
-            {
-                minDistance = distance;
-                nearest = i;
-            }
-        }
-        
-        return nearest;
-    }
-    
-    void SnapToPosition(int position, bool animate)
-    {
-        position = Mathf.Clamp(position, 0, snapPositions.Length - 1);
-        targetRotation = snapPositions[position];
-        
-        // Record the previous position to detect changes
-        previousPosition = currentPosition;
-        
-        // Only update current position if it changed (we might already be at this position from dragging)
-        bool positionChanged = (currentPosition != position);
-        currentPosition = position;
+        // Check if opacity changed
+        bool opacityChanged = Mathf.Abs(opacity - currentOpacity) > 0.001f;
+        currentOpacity = opacity;
+          // Calculate target rotation (map opacity to rotation)
+        // Direct mapping: higher opacity = higher rotation value
+        float normalizedOpacity = Mathf.InverseLerp(minOpacity, maxOpacity, opacity);
+        targetRotation = Mathf.Lerp(minRotation, maxRotation, normalizedOpacity);
         
         if (animate)
         {
@@ -208,13 +211,15 @@ public class ThumbButtonInteractor : ButtonInteractorBase
             // Immediately set rotation
             currentRotationX = targetRotation;
             transform.localRotation = Quaternion.Euler(currentRotationX, 0, 0);
+            
+            // Immediately update material
+            UpdateMaterialOpacity();
         }
         
-        // Check if position changed and update UI
-        if (positionChanged)
+        // Update UI if opacity changed
+        if (opacityChanged)
         {
             PlayInteractionSound();
-            Debug.Log($"Snapped to position: {currentPosition} - {GetCurrentItemName()}");
             
             // Update text display
             UpdateDisplayText();
@@ -225,14 +230,78 @@ public class ThumbButtonInteractor : ButtonInteractorBase
     {
         // Use the base class's animation coroutine
         float startRotation = currentRotationX;
+        float startOpacity = currentOpacity;
+        float targetOpacity = currentOpacity; // We've already set this in SetOpacity
         
         return AnimateCoroutine(
             // Update action
             (t) => {
                 currentRotationX = Mathf.Lerp(startRotation, targetRotation, t);
                 transform.localRotation = Quaternion.Euler(currentRotationX, 0, 0);
+                
+                // Update opacity during animation too
+                UpdateMaterialOpacity();
             }
         );
+    }
+      // Update the target material's opacity and related effects
+    void UpdateMaterialOpacity()
+    {
+        // 1. Update hologram opacity
+        if (hologram != null)
+        {
+            Renderer objectRenderer = hologram.GetComponent<Renderer>();
+            if (objectRenderer != null && materialIndex < objectRenderer.materials.Length)
+            {
+                Material mat = objectRenderer.materials[materialIndex];
+                if (mat != null && mat.HasProperty(opacityPropertyName))
+                {
+                    mat.SetFloat(opacityPropertyName, currentOpacity);
+                }
+            }
+        }
+        
+        // 2. Update emitter emission intensity
+        if (hologramEmitter != null)
+        {
+            Renderer emitterRenderer = hologramEmitter.GetComponent<Renderer>();
+            if (emitterRenderer != null && emitterRenderer.material != null)
+            {
+                Material emitterMat = emitterRenderer.material;
+                if (emitterMat.HasProperty(emissionPropertyName))
+                {                    // Calculate emission intensity based on opacity
+                    // When opacity is max (1), emission is minEmissionIntensity (0)
+                    // When opacity is min (0), emission is maxEmissionIntensity (-1)
+                    float emissionIntensity = Mathf.Lerp(minEmissionIntensity, maxEmissionIntensity, currentOpacity);
+                    
+                    // Create a color with only green component
+                    Color targetEmission = new Color(0, Mathf.Abs(emissionIntensity), 0, 1);
+                    
+                    // Set the emission color with new intensity
+                    emitterMat.SetColor(emissionPropertyName, targetEmission);
+                    
+                    // Make sure emission is enabled if we're using it
+                    if (emissionIntensity != 0)
+                    {
+                        emitterMat.EnableKeyword("_EMISSION");
+                    }
+                }
+            }
+        }
+        
+        // 3. Update light intensity
+        if (hologramLight != null)
+        {
+            Light light = hologramLight.GetComponent<Light>();
+            if (light != null)
+            {
+                // Scale light intensity based on opacity
+                // When opacity is max (1), light is maxLightIntensity (0.02)
+                // When opacity is min (0), light is minLightIntensity (0)
+                float lightIntensity = Mathf.Lerp(minLightIntensity, maxLightIntensity, currentOpacity);
+                light.intensity = lightIntensity;
+            }
+        }
     }
     
     // New method to update the TextMeshPro display
@@ -240,64 +309,33 @@ public class ThumbButtonInteractor : ButtonInteractorBase
     {
         if (displayText != null)
         {
-            // Create the displayed text
-            string displayString = "";
-            
-            // Add each menu item in normal order (top to bottom)
-            for (int i = 0; i < menuItemNames.Length; i++)
-            {
-                // Highlight the selected item with color
-                if (i == currentPosition)
-                {
-                    displayString += $"<color=#{ColorUtility.ToHtmlStringRGB(textHighlightColor)}>{menuItemNames[i]}</color>";
-                }
-                else
-                {
-                    displayString += $"<color=#{ColorUtility.ToHtmlStringRGB(textNormalColor)}>{menuItemNames[i]}</color>";
-                }
-                
-                // Add line break if not the last item
-                if (i < menuItemNames.Length - 1)
-                {
-                    displayString += "\n";
-                }
-            }
-            
-            // Set the text
-            displayText.text = displayString;
+            // Format as percentage with highlight color
+            int opacityPercentage = Mathf.RoundToInt(currentOpacity * 100);
+            displayText.text = $"<color=#{ColorUtility.ToHtmlStringRGB(textHighlightColor)}>{opacityPercentage}%</color>";
         }
     }
     
-    // Get the name of the currently selected item
-    public string GetCurrentItemName()
+    // Public methods to access and set the current opacity
+    public float GetCurrentOpacity()
     {
-        if (currentPosition >= 0 && currentPosition < menuItemNames.Length)
-        {
-            // Using the position directly (we've already reversed the rotation mapping)
-            return menuItemNames[currentPosition];
-        }
-        return "Unknown";
+        return currentOpacity;
     }
     
-    // Public methods to access the current selection
-    public int GetCurrentPosition()
+    // Programmatically set the opacity
+    public void SetOpacityValue(float opacity, bool animate = true)
     {
-        return currentPosition;
+        SetOpacity(opacity, animate);
     }
     
-    // Programmatically set the position
-    public void SetPosition(int position, bool animate = true)
+    // Set opacity to minimum (make fully transparent)
+    public void SetMinimumOpacity(bool animate = true)
     {
-        SnapToPosition(position, animate);
+        SetOpacity(minOpacity, animate);
     }
     
-    // Add a public method to set menu item names
-    public void SetMenuItemName(int index, string name)
+    // Set opacity to maximum (make fully visible)
+    public void SetMaximumOpacity(bool animate = true)
     {
-        if (index >= 0 && index < menuItemNames.Length)
-        {
-            menuItemNames[index] = name;
-            UpdateDisplayText();
-        }
+        SetOpacity(maxOpacity, animate);
     }
 }
