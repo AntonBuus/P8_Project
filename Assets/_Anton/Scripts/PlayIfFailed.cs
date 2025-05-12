@@ -29,7 +29,7 @@ public class PlayIfFailed : MonoBehaviour
     
     void Update()
     {
-        if (!audioHasPlayed && _supervisorVoice.isThirdAudioReady && !_chestLidOpener._openlid)
+        if (!audioHasPlayed && _supervisorVoice.isThirdAudioReady)
         {
             _playFailedVoice.PlayRelevantVoice();
             _callOnceRadioHost.SendOneReply();

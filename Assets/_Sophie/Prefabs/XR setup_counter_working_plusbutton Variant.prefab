@@ -10814,7 +10814,7 @@ MonoBehaviour:
   countdownText: {fileID: 8714615079186151158}
   countdownDisplay: {fileID: 3712496961196480833}
   missionDisplay: {fileID: 2087616513699202507}
-  SetStartingTimeInSeconds: 120
+  SetStartingTimeInSeconds: 360
 --- !u!1 &7064670830655400809
 GameObject:
   m_ObjectHideFlags: 0
