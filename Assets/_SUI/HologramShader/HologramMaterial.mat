@@ -56,6 +56,8 @@ Material:
     - _Cull: 2
     - _DstBlend: 10
     - _FresnelPower: 2
+    - _Opacity: 1
+    - _Oppacity: 1
     - _QueueControl: 0
     - _QueueOffset: 0
     - _SrcBlend: 5
