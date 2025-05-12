@@ -28885,9 +28885,33 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 77737270919187669, guid: 972775febf6f5ff48bf0c75e9db3a1fc, type: 3}
+      propertyPath: m_Colliders.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 77737270919187669, guid: 972775febf6f5ff48bf0c75e9db3a1fc, type: 3}
       propertyPath: 'm_Colliders.Array.data[0]'
       value: 
       objectReference: {fileID: 122809594}
+    - target: {fileID: 77737270919187669, guid: 972775febf6f5ff48bf0c75e9db3a1fc, type: 3}
+      propertyPath: 'm_Colliders.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1432627989}
+    - target: {fileID: 77737270919187669, guid: 972775febf6f5ff48bf0c75e9db3a1fc, type: 3}
+      propertyPath: 'm_Colliders.Array.data[2]'
+      value: 
+      objectReference: {fileID: 779524160}
+    - target: {fileID: 77737270919187669, guid: 972775febf6f5ff48bf0c75e9db3a1fc, type: 3}
+      propertyPath: 'm_Colliders.Array.data[3]'
+      value: 
+      objectReference: {fileID: 407932865}
+    - target: {fileID: 77737270919187669, guid: 972775febf6f5ff48bf0c75e9db3a1fc, type: 3}
+      propertyPath: 'm_Colliders.Array.data[4]'
+      value: 
+      objectReference: {fileID: 42749325}
+    - target: {fileID: 77737270919187669, guid: 972775febf6f5ff48bf0c75e9db3a1fc, type: 3}
+      propertyPath: 'm_Colliders.Array.data[5]'
+      value: 
+      objectReference: {fileID: 840313399}
     - target: {fileID: 3259948375798249316, guid: 972775febf6f5ff48bf0c75e9db3a1fc, type: 3}
       propertyPath: m_Name
       value: XR setup_counter_working_plusbutton Variant
@@ -28951,7 +28975,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2287744392107705630, guid: 972775febf6f5ff48bf0c75e9db3a1fc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 972775febf6f5ff48bf0c75e9db3a1fc, type: 3}
 --- !u!4 &4464847911597290579
 Transform:

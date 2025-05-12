@@ -178,8 +178,8 @@ public class TTS_both_API : MonoBehaviour
         
         if (selectedTTSProvider == TTSProvider.PlayHT)
         {
-            // StartCoroutine(GeneratePlayHTSpeech(textToConvert));
-               StartCoroutine(GeneratePlayHTSpeech("Hello I am bob. I like to do programming and mess with my sanity."));
+            StartCoroutine(GeneratePlayHTSpeech(textToConvert));
+            //    StartCoroutine(GeneratePlayHTSpeech("Hello I am bob. I like to do programming and mess with my sanity."));
         }
         else if (selectedTTSProvider == TTSProvider.OpenAI)
         {
@@ -289,7 +289,7 @@ public class TTS_both_API : MonoBehaviour
                         isThirdAudioReady = true; // Set the bool true so door can open
                         Debug.Log("Third audio is ready");
                         // You can add any additional logic here if needed
-                        InitializePlayAudio(usableFilePath);
+                        
                     }
                     isSecondAudioReady = true; // Set the bool true so door can open
                     Debug.Log("Second audio is ready: ");
