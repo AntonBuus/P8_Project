@@ -14,11 +14,11 @@ public class AdjustablePrompts : MonoBehaviour
 
     [Header("Main variables for prompts")]
     public string _era = "The Hun Era"; // Default era
-    public string _anomalyObject = "A Walkman from the 80s"; // Default object
+    public string _anomalyObject = "A moderen crossbow"; // Default object
     public bool _setObjectRandomly = false; // Flag to set object randomly
-    public string _wasObjectRetrieved = "The agent brings back the object"; // Default retrieval status
+    public string _wasObjectRetrieved = "The agent reached the object"; // Default retrieval status
     [Tooltip("Flag to check if the object is retrieved")] public bool _objectIsRetrieved = false;
-    public string _timeStatus = "They brought back the object in due time"; // Default time status
+    public string _timeStatus = "They made it in due time, so no disruptions were caused to the timeline, very good performance"; // Default time status
 
     [Header("Prompt variables")]
     [TextArea(3, 10)] public string _prompt2ArrivalInEra;
@@ -52,15 +52,15 @@ public class AdjustablePrompts : MonoBehaviour
     }
     public void SetAnomalyObject()
     {
-        string[] anomalyObjects = { "A Walkman from the 80s", "A futuristic smartphone", 
-        "A medieval sword", "An ancient scroll", "A golden compass" };
+        string[] anomalyObjects = { "A Walkman from the 80s", "A smartphone", 
+        "A medieval sword", "A modern olimpic-grade crossbow", "A computer from the 90s" };
         _anomalyObject = anomalyObjects[UnityEngine.Random.Range(0, anomalyObjects.Length)];
         Debug.Log("Anomaly object set to: " + _anomalyObject);
     }
 
     public void ObjectWasNotRetrieved() //subbed for SetObjectRetrieved()
     {
-        _wasObjectRetrieved = "The agent failed to retrieve the object";
+        _wasObjectRetrieved = "The agent failed to retrieve the object in time. ";
     }
 
     public void SetTimeStatus(int _timeStatusLevel)
@@ -72,7 +72,7 @@ public class AdjustablePrompts : MonoBehaviour
         }
         else if (_timeStatusLevel == 1)
         {
-            _timeStatus = "They were late reaching the object, this could cause some disruptions to the timeline, otherwise a good performance.";
+            _timeStatus = "They were late reaching the object, this could cause some mild disruptions to the timeline, otherwise a good performance.";
         }
         else if (_timeStatusLevel == 2)
         {

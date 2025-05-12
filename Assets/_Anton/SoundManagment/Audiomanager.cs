@@ -9,21 +9,21 @@ public class AudioManager : MonoBehaviour
 
 
     //Singleton pattern
-    public static AudioManager instance;
+    // public static AudioManager instance;
 
     void Awake()
     {
         //Singleton pattern
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-            return;
-        }
+        // if (instance == null)
+        // {
+        //     instance = this;
+        //     DontDestroyOnLoad(gameObject);
+        // }
+        // else
+        // {
+        //     Destroy(gameObject);
+        //     return;
+        // }
 
         foreach (Sound s in soundsArray)
         {
@@ -39,11 +39,11 @@ public class AudioManager : MonoBehaviour
 
     }
 
-    void Start()
-    {
-        Play("Theme");
-        //Debug.Log("Start is working");
-    }
+    // void Start()
+    // {
+    //     Play("Theme");
+    //     //Debug.Log("Start is working");
+    // }
 
     //To call:
     //FindObjectOfType<AudioManager>().Play("clip_name");

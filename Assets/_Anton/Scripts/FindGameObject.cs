@@ -1,5 +1,6 @@
 using OpenAI;
 using UnityEngine;
+using System.Collections;
 
 public class FindGameObject : MonoBehaviour
 {
@@ -7,6 +8,9 @@ public class FindGameObject : MonoBehaviour
     [SerializeField] private AdjustablePrompts adjustablePrompts;
     [SerializeField] private CallSupervisor1 supervisor1;
     [SerializeField] private TTS_both_API ttsBothAPI;
+
+    public AudioSource audioSource;
+    public AudioClip firstClip;
     void Start()
     {
         if (adjustablePrompts == null)
@@ -21,10 +25,19 @@ public class FindGameObject : MonoBehaviour
         {
             ttsBothAPI = GameObject.Find("TTS API").GetComponent<TTS_both_API>();
         }
-        ttsBothAPI.InitializePlayAudio(ttsBothAPI.usableFilePath);
-        adjustablePrompts.CollectMissionReportPrompt();
+        // ttsBothAPI.InitializePlayAudio(ttsBothAPI.usableFilePath);
+        // adjustablePrompts.CollectMissionReportPrompt();//not calling this as it is too early
 
+        StartCoroutine(PlayClipsInSequence());
     }
+    
+    private IEnumerator PlayClipsInSequence()
+    {
+        audioSource.clip = firstClip;
+        audioSource.Play();
+        yield return new WaitForSeconds(firstClip.length);
 
+        ttsBothAPI.InitializePlayAudio(ttsBothAPI.usableFilePath);
+    }
 
 }

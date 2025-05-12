@@ -64,7 +64,9 @@ namespace OpenAI
 
                     messages.Add(message); 
                     OutputText.text = message.Content; // Display the AI-generated text in the UI
-                    
+                    string textfileName = "/output_" + System.DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".txt";
+                    System.IO.File.WriteAllText(Application.persistentDataPath + textfileName, message.Content);
+                    Debug.Log("TextFile saved: " + Application.persistentDataPath + "/output.txt" + System.DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".txt");
                     // Automatically trigger TTS after generating the text
                     if (ttsSystem != null)
                     {

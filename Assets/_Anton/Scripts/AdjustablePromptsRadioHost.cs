@@ -30,14 +30,14 @@ public class AdjustablePromptsRadioHost : MonoBehaviour
         {
             _adjustablePromptsSupervisor = GameObject.Find("AdjustablePrompts").GetComponent<AdjustablePrompts>();
         }
-        CollectRadioContent();
+        
     }
     public void CollectRadioContent()
     {
-        _prompt1RadiohostReport = "The agent returned from his trip to " + _adjustablePromptsSupervisor._era + " with the object: "
-        + _adjustablePromptsSupervisor._anomalyObject + ". " + _adjustablePromptsSupervisor._timeStatus;
+        _prompt1RadiohostReport = "The agent returned from his trip to " + _adjustablePromptsSupervisor._era + ". The object was: "
+        + _adjustablePromptsSupervisor._anomalyObject + ". "+ _adjustablePromptsSupervisor._wasObjectRetrieved + _adjustablePromptsSupervisor._timeStatus;
         _inputField.text = _prompt1RadiohostReport; // Set the input field text to the prompt
-        Debug.Log("Called collect arrival"); // Log the prompt to the console for debugging
+        Debug.Log("Collected radiohost prompt"); // Log the prompt to the console for debugging
         // _callRadiohost.SendReply();
     }
     

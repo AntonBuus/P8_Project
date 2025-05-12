@@ -2,13 +2,20 @@ using UnityEngine;
 
 public class IfAudioReady : MonoBehaviour
 {
-    public TTS_both_API _playGeneratedVoice;
+    public TTS_both_API _playRadioVoice;
+    void Start()
+    {
+        if (_playRadioVoice == null)
+        {
+            _playRadioVoice = GameObject.Find("Radio TTS API").GetComponent<TTS_both_API>();
+        }
+    }
     bool audioHasPlayed = false;
     void Update()
     {
-        if (!audioHasPlayed && _playGeneratedVoice.isAudioReady)
+        if (!audioHasPlayed && _playRadioVoice.isAudioReady)
         {
-            _playGeneratedVoice.InitializePlayAudio(_playGeneratedVoice.usableFilePath);
+            _playRadioVoice.InitializePlayAudio(_playRadioVoice.usableFilePath);
             audioHasPlayed = true;
             
         }
