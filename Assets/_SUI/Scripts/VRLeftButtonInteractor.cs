@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR.Interaction.Toolkit.Interactors;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 using System.Collections;
 
@@ -34,12 +35,25 @@ public class VRLeftButtonInteractor : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip interactionSound;
 
-    // Reference to the XR interactable component
-    private XRBaseInteractable xrInteractable;
-    
-    // Reference to the screen's renderer
-    private Renderer screenRenderer;
-    
+    [Header("Debug")]
+    [SerializeField] private bool showPokeZone = false;
+    private GameObject pokeVisualizer;
+
+    [Tooltip("Enable detailed diagnostic logging to find what's triggering the button")]
+    [SerializeField] private bool detailedDebugLogging = true;
+
+    [Header("Interaction Settings")]
+    [Tooltip("Which interaction methods this button should respond to")]
+    [SerializeField] private InteractionMode interactionMode = InteractionMode.AllMethods; // Changed default to AllMethods
+
+    public enum InteractionMode
+    {
+        PokeTrigger,    // Only trigger on poke
+        HoverTrigger,   // Only trigger on hover
+        SelectTrigger,  // Only trigger on select (including NearFarInteractor)
+        AllMethods      // Respond to any interaction
+    }
+
     // Animation state tracking
     private Vector3 originalPosition;
     private bool isPressed = false;
@@ -47,30 +61,19 @@ public class VRLeftButtonInteractor : MonoBehaviour
     
     // Track screen power state
     private bool isScreenOn = false;
+    
+    // Renderer for the screen
+    private Renderer screenRenderer;
+
+    // New fields for managing toggle state and preventing multiple toggles
+    private bool isHovering = false;
+    private float lastToggleTime = 0f;
+    [SerializeField] private float toggleCooldown = 0.2f; // Prevents toggling more frequently than this
 
     private void Awake()
     {
         // Store original position for animation
         originalPosition = transform.localPosition;
-        
-        // First try to get the specific XRSimpleInteractable
-        xrInteractable = GetComponent<XRSimpleInteractable>();
-        
-        // If that fails, try to get any XRBaseInteractable
-        if (xrInteractable == null)
-        {
-            xrInteractable = GetComponent<XRBaseInteractable>();
-        }
-        
-        if (xrInteractable == null)
-        {
-            Debug.LogError("No XR Interactable component found. Please add an XRSimpleInteractable component to this GameObject.");
-            return;
-        }
-        
-        // Register for XR Interaction events - we only need select entered as a toggle
-        xrInteractable.selectEntered.AddListener(OnButtonPressed);
-        xrInteractable.selectExited.AddListener(OnButtonReleased);
         
         // Get screen renderer
         if (screenObject != null)
@@ -78,89 +81,209 @@ public class VRLeftButtonInteractor : MonoBehaviour
             screenRenderer = screenObject.GetComponent<Renderer>();
             if (screenRenderer == null)
             {
-                Debug.LogWarning("Screen object does not have a Renderer component.");
+                Debug.LogWarning("Screen object does not have a Renderer component. Will toggle visibility only.");
             }
         }
         else
         {
-            Debug.LogWarning("No screen object assigned to power button.");
+            Debug.LogError("No screen object assigned to power button. Button won't function correctly.");
         }
         
         // Initialize screen to OFF state
         UpdateScreenState();
     }
-    
-    private void OnDestroy()
-    {
-        // Clean up event listeners
-        if (xrInteractable != null)
-        {
-            xrInteractable.selectEntered.RemoveListener(OnButtonPressed);
-            xrInteractable.selectExited.RemoveListener(OnButtonReleased);
-        }
-    }
 
     private void Start()
     {
         Debug.Log("VR Button Interactor initialized");
+        
+        // Make sure we have an XR Simple Interactable
+        if (!TryGetComponent<XRSimpleInteractable>(out var simpleInteractable))
+        {
+            Debug.LogError("Missing XRSimpleInteractable component. Please add one to this GameObject.");
+        }
+        else
+        {
+            // Make sure select events are registered properly
+            if (simpleInteractable.selectEntered.GetPersistentEventCount() == 0)
+            {
+                Debug.LogWarning("<color=yellow>No select events registered in the Inspector. Adding programmatically.</color>");
+                
+                // Add the event listener programmatically if not set in inspector
+                simpleInteractable.selectEntered.AddListener(OnButtonInteraction);
+            }
+        }
+        
+        // Create debug visualizer if enabled
+        if (showPokeZone)
+        {
+            CreatePokeVisualizer();
+        }
     }
 
-    private void OnButtonPressed(SelectEnterEventArgs args)
+    private void OnValidate()
     {
-        Debug.Log($"Button {gameObject.name} pressed");
+        // This method will only run in the editor and provides guidance for setup
+        Debug.Log("VR Button Setup Guide:\n" +
+                  "1. Adjust XR Poke Interactor on your controller:\n" +
+                  "   - Reduce Poke Depth to 0.05-0.07m (currently " + 0.1f + "m)\n" +
+                  "   - Reduce Poke Width to 0.005m (currently " + 0.0075f + "m)\n" +
+                  "   - Reduce Poke Select Width to 0.01m (currently " + 0.015f + "m)\n" +
+                  "   - Reduce Poke Hover Radius to 0.01m (currently " + 0.015f + "m)\n" +
+                  "   - Reduce Poke Interaction Offset to 0.002m (currently " + 0.005f + "m)\n" +
+                  "2. Make sure the Mesh Collider size closely matches the visual button");
+    }
+
+    // PUBLIC METHODS FOR DIRECT CONNECTION IN UNITY INSPECTOR
+
+    /// <summary>
+    /// Direct toggle function that can be called from UI events or buttons
+    /// </summary>
+    public void ToggleScreen()
+    {
+        // Don't allow toggle more frequently than the cooldown period
+        if (Time.time - lastToggleTime < toggleCooldown)
+            return;
+        
+        lastToggleTime = Time.time;
+        
+        Debug.Log("ToggleScreen called directly");
         
         // Toggle screen state
-        ToggleScreenState();
+        isScreenOn = !isScreenOn;
         
+        // Update visuals
+        UpdateScreenState();
+        
+        // Play sound
         PlayInteractionSound();
         
-        // Animate button press
-        AnimateButtonPress(true);
+        // Animate button press and release
+        PressAndReleaseAnimation();
+        
+        Debug.Log($"Screen toggled to: {(isScreenOn ? "ON" : "OFF")}");
     }
     
-    private void OnButtonReleased(SelectExitEventArgs args)
+    /// <summary>
+    /// Called when hover first enters the button
+    /// </summary>
+    public void OnHoverEntered(HoverEnterEventArgs args = null)
     {
-        Debug.Log($"Button {gameObject.name} released");
+        if (detailedDebugLogging && args != null)
+        {
+            Debug.Log($"<color=yellow>HOVER ENTER from: {args.interactorObject.transform.name}</color>");
+            Debug.Log($"<color=yellow>Interactor type: {args.interactorObject.GetType().Name}</color>");
+        }
         
-        // Animate button release
-        AnimateButtonPress(false);
+        // Only toggle if we're using hover or all methods
+        if (interactionMode == InteractionMode.HoverTrigger || interactionMode == InteractionMode.AllMethods)
+        {
+            if (!isHovering)
+            {
+                isHovering = true;
+                ToggleScreen();
+            }
+        }
+        else
+        {
+            // Just update the hover state without triggering
+            isHovering = true;
+        }
+    }
+    
+    /// <summary>
+    /// Called when hover leaves the button
+    /// </summary>
+    public void OnHoverExited() 
+    {
+        isHovering = false;
+        ReleaseButton(); // Make sure the button visually pops back up
+    }
+    
+    /// <summary>
+    /// Called when button is interacted with (via Inspector events)
+    /// </summary>
+    public void OnButtonInteraction(SelectEnterEventArgs args = null)
+    {
+        if (detailedDebugLogging && args != null)
+        {
+            Debug.Log($"<color=green>SELECT ENTER from: {args.interactorObject.transform.name}</color>");
+            Debug.Log($"<color=green>Interactor type: {args.interactorObject.GetType().Name}</color>");
+            
+            // Check if this is the NearFarInteractor that's triggering the button
+            bool isNearFarInteractor = args.interactorObject.transform.name.Contains("Near-Far");
+            Debug.Log($"<color=cyan>Is NearFarInteractor: {isNearFarInteractor}</color>");
+        }
+        
+        // Only toggle if we're using select trigger or all methods
+        if (interactionMode == InteractionMode.SelectTrigger || 
+            interactionMode == InteractionMode.AllMethods ||
+            interactionMode == InteractionMode.PokeTrigger) // Include PokeTrigger since NearFar seems to be your alternative
+        {
+            // This is the critical part - make sure we're actually calling ToggleScreen
+            ToggleScreen();
+        }
     }
 
-    private void ToggleScreenState()
+    // Add these diagnostic methods to see what's triggering
+    void OnTriggerEnter(Collider other)
     {
-        isScreenOn = !isScreenOn;
-        UpdateScreenState();
-        Debug.Log($"Screen power toggled: {(isScreenOn ? "ON" : "OFF")}");
+        if (detailedDebugLogging)
+            Debug.Log($"<color=blue>TRIGGER ENTER from: {other.name}</color>");
     }
-    
+
+    void OnTriggerExit(Collider other)
+    {
+        if (detailedDebugLogging)
+            Debug.Log($"<color=blue>TRIGGER EXIT from: {other.name}</color>");
+    }
+
+    // PRIVATE IMPLEMENTATION
+
     private void UpdateScreenState()
     {
-        if (screenObject == null || screenRenderer == null)
+        if (screenObject == null)
             return;
             
         // Update material based on screen state
         if (isScreenOn)
         {
-            if (screenOnMaterial != null)
+            // Activate screen
+            screenObject.SetActive(true);
+            
+            // Apply ON material if available
+            if (screenRenderer != null && screenOnMaterial != null)
             {
                 screenRenderer.material = screenOnMaterial;
             }
-            
-            // Ensure the screen object is active
-            screenObject.SetActive(true);
         }
         else
         {
-            if (screenOffMaterial != null)
+            // Apply OFF material if available
+            if (screenRenderer != null && screenOffMaterial != null)
             {
                 screenRenderer.material = screenOffMaterial;
             }
             else
             {
-                // If no OFF material is provided, just deactivate the object
+                // No OFF material, just deactivate
                 screenObject.SetActive(false);
             }
         }
+    }
+
+    private void PressAndReleaseAnimation()
+    {
+        // Start press animation
+        AnimateButtonPress(true);
+        
+        // Schedule release animation after a short delay
+        Invoke(nameof(ReleaseButton), 0.1f);
+    }
+    
+    private void ReleaseButton()
+    {
+        AnimateButtonPress(false);
     }
 
     // Animate button press down or release up
@@ -231,5 +354,56 @@ public class VRLeftButtonInteractor : MonoBehaviour
         {
             audioSource.PlayOneShot(interactionSound);
         }
+    }
+
+    private void CreatePokeVisualizer()
+    {
+        pokeVisualizer = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        pokeVisualizer.name = "PokeZoneVisualizer";
+        pokeVisualizer.transform.SetParent(transform);
+        pokeVisualizer.transform.localPosition = Vector3.zero;
+        
+        // Match the size to the collider
+        Collider col = GetComponent<Collider>();
+        if (col is MeshCollider meshCol)
+        {
+            // For mesh colliders, use an approximation
+            var bounds = meshCol.sharedMesh.bounds;
+            float maxSize = Mathf.Max(bounds.size.x, bounds.size.y, bounds.size.z);
+            pokeVisualizer.transform.localScale = Vector3.one * maxSize;
+        }
+        else if (col is BoxCollider boxCol)
+        {
+            pokeVisualizer.transform.localScale = boxCol.size;
+        }
+        else if (col is SphereCollider sphereCol)
+        {
+            pokeVisualizer.transform.localScale = Vector3.one * sphereCol.radius * 2;
+        }
+        else if (col is CapsuleCollider capsuleCol)
+        {
+            pokeVisualizer.transform.localScale = new Vector3(
+                capsuleCol.radius * 2,
+                capsuleCol.height,
+                capsuleCol.radius * 2);
+        }
+        
+        // Make the visualizer transparent
+        if (pokeVisualizer.TryGetComponent<Renderer>(out var renderer))
+        {
+            Material mat = new Material(Shader.Find("Standard"));
+            mat.color = new Color(0, 1, 0, 0.3f);
+            renderer.material = mat;
+        }
+        
+        // Remove collider from visualizer
+        Destroy(pokeVisualizer.GetComponent<Collider>());
+    }
+    
+    // Add this method for testing the button manually
+    public void TestToggle()
+    {
+        Debug.Log("<color=purple>Test toggle called</color>");
+        ToggleScreen();
     }
 }
