@@ -163,8 +163,24 @@ public class VRHandleInteraction : MonoBehaviour
             audioSource = zeroPoint.GetComponent<AudioSource>();
             if (audioSource == null)
             {
-                Debug.LogWarning("No AudioSource found on Pull_Zero_Point");
+                Debug.LogWarning("No AudioSource found on zero point. Adding one automatically.");
+                // Automatically add an AudioSource if one doesn't exist
+                audioSource = zeroPoint.gameObject.AddComponent<AudioSource>();
+                // Configure basic settings
+                audioSource.playOnAwake = false;
+                audioSource.spatialBlend = 1.0f; // Full 3D sound
+                audioSource.volume = 0.7f;
             }
+            
+            // Check if we have a year change sound assigned
+            if (yearChangeSound == null)
+            {
+                Debug.LogWarning("No yearChangeSound assigned in the inspector. Sound feedback won't work.");
+            }
+        }
+        else
+        {
+            Debug.LogError("zeroPoint is null! Cannot setup audio properly.");
         }
 
         // Initialize previous rotations
@@ -565,18 +581,34 @@ public class VRHandleInteraction : MonoBehaviour
     
     void PlayYearChangeSound()
     {
+        // Add debug message to verify this method is being called
+        Debug.Log("PlayYearChangeSound called - attempting to play audio");
+        
         if (audioSource != null && audioSource.isActiveAndEnabled)
         {
             // Use PlayOneShot for better sound handling
             if (yearChangeSound != null)
             {
+                Debug.Log($"Playing sound clip: {yearChangeSound.name}");
                 audioSource.PlayOneShot(yearChangeSound);
             }
             else
             {
                 // Fallback to Play() if no clip is assigned
-                audioSource.Play();
+                Debug.LogWarning("No yearChangeSound clip assigned, but trying to play default audio source clip");
+                if (audioSource.clip != null)
+                {
+                    audioSource.Play();
+                }
+                else
+                {
+                    Debug.LogError("No audio clip assigned to either yearChangeSound or the AudioSource component");
+                }
             }
+        }
+        else
+        {
+            Debug.LogError("Cannot play sound: audioSource is null or not enabled");
         }
     }    
     
