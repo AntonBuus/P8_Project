@@ -181,10 +181,10 @@ public class HandleInteraction : MonoBehaviour
                 isDragging = false;
                 StartRetraction();
             }
-        }
-    }
+        }    }
+    
     // ===== VR INTERACTION REPLACEMENT END =====
-
+    
     void UpdateHandleRotation()
     {
         // Calculate direction from handle to zero point
@@ -196,8 +196,8 @@ public class HandleInteraction : MonoBehaviour
             // Create a rotation that points the handle's forward direction toward the zero point
             Quaternion targetRotation = Quaternion.LookRotation(direction);
             
-            // Apply a 90-degree rotation around the Y axis to correct the orientation
-            targetRotation *= Quaternion.Euler(0, 90, 0);
+            // Apply rotation correction - try Z-axis rotation instead
+            targetRotation *= Quaternion.Euler(-90, 0, 0);
             
             // Apply the rotation
             transform.rotation = targetRotation;

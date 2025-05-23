@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class FindVoiceEndscene : MonoBehaviour
 {
-    //This is to be inserted to any script that needs to influence or activate prompts
     [SerializeField] private AdjustablePrompts adjustablePrompts;
     [SerializeField] private CallRadiohost radiohost;
     [SerializeField] private TTS_both_API ttsBothAPI;

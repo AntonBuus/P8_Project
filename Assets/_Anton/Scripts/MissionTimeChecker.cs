@@ -2,15 +2,15 @@ using UnityEngine;
 
 public class MissionTimeChecker : MonoBehaviour
 {
-    [SerializeField] AdjustablePrompts _adjustablePrompts; // Reference to the TTS system
-    [SerializeField] LeverTimeDial _leverTimeDial; // Reference to the lever time dial
-    float _currentTime; // Current time in seconds
-    public float _middleTime = 120; // Time in seconds to warn the player
-    [SerializeField] ButtonDebug _missionTime; // Reference to the ButtonDebug script
-    public string _winSceneName = "Win_Scene_v3" ; // Name of the win scene
-    public string _failSceneName = "Fail_Scene_v3"; // Name of the lose scene
+    [SerializeField] AdjustablePrompts _adjustablePrompts; 
+    [SerializeField] LeverTimeDial _leverTimeDial; 
+    float _currentTime; 
+    public float _middleTime = 120; 
+    [SerializeField] ButtonDebug _missionTime; 
+    public string _winSceneName = "Win_Scene_v3" ; 
+    public string _failSceneName = "Fail_Scene_v3"; 
 
-    public bool _failedOficially = false; // Flag to check if the mission failed officially
+    public bool _failedOficially = false; 
 
     void Start()
     {
@@ -28,28 +28,28 @@ public class MissionTimeChecker : MonoBehaviour
 
     public void CheckMissionTime()
     {
-        _currentTime = _missionTime.SyncedRemainingTime; // Update _currentTime with the value from the external source
+        _currentTime = _missionTime.SyncedRemainingTime; 
         
         if (_currentTime <= 0)
         {
             _adjustablePrompts.SetTimeStatus(2); 
             _adjustablePrompts.ObjectWasNotRetrieved(); 
-            _leverTimeDial.sceneToLoad = _failSceneName; // Set the scene to load to the lose scene
-            Debug.Log("called failed missiontime"); // Log the current time for debugging
-            _failedOficially = true; // Set the mission failed flag to true
+            _leverTimeDial.sceneToLoad = _failSceneName; 
+            Debug.Log("called failed missiontime"); 
+            _failedOficially = true; 
         }
-        if (_currentTime <= _middleTime && _currentTime >0) // Check if the time is below x amount
+        if (_currentTime <= _middleTime && _currentTime >0) 
         {
             _adjustablePrompts.SetTimeStatus(1); 
-            _leverTimeDial.sceneToLoad = _winSceneName; // Set the scene to load to the win scene
+            _leverTimeDial.sceneToLoad = _winSceneName; 
             Debug.Log("called middle missiontime");
         }
-        if (_currentTime > _middleTime) // Check if the time is above middleTime amount
+        if (_currentTime > _middleTime) 
         {
             _adjustablePrompts.SetTimeStatus(0); 
-            _leverTimeDial.sceneToLoad = _winSceneName; // Set the scene to load to the win scene
+            _leverTimeDial.sceneToLoad = _winSceneName; 
             Debug.Log("called normal missiontime");
         }
-        _adjustablePrompts.CollectMissionReportPrompt(); // Collect the mission report prompt
+        _adjustablePrompts.CollectMissionReportPrompt(); 
     }
 }

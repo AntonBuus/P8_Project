@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit.Interactables;
 public class AllowObjectGrab : MonoBehaviour
 {
-    public TTS_both_API ttsSystem; // Reference to the TTS system
+    public TTS_both_API ttsSystem; 
     public BoxCollider _objectCollider;
     public XRGrabInteractable XRGrabInteractable;
     
@@ -20,7 +20,6 @@ public class AllowObjectGrab : MonoBehaviour
         Debug.Log("AllowObjectGrab script enabled");
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (ttsSystem.isThirdAudioReady)

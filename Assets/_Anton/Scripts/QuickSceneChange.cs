@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class QuickSceneChange : MonoBehaviour
 {
-    public string sceneName = "SceneName"; // Replace with your scene name
-    public float delay = 2f; // Delay before changing the scene
+    public string sceneName = "SceneName"; 
+    public float delay = 2f; 
 
     private void Start()
     {

@@ -1,3 +1,5 @@
+// Original Code for Scenemanagemnt logic, but line 22 - 60 was created by chatGBT
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnitySceneManager = UnityEngine.SceneManagement.SceneManager;
@@ -18,7 +20,6 @@ public class SpawnManager : MonoBehaviour
     void Start()
     {
 #if UNITY_EDITOR
-        // If you're hitting Play in the Unity Editor directly in this scene
         if (UnitySceneManager.GetActiveScene().name == currentSceneName)
         {
             Debug.Log("[SpawnManager] Editor Play Mode detected - clearing LastScene...");

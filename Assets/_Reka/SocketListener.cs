@@ -5,7 +5,7 @@ using UnityEngine.XR.Interaction.Toolkit.Interactors;
 public class SocketListener : MonoBehaviour
 {
     public PuzzleManager puzzleManager;
-    public int socketIndex;  // Set this manually per socket (0,1,2,3...)
+    public int socketIndex;
 
     private SocketTagFunc socket;
 

@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class LeverTimeDial : MonoBehaviour
+public class SUILeverTimeDial : MonoBehaviour
 {
     [Header("=== Scene Settings ===")]
     public string sceneToLoad = "BossOffice_1";
@@ -19,7 +19,7 @@ public class LeverTimeDial : MonoBehaviour
     public Transform pipboiTransform;
 
     [Header("=== Lever Return ===")]
-    public Transform attachPoint; 
+    public Transform attachPoint; // 👈 Your custom reset position
 
     private bool hasActivated = false;
     private bool isReturning = false;
@@ -55,13 +55,19 @@ public class LeverTimeDial : MonoBehaviour
             ParticleSystem ps = Instantiate(bootupEffectPrefab, pipboiTransform.position, Quaternion.identity);
             ps.Play();
         }
-
-        StartCoroutine(SwitchSceneAfterDelay());
+        
+        // Scene switching moved to OnLeverReleased
     }
 
     private void OnLeverReleased(SelectExitEventArgs args)
     {
         isReturning = true;
+        
+        // Only trigger scene switching if the lever has been activated
+        if (hasActivated)
+        {
+            StartCoroutine(SwitchSceneAfterDelay());
+        }
     }
 
     private void Update()

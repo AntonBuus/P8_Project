@@ -44,7 +44,7 @@ public class OpenLid : MonoBehaviour
         IsOpen = true;
     }
 
-    public void OpenLidNow() // Call this from puzzle logic
+    public void OpenLidNow() 
     {
         IsOpen = true;
         isTriggered = false;
