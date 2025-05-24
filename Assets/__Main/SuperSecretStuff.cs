@@ -9,7 +9,7 @@ public class SuperSecretStuff : MonoBehaviour
 
     private void Start()
     {
-        LoadApiKeysFromXml("Assets/__Main/Secretstuff.xml");
+        LoadApiKeysFromXml("Assets/__Main/KeyCollection.xml");
     }
 
     private void LoadApiKeysFromXml(string filePath)
