@@ -5,8 +5,8 @@ using UnityEngine.Networking;
 using System.Text;
 using Newtonsoft.Json; 
 using TMPro;
-// This API was created with the asstance of AI, and is used to generate text-to-speech audio using both Play.ht and OpenAI's TTS services.
-//make sure to have your API keys set up
+// This parts of this APIcall was created with the asstance of AI, and is used to generate text-to-speech.
+// make sure to have your API keys set up
 public class TTS_both_API : MonoBehaviour
 {
     public enum TTSProvider { PlayHT, OpenAI, No_Speech }
