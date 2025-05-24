@@ -14,7 +14,7 @@ public class AdjustablePrompts : MonoBehaviour
 
     [Header("Main variables for prompts")]
     public string _era = "The Hun Era"; 
-    public string _anomalyObject = "A moderen olympic-grade crossbow"; 
+    public string _anomalyObject = "A moderen crossbow"; 
     public bool _setObjectRandomly = false; 
     public string _wasObjectRetrieved = "The agent reached the object"; 
     [Tooltip("Flag to check if the object is retrieved")] public bool _objectIsRetrieved = false;
@@ -51,7 +51,7 @@ public class AdjustablePrompts : MonoBehaviour
     public void SetAnomalyObject()
     {
         string[] anomalyObjects = { "A Walkman from the 80s", "A smartphone", 
-        "A medieval sword", "A modern olimpic-grade crossbow", "A golden compass" };
+        "A medieval sword", "A modern olimpic-grade crossbow", "A computer from the 90s" };
         _anomalyObject = anomalyObjects[UnityEngine.Random.Range(0, anomalyObjects.Length)];
         Debug.Log("Anomaly object set to: " + _anomalyObject);
     }

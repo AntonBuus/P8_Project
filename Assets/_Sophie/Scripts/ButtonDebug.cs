@@ -16,7 +16,7 @@ public class ButtonDebug : MonoBehaviour
 
     private bool showingMission = false;
     private string currentScene = "";
-
+    public float SetStartingTimeInSeconds = 300f; // Default starting time in seconds        
     MissionTimeChecker _missionTimeChecker;
     public float SyncedRemainingTime
     {
@@ -45,7 +45,7 @@ public class ButtonDebug : MonoBehaviour
             if (!timerStarted && currentScene == "Hun_Era_v3")
             {
                 Debug.Log("✅ Timer auto-started in Hun_Era_v3");
-                remainingTime = 30f;
+                remainingTime = SetStartingTimeInSeconds;
                 timerStarted = true;
                 countdownCoroutine = StartCoroutine(StartCountdown());
             }

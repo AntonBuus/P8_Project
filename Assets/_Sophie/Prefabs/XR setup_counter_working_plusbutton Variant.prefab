@@ -1105,7 +1105,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7819970282995892791
 Transform:
   m_ObjectHideFlags: 0
@@ -1535,9 +1535,9 @@ MonoBehaviour:
 
     ---------
 
-    -Find object
+    -Find high ground
 
-    -Report back'
+    -Locate anomaly'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 78c210e7ab187544ebfd2bc9d68c2892, type: 2}
   m_sharedMaterial: {fileID: -3214034965001635969, guid: 78c210e7ab187544ebfd2bc9d68c2892, type: 2}
@@ -1564,8 +1564,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 6.5
-  m_fontSizeBase: 6.5
+  m_fontSize: 5.77
+  m_fontSizeBase: 5.77
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1576,7 +1576,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: 11.38
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -10814,6 +10814,7 @@ MonoBehaviour:
   countdownText: {fileID: 8714615079186151158}
   countdownDisplay: {fileID: 3712496961196480833}
   missionDisplay: {fileID: 2087616513699202507}
+  SetStartingTimeInSeconds: 360
 --- !u!1 &7064670830655400809
 GameObject:
   m_ObjectHideFlags: 0

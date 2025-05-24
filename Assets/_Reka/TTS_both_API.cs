@@ -38,7 +38,8 @@ public class TTS_both_API : MonoBehaviour
         
         if (selectedTTSProvider == TTSProvider.PlayHT)
         {
-               StartCoroutine(GeneratePlayHTSpeech("Hello I am bob. I like to do programming and mess with my sanity."));
+            StartCoroutine(GeneratePlayHTSpeech(textToConvert));
+            //    StartCoroutine(GeneratePlayHTSpeech("Hello I am bob. I like to do programming and mess with my sanity."));
         }
         else if (selectedTTSProvider == TTSProvider.OpenAI)
         {
@@ -142,7 +143,7 @@ public class TTS_both_API : MonoBehaviour
                         isThirdAudioReady = true; 
                         Debug.Log("Third audio is ready");
 
-                        InitializePlayAudio(usableFilePath);
+                        
                     }
                     isSecondAudioReady = true; 
                     Debug.Log("Second audio is ready: ");

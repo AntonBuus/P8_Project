@@ -247,7 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56f87055fdd52d445886c2590cd77d0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedTTSProvider: 1
+  selectedTTSProvider: 0
   GeneratedInput: {fileID: 1370458007}
   audioSource: {fileID: 788616728}
   speed: 0.9
@@ -1606,6 +1606,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7936741176301019299, guid: 972775febf6f5ff48bf0c75e9db3a1fc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 280014223}
+    - targetCorrespondingSourceObject: {fileID: 2287744392107705630, guid: 972775febf6f5ff48bf0c75e9db3a1fc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 972775febf6f5ff48bf0c75e9db3a1fc, type: 3}
 --- !u!1 &280014220 stripped
 GameObject:
@@ -3698,6 +3701,30 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 56515965887609227, guid: 0dee9c78b0be9f144aee7c58f200c9df, type: 3}
+      propertyPath: m_Size.y
+      value: 100.000046
+      objectReference: {fileID: 0}
+    - target: {fileID: 56515965887609227, guid: 0dee9c78b0be9f144aee7c58f200c9df, type: 3}
+      propertyPath: m_Size.z
+      value: 127.36271
+      objectReference: {fileID: 0}
+    - target: {fileID: 56515965887609227, guid: 0dee9c78b0be9f144aee7c58f200c9df, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 56515965887609227, guid: 0dee9c78b0be9f144aee7c58f200c9df, type: 3}
+      propertyPath: m_Center.x
+      value: 0.00024503627
+      objectReference: {fileID: 0}
+    - target: {fileID: 56515965887609227, guid: 0dee9c78b0be9f144aee7c58f200c9df, type: 3}
+      propertyPath: m_Center.y
+      value: 0.0000039736433
+      objectReference: {fileID: 0}
+    - target: {fileID: 56515965887609227, guid: 0dee9c78b0be9f144aee7c58f200c9df, type: 3}
+      propertyPath: m_Center.z
+      value: -13.681345
+      objectReference: {fileID: 0}
     - target: {fileID: 64694048994449713, guid: 0dee9c78b0be9f144aee7c58f200c9df, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -4790,7 +4817,8 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 56515965887609227, guid: 0dee9c78b0be9f144aee7c58f200c9df, type: 3}
     m_RemovedGameObjects:
     - {fileID: 6234740917159713549, guid: 0dee9c78b0be9f144aee7c58f200c9df, type: 3}
     - {fileID: 7147270235523473455, guid: 0dee9c78b0be9f144aee7c58f200c9df, type: 3}
@@ -9724,7 +9752,7 @@ MonoBehaviour:
   _inputField: {fileID: 1139750382}
   SupervisorAPICall: {fileID: 45929775}
   _era: The Hun Era
-  _anomalyObject: An old school comptur
+  _anomalyObject: A moderen crossbow
   _setObjectRandomly: 0
   _wasObjectRetrieved: The agent brings back the object
   _objectIsRetrieved: 0

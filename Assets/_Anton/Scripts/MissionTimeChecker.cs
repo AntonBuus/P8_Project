@@ -5,7 +5,7 @@ public class MissionTimeChecker : MonoBehaviour
     [SerializeField] AdjustablePrompts _adjustablePrompts; 
     [SerializeField] LeverTimeDial _leverTimeDial; 
     float _currentTime; 
-    public float _middleTime = 120; 
+    public float _middleTime = 90; 
     [SerializeField] ButtonDebug _missionTime; 
     public string _winSceneName = "Win_Scene_v3" ; 
     public string _failSceneName = "Fail_Scene_v3"; 
