@@ -5,7 +5,7 @@ using UnitySceneManager = UnityEngine.SceneManagement.SceneManager;
 public class PlayerPositionManager : MonoBehaviour
 {
     [Header("XR Origin")]
-    public Transform player; 
+    public Transform player; // Assign XR Origin here
 
     [System.Serializable]
     public class SpawnPoint

@@ -4,6 +4,7 @@ using System.Collections;
 
 public class FindGameObject : MonoBehaviour
 {
+    //This is to be inserted to any script that needs to influence or activate prompts
     [SerializeField] private AdjustablePrompts adjustablePrompts;
     [SerializeField] private CallSupervisor1 supervisor1;
     [SerializeField] private TTS_both_API ttsBothAPI;
@@ -24,6 +25,8 @@ public class FindGameObject : MonoBehaviour
         {
             ttsBothAPI = GameObject.Find("TTS API").GetComponent<TTS_both_API>();
         }
+        // ttsBothAPI.InitializePlayAudio(ttsBothAPI.usableFilePath);
+        // adjustablePrompts.CollectMissionReportPrompt();//not calling this as it is too early
 
         StartCoroutine(PlayClipsInSequence());
     }

@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class LeverConnectorLine : MonoBehaviour
 {
-    public Transform startPoint; 
-    public Transform endPoint;  
+    public Transform startPoint; // Pipboi base
+    public Transform endPoint;   // Pull handle
     private LineRenderer line;
 
     void Start()

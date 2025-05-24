@@ -10,9 +10,16 @@ using UnityEditor.EditorTools;
 public class AdjustablePromptsRadioHost : MonoBehaviour
 {
     [SerializeField] private InputField _inputField;
-    [SerializeField] private CallRadiohost _callRadiohost; 
+    [SerializeField] private CallRadiohost _callRadiohost; // Reference to the output text field
 
-    [SerializeField] private AdjustablePrompts _adjustablePromptsSupervisor; 
+    [SerializeField] private AdjustablePrompts _adjustablePromptsSupervisor; // Reference to the TTS system
+
+
+    // [Header("Main variables for prompts")]
+
+    // public string _wasObjectRetrieved = "The agent brings back the object"; // Default retrieval status
+
+    // public string _timeStatus = "They brought back the object in due time"; // Default time status
 
     [Header("Prompt variables")]
     [TextArea(3, 10)] public string _prompt1RadiohostReport;
@@ -29,8 +36,9 @@ public class AdjustablePromptsRadioHost : MonoBehaviour
     {
         _prompt1RadiohostReport = "The agent returned from his trip to " + _adjustablePromptsSupervisor._era + ". The object was: "
         + _adjustablePromptsSupervisor._anomalyObject + ". "+ _adjustablePromptsSupervisor._wasObjectRetrieved + _adjustablePromptsSupervisor._timeStatus;
-        _inputField.text = _prompt1RadiohostReport; 
-        Debug.Log("Collected radiohost prompt");
+        _inputField.text = _prompt1RadiohostReport; // Set the input field text to the prompt
+        Debug.Log("Collected radiohost prompt"); // Log the prompt to the console for debugging
+        // _callRadiohost.SendReply();
     }
     
 }

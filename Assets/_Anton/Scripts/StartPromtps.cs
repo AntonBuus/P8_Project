@@ -7,7 +7,7 @@ public class StartPromtps : MonoBehaviour
 
     void Start()
     {
-    
+        // CallOpenAICompletion = GetComponent<CallSupervisor1>();
         CallOpenAICompletion.SendReply();
     }
 }

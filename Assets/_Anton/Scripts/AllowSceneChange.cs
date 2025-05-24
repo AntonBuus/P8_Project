@@ -3,7 +3,7 @@ using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class AllowSceneChange : MonoBehaviour
 {
-    public TTS_both_API ttsSystem; 
+    public TTS_both_API ttsSystem; // Reference to the TTS system
     public BoxCollider handleCollider;
     public XRGrabInteractable XRGrabInteractable;
     
@@ -17,6 +17,7 @@ public class AllowSceneChange : MonoBehaviour
 
     }
 
+    // Update is called once per frame
     void Update()
     {
         if (ttsSystem.isSecondAudioReady)

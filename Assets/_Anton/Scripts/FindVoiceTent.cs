@@ -4,11 +4,11 @@ using System.Collections;
 
 public class FindVoiceTent : MonoBehaviour
 {
-    
+    //This is to be inserted to any script that needs to influence or activate prompts
     [SerializeField] private AdjustablePrompts adjustablePrompts;
     [SerializeField] private CallSupervisor1 supervisor1;
     [SerializeField] private TTS_both_API ttsBothAPI;
-    [SerializeField] private AdjustablePromptsRadioHost _APRH; 
+    [SerializeField] private AdjustablePromptsRadioHost _APRH; // Reference to the output text field
     bool _playedLastPrompt = false;
 
     public AudioSource audioSource;
@@ -37,7 +37,7 @@ public class FindVoiceTent : MonoBehaviour
     {
         if (_playedLastPrompt == false)
         {
-
+            // ttsBothAPI.InitializePlayAudio(ttsBothAPI.usableFilePath);
             StartCoroutine(PlayClipsInSequence());
             _playedLastPrompt = true;
             _APRH.CollectRadioContent();

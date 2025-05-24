@@ -75,7 +75,7 @@ AudioMixerEffectController:
     m_GUID: b07a8254fb379f340a485480e306ebe3
   m_SendTarget: {fileID: 0}
   m_EnableWetMix: 0
-  m_Bypass: 1
+  m_Bypass: 0
 --- !u!241 &24100000
 AudioMixerController:
   m_ObjectHideFlags: 0
@@ -88,7 +88,7 @@ AudioMixerController:
   m_Snapshots:
   - {fileID: 24500006}
   m_StartSnapshot: {fileID: 24500006}
-  m_SuspendThreshold: 0
+  m_SuspendThreshold: -80
   m_EnableSuspend: 1
   m_UpdateMode: 0
   m_ExposedParameters: []
@@ -147,5 +147,4 @@ AudioMixerSnapshotController:
     405078c670eaee343bb85295faebdcce: -5709
     e50371a8eddc0d14091c20b6bb444edd: 0
     7591ab692076e6943acbd874df630df8: 2.2
-    b277213a4b8dcd746ae3e06107978831: 20
   m_TransitionOverrides: {}

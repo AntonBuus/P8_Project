@@ -247,7 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56f87055fdd52d445886c2590cd77d0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedTTSProvider: 1
+  selectedTTSProvider: 0
   GeneratedInput: {fileID: 1370458007}
   audioSource: {fileID: 788616728}
   speed: 0.9
@@ -1099,16 +1099,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1444748345}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &127254893 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -4170466986292277397, guid: e1615bb8f11e95b4bbf965aaa08fe5b2, type: 3}
-  m_PrefabInstance: {fileID: 5500298412950150669}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &145486062 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4719176994853480701, guid: e1615bb8f11e95b4bbf965aaa08fe5b2, type: 3}
-  m_PrefabInstance: {fileID: 5500298412950150669}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &155154670
 GameObject:
   m_ObjectHideFlags: 0
@@ -1184,11 +1174,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 155154670}
   m_CullTransparentMesh: 1
---- !u!1 &165865806 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6045911812025975580, guid: e1615bb8f11e95b4bbf965aaa08fe5b2, type: 3}
-  m_PrefabInstance: {fileID: 5500298412950150669}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &185934345
 GameObject:
   m_ObjectHideFlags: 0
@@ -1545,11 +1530,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3259948375798249316, guid: 972775febf6f5ff48bf0c75e9db3a1fc, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3668960415350097110, guid: 972775febf6f5ff48bf0c75e9db3a1fc, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4381220991482787503, guid: 972775febf6f5ff48bf0c75e9db3a1fc, type: 3}
       propertyPath: m_HoverEntered.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -1606,6 +1591,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7936741176301019299, guid: 972775febf6f5ff48bf0c75e9db3a1fc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 280014223}
+    - targetCorrespondingSourceObject: {fileID: 2287744392107705630, guid: 972775febf6f5ff48bf0c75e9db3a1fc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 972775febf6f5ff48bf0c75e9db3a1fc, type: 3}
 --- !u!1 &280014220 stripped
 GameObject:
@@ -1784,11 +1772,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 321978403}
   m_CullTransparentMesh: 1
---- !u!4 &323525730 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2160067632430466454, guid: e1615bb8f11e95b4bbf965aaa08fe5b2, type: 3}
-  m_PrefabInstance: {fileID: 5500298412950150669}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &328038181 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 73f0e35e0d436fe4282184003a1a5c93, type: 3}
@@ -2339,11 +2322,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 423201491}
   m_CullTransparentMesh: 1
---- !u!4 &430170186 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8475558527249368332, guid: e1615bb8f11e95b4bbf965aaa08fe5b2, type: 3}
-  m_PrefabInstance: {fileID: 5500298412950150669}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &458009301
 GameObject:
   m_ObjectHideFlags: 0
@@ -2380,11 +2358,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &461787677 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5426bf9257820b14a97d522a59762061, type: 3}
-  m_PrefabInstance: {fileID: 6154442169311316727}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &461787680 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5426bf9257820b14a97d522a59762061, type: 3}
@@ -5381,11 +5354,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 768244888}
   m_CullTransparentMesh: 1
---- !u!4 &782923807 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -1095022691075713601, guid: e1615bb8f11e95b4bbf965aaa08fe5b2, type: 3}
-  m_PrefabInstance: {fileID: 5500298412950150669}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &784293123
 GameObject:
   m_ObjectHideFlags: 0
@@ -10189,11 +10157,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1812640659}
   m_CullTransparentMesh: 1
---- !u!4 &1860133677 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -7630452756277836811, guid: e1615bb8f11e95b4bbf965aaa08fe5b2, type: 3}
-  m_PrefabInstance: {fileID: 5500298412950150669}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1873356543
 GameObject:
   m_ObjectHideFlags: 0
@@ -12739,13 +12702,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80ade6fcace33b641adbf6d428a7a4b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: Hun_Era_v3
-  sceneChangeDelay: 3
-  bootupEffectPrefab: {fileID: 198666082906608312, guid: f980f35b2665e65409a449e52e961c09, type: 3}
-  pullSound: {fileID: 5019963009263481832}
-  grabInteractable: {fileID: 208069596051802796}
-  pipboiTransform: {fileID: 957966783456028613}
-  attachPoint: {fileID: 0}
 --- !u!4 &747923432957065920
 Transform:
   m_ObjectHideFlags: 0
@@ -12860,11 +12816,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 3909233067320746374, guid: e1615bb8f11e95b4bbf965aaa08fe5b2, type: 3}
---- !u!4 &957966783456028613 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 533193074659131909, guid: e1615bb8f11e95b4bbf965aaa08fe5b2, type: 3}
-  m_PrefabInstance: {fileID: 5500298412950150669}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &987039695040403745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13198,18 +13149,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 214623a04a0f80842978c5ed8b547145, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minOpacity: 0
-  maxOpacity: 1
-  sensitivity: 2
-  distanceScale: 0.1
-  referenceTransform: {fileID: 6528014126125134600}
-  hologram: {fileID: 461787677}
-  hologramEmitter: {fileID: 145486062}
-  hologramLight: {fileID: 5405008140691424493}
-  audioSource: {fileID: 0}
-  interactionSound: {fileID: 0}
-  knobRotationMax: 180
-  showDebugGizmos: 0
 --- !u!4 &1313367735726350381
 Transform:
   m_ObjectHideFlags: 0
@@ -16044,7 +15983,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3284017451226403622
 Transform:
   m_ObjectHideFlags: 0
@@ -21606,42 +21545,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20814e71200c8c5458e4216aa67ce0e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  screenObject: {fileID: 165865806}
-  screenOnMaterial: {fileID: 2100000, guid: bfdafb58d78bb004b813537b8c1f1d7c, type: 2}
-  screenOffMaterial: {fileID: 2100000, guid: 5eafa6db1174af542a0531dc4bc18e99, type: 2}
-  pressDepth: 0.005
-  pressDuration: 0.05
-  animationCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  pressAxis: 0
-  audioSource: {fileID: 0}
-  interactionSound: {fileID: 0}
-  showPokeZone: 0
-  detailedDebugLogging: 1
-  interactionMode: 3
-  toggleCooldown: 0.5
 --- !u!4 &7472204312214900534
 Transform:
   m_ObjectHideFlags: 0
@@ -23246,24 +23149,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e86f9812a136e9c4597f378f97c37e14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  grabPoint: {fileID: 5658719191643008496}
-  zeroPoint: {fileID: 8220719151493803464}
-  wireRenderer: {fileID: 3177821216264790404}
-  disablePositionTracking: 0
-  showGrabPointGizmo: 0
-  retractSpeed: 5
-  minYear: -2000
-  maxYear: 2000
-  yearStep: 100
-  maxExtensionDistance: 1.2
-  yearChangeSound: {fileID: 8300000, guid: d5d16903d93d2ef4b9a2f118d6e1b010, type: 3}
-  numberRotate1: {fileID: 323525730}
-  numberRotate2: {fileID: 1860133677}
-  numberRotate3: {fileID: 430170186}
-  numberRotate4: {fileID: 127254893}
-  numberRotate5: {fileID: 782923807}
-  rotationSmoothTime: 0.3
-  checkNumberCylinders: 1
 --- !u!4 &8714471400135480345 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4771658032688497357, guid: e1615bb8f11e95b4bbf965aaa08fe5b2, type: 3}

@@ -19,7 +19,7 @@ public class LeverTimeDial : MonoBehaviour
     public Transform pipboiTransform;
 
     [Header("=== Lever Return ===")]
-    public Transform attachPoint; 
+    public Transform attachPoint; // 👈 Your custom reset position
 
     private bool hasActivated = false;
     private bool isReturning = false;

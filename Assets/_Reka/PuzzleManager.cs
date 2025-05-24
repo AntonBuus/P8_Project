@@ -14,6 +14,7 @@ public class PuzzleManager : MonoBehaviour
             paperpieces[index] = obj;
         }
 
+        // Check if all filled
         if (!paperpieces.Contains(null))
         {
             EvaluateOrder();
@@ -32,6 +33,6 @@ public class PuzzleManager : MonoBehaviour
         }
 
         Debug.Log("Correct combination: OPEN");
-        openLid.OpenLidNow(); 
+        openLid.OpenLidNow();  // Unlock the chest!
     }
 }

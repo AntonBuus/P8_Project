@@ -1,14 +1,12 @@
-// Orignal Code for ButtonDebug logic, but line 38 to 134 was created by ChatGBT 
-
 using UnityEngine;
 using TMPro;
 using System.Collections;
 
 public class ButtonDebug : MonoBehaviour
 {
-    public TextMeshPro countdownText; 
-    public GameObject countdownDisplay;
-    public GameObject missionDisplay;
+    public TextMeshPro countdownText;         // Text component for countdown
+    public GameObject countdownDisplay;       // UI: countdown screen (e.g. TMP text)
+    public GameObject missionDisplay;         // UI: mission screen (now an Image or any GameObject)
 
     private Coroutine countdownCoroutine;
     private static float remainingTime = -1f;
@@ -42,6 +40,7 @@ public class ButtonDebug : MonoBehaviour
 
         if (isMissionScene)
         {
+            // ✅ Only start timer in Hun_Era_v3
             if (!timerStarted && currentScene == "Hun_Era_v3")
             {
                 Debug.Log("✅ Timer auto-started in Hun_Era_v3");
@@ -50,11 +49,13 @@ public class ButtonDebug : MonoBehaviour
                 countdownCoroutine = StartCoroutine(StartCountdown());
             }
 
+            // Show countdown UI by default
             if (countdownDisplay != null) countdownDisplay.SetActive(true);
             if (missionDisplay != null) missionDisplay.SetActive(false);
         }
         else
         {
+            // ❌ In all other scenes (like SOPH_IntroScene_1), hide both UIs
             if (countdownDisplay != null) countdownDisplay.SetActive(false);
             if (missionDisplay != null) missionDisplay.SetActive(false);
         }
@@ -103,7 +104,7 @@ public class ButtonDebug : MonoBehaviour
         if (currentScene == "Hun_Era_Tent_v3")
         {
            _missionTimeChecker = GameObject.Find("MissionTimeChecker").GetComponent<MissionTimeChecker>();
-            _missionTimeChecker.CheckMissionTime(); 
+            _missionTimeChecker.CheckMissionTime(); // Call the mission time checker
         }
         if (countdownText != null)
             countdownText.text = "Time's up!";

@@ -1,9 +1,9 @@
 using System.Collections;
-using System.IO; 
+using System.IO; // To save the received MP3 file.
 using UnityEngine;
-using UnityEngine.Networking; 
+using UnityEngine.Networking; // For making API requests.
 using System.Text;
-using Newtonsoft.Json; 
+using Newtonsoft.Json; // To convert C# objects into JSON format.
 
 public class TTS_test : MonoBehaviour
 {
@@ -11,6 +11,8 @@ public class TTS_test : MonoBehaviour
     
     private string ttsEndpoint = "https://api.openai.com/v1/audio/speech";
 
+    // Sending the Text-to-Speech Request. Automatically starts the TTS process when the Unity scene begins. 
+    // Right now it is using a premade text.
     void Start()
     {
         StartCoroutine(ConvertTextToSpeech("Hello, welcome to Unity with OpenAI Text-to-Speech!"));
@@ -18,24 +20,28 @@ public class TTS_test : MonoBehaviour
 
     IEnumerator ConvertTextToSpeech(string text)
     {
+        // Create JSON request body with model, voice and input.
         var requestBody = new
         {
-            model = "tts-1", 
-            voice = "onyx",
+            model = "tts-1", // Use "tts-1-hd" for higher quality
+            voice = "onyx", // Other voices: echo, fable, onyx, nova, shimmer
             input = text
         };
 
         string jsonData = JsonConvert.SerializeObject(requestBody);
         byte[] postData = Encoding.UTF8.GetBytes(jsonData);
 
+        // ending the HTTP POST Request to OpenAi.
         using (UnityWebRequest request = new UnityWebRequest(ttsEndpoint, "POST"))
         {
             request.uploadHandler = new UploadHandlerRaw(postData);
             request.downloadHandler = new DownloadHandlerBuffer();
             request.SetRequestHeader("Content-Type", "application/json");
+            //request.SetRequestHeader("Authorization", "Bearer " + SuperSecretStuff.OPENAI_NAHRS_ApiKey);
 
             yield return request.SendWebRequest();
 
+            //  Handling API Response: Checks if API request was successful. Saves the received MP3 file.
             if (request.result == UnityWebRequest.Result.Success)
             {
                 byte[] audioData = request.downloadHandler.data;
@@ -49,6 +55,7 @@ public class TTS_test : MonoBehaviour
         }
     }
 
+    // Stores the received MP3 file on disk.
     string SaveAudioFile(byte[] audioData, string fileName)
     {
         string filePath = Path.Combine(Application.persistentDataPath, fileName);
@@ -57,6 +64,7 @@ public class TTS_test : MonoBehaviour
         return filePath;
     }
 
+    // Loads and plays the audio file.
     IEnumerator PlayAudio(string filePath)
     {
         using (UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip("file://" + filePath, AudioType.MPEG))

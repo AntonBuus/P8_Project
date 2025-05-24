@@ -4,7 +4,7 @@ using UnityEngine;
 public class PlayerEnteredArea : MonoBehaviour
 {
     [SerializeField] private TTS_both_API _PlayGeneratedVoice;
-
+    // [SerializeField] private string fetchedFilePath;
     private bool hasplayed = false;
     void Start()
     {
