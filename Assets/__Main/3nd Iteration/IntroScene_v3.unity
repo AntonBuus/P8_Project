@@ -247,7 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56f87055fdd52d445886c2590cd77d0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedTTSProvider: 0
+  selectedTTSProvider: 1
   GeneratedInput: {fileID: 1370458007}
   audioSource: {fileID: 788616728}
   speed: 0.9
@@ -1606,9 +1606,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7936741176301019299, guid: 972775febf6f5ff48bf0c75e9db3a1fc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 280014223}
-    - targetCorrespondingSourceObject: {fileID: 2287744392107705630, guid: 972775febf6f5ff48bf0c75e9db3a1fc, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 972775febf6f5ff48bf0c75e9db3a1fc, type: 3}
 --- !u!1 &280014220 stripped
 GameObject:
@@ -8809,6 +8806,7 @@ MonoBehaviour:
   countdownText: {fileID: 1009619788}
   countdownDisplay: {fileID: 1009619786}
   missionDisplay: {fileID: 943953122}
+  SetStartingTimeInSeconds: 300
 --- !u!1 &1403937270
 GameObject:
   m_ObjectHideFlags: 0
