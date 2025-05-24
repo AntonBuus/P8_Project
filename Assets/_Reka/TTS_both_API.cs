@@ -5,37 +5,38 @@ using UnityEngine.Networking;
 using System.Text;
 using Newtonsoft.Json; 
 using TMPro;
-
+// This API was created with the asstance of AI, and is used to generate text-to-speech audio using both Play.ht and OpenAI's TTS services.
+//make sure to have your API keys set up
 public class TTS_both_API : MonoBehaviour
 {
-    public enum TTSProvider { PlayHT, OpenAI, No_Speech } 
-    [SerializeField] public TTSProvider selectedTTSProvider = TTSProvider.OpenAI; 
+    public enum TTSProvider { PlayHT, OpenAI, No_Speech }
+    [SerializeField] public TTSProvider selectedTTSProvider = TTSProvider.OpenAI;
 
     [Header("TTS Settings")]
     [SerializeField] private TextMeshProUGUI GeneratedInput;
-    public AudioSource audioSource; 
+    public AudioSource audioSource;
 
     [Header("Play.ht Controls")]
-    [Range(0.1f, 5f)] public float speed = 1.0f; 
-    [Range(0.1f, 2f)] public float temperature = 1.0f; 
+    [Range(0.1f, 5f)] public float speed = 1.0f;
+    [Range(0.1f, 2f)] public float temperature = 1.0f;
 
     [Tooltip("Select an emotion for the speech (Only for Play.ht)")]
     public string[] emotionOptions = { "female_happy", "female_sad", "female_angry", "female_fearful", "female_disgust", "female_surprised", "male_happy", "male_sad", "male_angry", "male_fearful", "male_disgust", "male_surprised" };
     public int selectedEmotionIndex = 0;
 
     private string playHTUrl = "https://api.play.ht/api/v2/tts/stream";
-    private string openAITtsUrl = "https://api.openai.com/v1/audio/speech"; 
+    private string openAITtsUrl = "https://api.openai.com/v1/audio/speech";
 
     public string usableFilePath;
     public bool isAudioReady = false;
-    public bool isSecondAudioReady = false; 
-    public bool isThirdAudioReady = false; 
-    public string _openaiSelectedVoice = "onyx"; 
-    public string _playHTSelectedVoice = "s3://voice-cloning-zero-shot/d99d35e6-e625-4fa4-925a-d65172d358e1/adriansaad/manifest.json"; 
+    public bool isSecondAudioReady = false;
+    public bool isThirdAudioReady = false;
+    public string _openaiSelectedVoice = "onyx";
+    public string _playHTSelectedVoice = "s3://voice-cloning-zero-shot/d99d35e6-e625-4fa4-925a-d65172d358e1/adriansaad/manifest.json";
     public void StartVoice()
     {
         string textToConvert = GeneratedInput.text;
-        
+
         if (selectedTTSProvider == TTSProvider.PlayHT)
         {
             StartCoroutine(GeneratePlayHTSpeech(textToConvert));
@@ -48,7 +49,7 @@ public class TTS_both_API : MonoBehaviour
         else if (selectedTTSProvider == TTSProvider.No_Speech)
         {
             Debug.Log("No speech selected");
-            isAudioReady = true; 
+            isAudioReady = true;
         }
 
     }
@@ -58,11 +59,11 @@ public class TTS_both_API : MonoBehaviour
         var requestBody = new
         {
             text = text,
-            voice = _playHTSelectedVoice, 
+            voice = _playHTSelectedVoice,
             output_format = "mp3",
             voice_engine = "Play3.0-mini",
             speed = speed,
-            temperature = temperature, 
+            temperature = temperature,
             emotion = emotionOptions[selectedEmotionIndex]
         };
 
@@ -90,15 +91,15 @@ public class TTS_both_API : MonoBehaviour
                 {
                     if (isSecondAudioReady)
                     {
-                        isThirdAudioReady = true; 
+                        isThirdAudioReady = true;
                         Debug.Log("Third audio is ready");
                     }
-                    isSecondAudioReady = true; 
+                    isSecondAudioReady = true;
                     Debug.Log("Second audio is ready: ");
-                    
+
                 }
-                isAudioReady = true; 
-                
+                isAudioReady = true;
+
             }
             else
             {
@@ -114,7 +115,7 @@ public class TTS_both_API : MonoBehaviour
         var requestBody = new
         {
             model = "tts-1",
-            voice = _openaiSelectedVoice, 
+            voice = _openaiSelectedVoice,
             input = text
         };
 
@@ -140,14 +141,14 @@ public class TTS_both_API : MonoBehaviour
                 {
                     if (isSecondAudioReady)
                     {
-                        isThirdAudioReady = true; 
+                        isThirdAudioReady = true;
                         Debug.Log("Third audio is ready");
 
-                        
+
                     }
-                    isSecondAudioReady = true; 
+                    isSecondAudioReady = true;
                     Debug.Log("Second audio is ready: ");
-                    
+
                 }
 
                 isAudioReady = true;
@@ -167,7 +168,7 @@ public class TTS_both_API : MonoBehaviour
         string filePath = Path.Combine(Application.persistentDataPath, fileName);
         File.WriteAllBytes(filePath, audioData);
         return filePath;
-        
+
     }
 
     public void InitializePlayAudio(string filePath)
